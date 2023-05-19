@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_money/page/screens/home/new_item_widget.dart';
 import 'package:my_money/page/screens/home/tabbar_menu_widget.dart';
 
+import '../eventopage/evento_page.dart';
 import 'list_drawer_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,7 +47,13 @@ class _HomePageState extends State<HomePage> {
         width: width * 0.16,
         height: height * 0.15,
         child: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EventoPage(),
+                  ));
+            },
             elevation: 2,
             backgroundColor: const Color(0xff5F5DA6),
             child: const Icon(
