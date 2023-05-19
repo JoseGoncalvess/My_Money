@@ -7,16 +7,18 @@ class AvatarProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: width * 0.1,
+        width: width * 0.2,
         height: height * 0.1,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
-            image: DecorationImage(image: AssetImage(image))),
+            image: DecorationImage(
+              image: AssetImage(image),
+            )),
       ),
     );
   }

@@ -7,7 +7,7 @@ class CreatePerfil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -45,7 +45,7 @@ class CreatePerfil extends StatelessWidget {
               ),
               Container(
                   width: MediaQuery.of(context).size.width * 0.85,
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.56,
                   decoration: BoxDecoration(
                       color: const Color(0xff2E4159),
                       borderRadius: BorderRadius.circular(22)),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../monthPage/month_page_details.dart';
+
 class TabbarMenuWidget extends StatelessWidget {
   const TabbarMenuWidget({Key? key}) : super(key: key);
 
@@ -57,7 +59,13 @@ class TabbarMenuWidget extends StatelessWidget {
             ),
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MonthPageDetails(),
+                    ));
+              },
               icon: Icon(
                 Icons.receipt_long_rounded,
                 size: height * 0.05,

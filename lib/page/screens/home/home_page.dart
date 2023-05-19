@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SizedBox(
         height: height,
@@ -25,12 +25,12 @@ class _HomePageState extends State<HomePage> {
             width: width,
             color: Colors.white,
             child: eventos.isEmpty
-                ? NewItemWidget()
+                ? const NewItemWidget()
                 : ListView.builder(
                     itemCount: eventos.isEmpty ? 1 : eventos.length,
                     itemBuilder: (context, index) => Container()),
           ),
-          TabbarMenuWidget()
+          const TabbarMenuWidget()
         ]),
       ),
       floatingActionButton: SizedBox(

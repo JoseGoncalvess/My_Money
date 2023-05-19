@@ -19,26 +19,29 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          'PERFIL',
-          style:
-              TextStyle(fontSize: height * 0.03, fontWeight: FontWeight.w800),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Text(
+            'PERFIL',
+            style:
+                TextStyle(fontSize: height * 0.03, fontWeight: FontWeight.w800),
+          ),
         ),
         const AvatarProfileWidget(image: 'assets/img/sem_logo.jpg'),
         SizedBox(
-          width: width * 0.4,
-          height: height * 0.1,
+          width: width * 0.7,
+          height: height * 0.12,
           child: CustomFormfielWidget(
               controller: _namecontroller,
               keybordtype: TextInputType.text,
               internlabel: 'Olá, Me chamo...'),
         ),
         SizedBox(
-          width: width * 0.3,
+          width: width * 0.6,
           height: height * 0.1,
           child: CustomFormfielWidget(
               controller: _moneycontroller,
@@ -46,7 +49,7 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
               internlabel: 'Meu patrimonio atual é ...'),
         ),
         SizedBox(
-          width: width * 0.24,
+          width: width * 0.4,
           height: height * 0.08,
           child: ElevatedButton(
             style: const ButtonStyle(
