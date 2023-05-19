@@ -17,6 +17,7 @@ class _AppWidegtState extends State<AppWidegt> {
         theme: ThemeData(
           fontFamily: 'Fredoka',
           colorScheme: const ColorScheme.dark(onPrimary: Color(0xff4F4D8C)),
+
           // useMaterial3: true,
         ),
         home: const SplashPage());

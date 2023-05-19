@@ -1,14 +1,22 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../monthPage/month_page_details.dart';
 
-class TabbarMenuWidget extends StatelessWidget {
+class TabbarMenuWidget extends StatefulWidget {
   const TabbarMenuWidget({Key? key}) : super(key: key);
 
+  @override
+  State<TabbarMenuWidget> createState() => _TabbarMenuWidgetState();
+}
+
+class _TabbarMenuWidgetState extends State<TabbarMenuWidget> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.height;
+
     return Container(
       height: height * 0.15,
       width: width,
@@ -21,7 +29,10 @@ class TabbarMenuWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              log('pega kraiii');
+              Scaffold.of(context).openDrawer();
+            },
             icon: Icon(
               Icons.menu_rounded,
               size: height * 0.05,
@@ -29,7 +40,7 @@ class TabbarMenuWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 24.0),
-            child: Container(
+            child: SizedBox(
               height: height * 0.12,
               width: width * 0.35,
               // color: Colors.amberAccent,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'animated_details_widget.dart';
+
 class MonthPageDetails extends StatefulWidget {
   const MonthPageDetails({super.key});
 
@@ -45,31 +47,23 @@ class _MonthPageDetailsState extends State<MonthPageDetails>
         child: Stack(
           children: [
             Container(
-              color: Colors.brown,
+              height: height,
+              width: width,
+              child: PageView(
+                children: [
+                  Container(
+                    color: Colors.amber,
+                  ),
+                  Container(
+                    color: Colors.red,
+                  ),
+                  Container(
+                    color: Colors.green,
+                  )
+                ],
+              ),
             ),
-            Positioned(
-                left: 50,
-                right: 50,
-                bottom: 0,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      animated = !animated;
-                    });
-                  },
-                  child: AnimatedContainer(
-                      duration: Duration(seconds: 1),
-                      decoration: BoxDecoration(
-                        color: !animated ? Colors.green : Colors.red,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(animated ? 0 : 90),
-                          topRight: Radius.circular(animated ? 0 : 90),
-                        ),
-                      ),
-                      curve: Curves.easeInOutCirc,
-                      height: !animated ? height * 0.08 : height * 0.5,
-                      width: width),
-                )),
+            const AnimatedDetailsWidget()
           ],
         ),
       ),
