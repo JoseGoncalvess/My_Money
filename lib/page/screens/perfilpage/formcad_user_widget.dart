@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_money/page/screens/home/home_page.dart';
 
 import '../../widgets/avatar_profile_widget.dart';
+import '../../widgets/buttom_custom_widget.dart';
 import '../../widgets/custom_formfiel_widget.dart';
 
 class FormcadUserWidget extends StatefulWidget {
@@ -54,29 +55,17 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
               keybordtype: TextInputType.number,
               internlabel: 'Meu patrimonio atual é ...'),
         ),
-        SizedBox(
-          width: width * 0.4,
-          height: height * 0.08,
-          child: ElevatedButton(
-            style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Colors.white)),
-            onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomePage(),
-                  ));
-
-              log("${_moneycontroller.text}, ${_namecontroller.text}");
-              _moneycontroller.clear();
-              _namecontroller.clear();
-            },
-            child: Text('Salvar',
-                style: TextStyle(
-                    color: const Color(0xff4F4D8C),
-                    fontSize: height * 0.038,
-                    fontWeight: FontWeight.w600)),
-          ),
+        ButtomCustomWidget(
+          backgroud: const Color(0xff4F4D8C),
+          colortext: Colors.white,
+          name: 'Salvar',
+          onpressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(),
+                ));
+          },
         )
       ],
     );

@@ -11,7 +11,7 @@ class RowInfoformWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    return Container(
+    return SizedBox(
       width: width * 0.98,
       height: height * 0.12,
       child: Row(
@@ -24,7 +24,7 @@ class RowInfoformWidget extends StatelessWidget {
               Text(
                 'Data:',
                 style: TextStyle(
-                    color: const Color(0xff5F5DA6),
+                    color: const Color(0xFF2E4159),
                     fontSize: width * 0.05,
                     fontWeight: FontWeight.w700),
               ),
@@ -48,7 +48,7 @@ class RowInfoformWidget extends StatelessWidget {
               Text(
                 'valor R\$:',
                 style: TextStyle(
-                    color: const Color(0xff5F5DA6),
+                    color: const Color(0xFF2E4159),
                     fontSize: width * 0.05,
                     fontWeight: FontWeight.w700),
               ),
