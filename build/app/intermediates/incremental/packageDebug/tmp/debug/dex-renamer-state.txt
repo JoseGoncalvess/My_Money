@@ -1,4 +1,4 @@
-#Fri May 19 16:28:38 BRT 2023
+#Sat May 20 10:16:57 BRT 2023
 base.0=C\:\\Users\\JG Silva\\GitHub\\My_Money\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

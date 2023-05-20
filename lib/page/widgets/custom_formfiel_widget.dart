@@ -4,12 +4,18 @@ class CustomFormfielWidget extends StatefulWidget {
   final String internlabel;
   final TextInputType keybordtype;
   final TextEditingController controller;
+  final Color cortext;
+  final Color backgrou;
+  final Color border;
 
   const CustomFormfielWidget(
       {Key? key,
       required this.internlabel,
       required this.keybordtype,
-      required this.controller})
+      required this.controller,
+      required this.cortext,
+      required this.backgrou,
+      required this.border})
       : super(key: key);
 
   @override
@@ -20,30 +26,30 @@ class _CustomFormfielWidgetState extends State<CustomFormfielWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: const TextStyle(
-          color: Color(0xff4F4D8C),
+      style: TextStyle(
+          color: widget.cortext,
           decorationThickness: 0.0,
           fontWeight: FontWeight.w600),
       controller: widget.controller,
       textAlign: TextAlign.center,
       keyboardType: widget.keybordtype,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xff4F4D8C), width: 2)),
+        border: OutlineInputBorder(
+            borderSide: BorderSide(color: widget.border, width: 2)),
         focusedBorder: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(
+          borderSide: BorderSide(
             width: 2,
-            color: Color(0xff4F4D8C),
+            color: widget.border,
           ),
         ),
         hintText: widget.internlabel,
         hintStyle: TextStyle(
-          color: const Color(0xFF5F5DA6).withOpacity(0.6),
+          color: widget.cortext,
           fontWeight: FontWeight.bold,
         ),
         filled: true,
-        fillColor: const Color(0xFFFFFFFF),
+        fillColor: widget.backgrou,
       ),
     );
   }

@@ -36,6 +36,9 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
           width: width * 0.7,
           height: height * 0.12,
           child: CustomFormfielWidget(
+              backgrou: Colors.white,
+              border: Colors.white,
+              cortext: const Color(0xff4F4D8C).withOpacity(0.6),
               controller: _namecontroller,
               keybordtype: TextInputType.text,
               internlabel: 'Olá, Me chamo...'),
@@ -44,6 +47,9 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
           width: width * 0.6,
           height: height * 0.1,
           child: CustomFormfielWidget(
+              backgrou: Colors.white,
+              border: Colors.white,
+              cortext: Color(0xff4F4D8C).withOpacity(0.6),
               controller: _moneycontroller,
               keybordtype: TextInputType.number,
               internlabel: 'Meu patrimonio atual é ...'),

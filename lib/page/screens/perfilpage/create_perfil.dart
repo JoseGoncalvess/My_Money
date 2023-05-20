@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/logo_inline_widget.dart';
 import 'formcad_user_widget.dart';
 
 class CreatePerfil extends StatelessWidget {
@@ -23,21 +24,9 @@ class CreatePerfil extends StatelessWidget {
               SizedBox(
                 width: width,
                 height: height * 0.13,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 3.0, bottom: 3),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('assets/img/logo.png'),
-                      Text(
-                        'My Money',
-                        style: TextStyle(
-                            fontSize: height * 0.04,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                child: const LogoInlineWidget(
+                  fontsiz: 0.04,
+                  imagescale: 0.9,
                 ),
               ),
               SizedBox(
