@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/page/screens/home/home_page.dart';
 
@@ -17,6 +15,15 @@ class FormcadUserWidget extends StatefulWidget {
 class _FormcadUserWidgetState extends State<FormcadUserWidget> {
   final TextEditingController _namecontroller = TextEditingController();
   final TextEditingController _moneycontroller = TextEditingController();
+
+  getpage() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -56,17 +63,16 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
               internlabel: 'Meu patrimonio atual é ...'),
         ),
         ButtomCustomWidget(
-          backgroud: const Color(0xff4F4D8C),
-          colortext: Colors.white,
-          name: 'Salvar',
-          onpressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HomePage(),
-                ));
-          },
-        )
+            backgroud: const Color(0xff4F4D8C),
+            colortext: Colors.white,
+            name: 'Salvar',
+            onpressed: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ));
+            })
       ],
     );
   }

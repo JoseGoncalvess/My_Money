@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ButtomCustomWidget extends StatelessWidget {
-  final Function onpressed;
+class ButtomCustomWidget extends StatefulWidget {
+  final Function() onpressed;
   final String name;
   final Color colortext;
   final Color backgroud;
@@ -15,15 +15,21 @@ class ButtomCustomWidget extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<ButtomCustomWidget> createState() => _ButtomCustomWidgetState();
+}
+
+class _ButtomCustomWidgetState extends State<ButtomCustomWidget> {
+  @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     // final width = MediaQuery.of(context).size.width;
     return ElevatedButton(
-      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(backgroud)),
-      onPressed: onpressed(),
-      child: Text(name,
+      style: ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(widget.backgroud)),
+      onPressed: widget.onpressed,
+      child: Text(widget.name,
           style: TextStyle(
-              color: colortext,
+              color: widget.colortext,
               fontSize: height * 0.038,
               fontWeight: FontWeight.w600)),
     );

@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => EventoPage(),
+                    builder: (context) => const EventoPage(),
                   ));
             },
             elevation: 2,
