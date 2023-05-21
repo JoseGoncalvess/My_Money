@@ -5,13 +5,17 @@ class ButtomCustomWidget extends StatefulWidget {
   final String name;
   final Color colortext;
   final Color backgroud;
+  final double largura;
+  final double altura;
 
   const ButtomCustomWidget(
       {Key? key,
       required this.onpressed,
       required this.name,
       required this.colortext,
-      required this.backgroud})
+      required this.backgroud,
+      required this.largura,
+      required this.altura})
       : super(key: key);
 
   @override
@@ -22,16 +26,23 @@ class _ButtomCustomWidgetState extends State<ButtomCustomWidget> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    // final width = MediaQuery.of(context).size.width;
-    return ElevatedButton(
-      style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(widget.backgroud)),
-      onPressed: widget.onpressed,
-      child: Text(widget.name,
-          style: TextStyle(
-              color: widget.colortext,
-              fontSize: height * 0.038,
-              fontWeight: FontWeight.w600)),
+    final width = MediaQuery.of(context).size.width;
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: width * widget.largura,
+        height: height * widget.altura,
+        child: ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(widget.backgroud)),
+          onPressed: widget.onpressed,
+          child: Text(widget.name,
+              style: TextStyle(
+                  color: widget.colortext,
+                  fontSize: height * 0.038,
+                  fontWeight: FontWeight.w600)),
+        ),
+      ),
     );
   }
 }

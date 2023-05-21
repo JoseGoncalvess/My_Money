@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 class IconcategoryEventWidget extends StatelessWidget {
   final IconData icon;
+  final Function() onpressed;
   final String namecategory;
 
   const IconcategoryEventWidget(
-      {Key? key, required this.icon, required this.namecategory})
+      {Key? key,
+      required this.icon,
+      required this.namecategory,
+      required this.onpressed})
       : super(key: key);
 
   @override
@@ -24,7 +28,7 @@ class IconcategoryEventWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: IconButton(
-                onPressed: () {},
+                onPressed: onpressed,
                 icon: Icon(
                   icon,
                   size: width * 0.14,

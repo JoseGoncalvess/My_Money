@@ -9,6 +9,8 @@ class CategoryEventWidget extends StatefulWidget {
 }
 
 class _CategoryEventWidgetState extends State<CategoryEventWidget> {
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -16,28 +18,40 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
     return SizedBox(
         height: height * 0.2,
         width: width,
-        child: const SingleChildScrollView(
+        child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconcategoryEventWidget(
-                  icon: Icons.abc_rounded, namecategory: 'Ferias'),
+                  onpressed: () {},
+                  icon: Icons.luggage_rounded,
+                  namecategory: 'Ferias'),
               IconcategoryEventWidget(
-                  icon: Icons.abc_rounded, namecategory: 'lazer'),
+                  onpressed: () {},
+                  icon: Icons.park_rounded,
+                  namecategory: 'lazer'),
               IconcategoryEventWidget(
-                  icon: Icons.abc_rounded, namecategory: 'Investimento'),
+                  onpressed: () {},
+                  icon: Icons.auto_graph_rounded,
+                  namecategory: 'Investimento'),
               IconcategoryEventWidget(
-                  icon: Icons.abc_rounded, namecategory: 'Role'),
+                  onpressed: () {}, icon: Icons.group, namecategory: 'Role'),
               IconcategoryEventWidget(
-                  icon: Icons.abc_rounded, namecategory: 'Viagem'),
+                  onpressed: () {},
+                  icon: Icons.flight_rounded,
+                  namecategory: 'Viagem'),
               IconcategoryEventWidget(
-                  icon: Icons.abc_rounded, namecategory: 'Saúde'),
+                  onpressed: () {},
+                  icon: Icons.medical_services_rounded,
+                  namecategory: 'Saúde'),
               IconcategoryEventWidget(
-                  icon: Icons.abc_rounded, namecategory: 'Alimentação'),
+                  onpressed: () {},
+                  icon: Icons.restaurant_rounded,
+                  namecategory: 'Alimentação'),
               IconcategoryEventWidget(
-                  icon: Icons.abc_rounded, namecategory: 'Trabalho')
+                  onpressed: () {}, icon: Icons.work, namecategory: 'Trabalho')
             ],
           ),
         ));

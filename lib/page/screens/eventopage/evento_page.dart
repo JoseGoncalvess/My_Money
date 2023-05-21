@@ -20,6 +20,8 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
   TextEditingController valorController = TextEditingController();
   int parcel = 12;
   String pvalue = '';
+  bool payment = false;
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -97,22 +99,32 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                 // color: Colors.amber,
                                 width: width * 0.5,
                                 height: height * 0.15,
-                                child: const Row(
+                                child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     PaymentCategoryWidget(
                                       icon: Icons.credit_card_rounded,
-                                      name: 'Cartão',
+                                      name: 'Dinheiro',
+                                      onpressed: () {
+                                        setState(() {
+                                          payment = false;
+                                        });
+                                      },
                                     ),
                                     PaymentCategoryWidget(
                                       icon: Icons.payments_rounded,
                                       name: 'Cartão',
+                                      onpressed: () {
+                                        setState(() {
+                                          payment = true;
+                                        });
+                                      },
                                     )
                                   ],
                                 ),
                               ),
-                              const ParcelaWidget(),
+                              payment == true ? ParcelaWidget() : Container(),
                             ],
                           ),
                         ],
@@ -126,6 +138,8 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15)),
                         child: ButtomCustomWidget(
+                            largura: 0.6,
+                            altura: 0.08,
                             name: 'Salvar',
                             onpressed: () {},
                             backgroud: const Color(0xff4F4D8C),
@@ -140,8 +154,12 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15)),
                         child: ButtomCustomWidget(
+                            altura: 0.6,
+                            largura: 0.08,
                             name: 'Cancelar',
-                            onpressed: () {},
+                            onpressed: () {
+                              Navigator.pop(context);
+                            },
                             backgroud: const Color(0xFF2E4159),
                             colortext: Colors.white),
                       ),

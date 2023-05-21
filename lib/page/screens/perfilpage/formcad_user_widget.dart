@@ -57,12 +57,14 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
           child: CustomFormfielWidget(
               backgrou: Colors.white,
               border: Colors.white,
-              cortext: Color(0xff4F4D8C).withOpacity(0.6),
+              cortext: const Color(0xff4F4D8C).withOpacity(0.6),
               controller: _moneycontroller,
               keybordtype: TextInputType.number,
               internlabel: 'Meu patrimonio atual é ...'),
         ),
         ButtomCustomWidget(
+            altura: 0.07,
+            largura: 0.4,
             backgroud: const Color(0xff4F4D8C),
             colortext: Colors.white,
             name: 'Salvar',
@@ -70,7 +72,7 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(),
+                    builder: (context) => const HomePage(),
                   ));
             })
       ],

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/page/screens/home/pagedrawer/editing_perfil.dart';
+import 'package:my_money/page/screens/home/pagedrawer/faq_page.dart';
+import 'package:my_money/page/screens/home/pagedrawer/suport_page.dart';
 
 class ListDrawerWidget extends StatefulWidget {
   const ListDrawerWidget({Key? key}) : super(key: key);
@@ -30,7 +33,16 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditingPerfil(
+                          name: 'gonçlaves',
+                          profileimg: 'assets/img/sem_logo.jpg',
+                          totalmoney: '2000'),
+                    ));
+              },
               leading: const Icon(
                 Icons.person_outline_rounded,
                 size: 28,
@@ -42,7 +54,13 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
                       color: Colors.white)),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SuportPage(),
+                    ));
+              },
               leading: const Icon(
                 Icons.support_agent_rounded,
                 size: 28,
@@ -54,7 +72,13 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
                       color: Colors.white)),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FaqPage(),
+                    ));
+              },
               leading: const Icon(
                 Icons.help_outline_rounded,
                 size: 28,

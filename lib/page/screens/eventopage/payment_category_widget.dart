@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class PaymentCategoryWidget extends StatelessWidget {
   final String name;
   final IconData icon;
+  final Function() onpressed;
   const PaymentCategoryWidget(
-      {Key? key, required this.name, required this.icon})
+      {Key? key,
+      required this.name,
+      required this.icon,
+      required this.onpressed})
       : super(key: key);
 
   @override
@@ -22,7 +26,7 @@ class PaymentCategoryWidget extends StatelessWidget {
                 color: const Color(0xFF2E4159),
                 borderRadius: BorderRadius.circular(100)),
             child: IconButton(
-                onPressed: () {},
+                onPressed: onpressed,
                 icon: Icon(
                   icon,
                   size: width * 0.1,
