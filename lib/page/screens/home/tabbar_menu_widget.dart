@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../monthPage/month_page_details.dart';
+import '../pagedetails/month_page_details.dart';
 
 class TabbarMenuWidget extends StatefulWidget {
   const TabbarMenuWidget({Key? key}) : super(key: key);
