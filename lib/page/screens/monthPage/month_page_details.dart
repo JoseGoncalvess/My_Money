@@ -9,23 +9,7 @@ class MonthPageDetails extends StatefulWidget {
   State<MonthPageDetails> createState() => _MonthPageDetailsState();
 }
 
-class _MonthPageDetailsState extends State<MonthPageDetails>
-    with TickerProviderStateMixin {
-  late TabController tabcontroller;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    tabcontroller = TabController(length: 4, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    tabcontroller.dispose();
-  }
-
+class _MonthPageDetailsState extends State<MonthPageDetails> {
   bool animated = false;
 
   @override
@@ -37,7 +21,7 @@ class _MonthPageDetailsState extends State<MonthPageDetails>
         backgroundColor: const Color(0xff4F4D8C),
         title: const Padding(
           padding: EdgeInsets.only(left: 30.0),
-          child: Text('Eventos de Janeiro'),
+          child: Text('Financeiro Detalhado'),
         ),
       ),
       body: Container(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/avatar_profile_widget.dart';
 import '../../../widgets/buttom_custom_widget.dart';
 import '../../../widgets/custom_formfiel_widget.dart';
 import '../home_page.dart';
