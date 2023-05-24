@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/page/screens/pagedetails/pages_tabbar/detail_tabpage.dart';
+import 'package:my_money/page/screens/pagedetails/pages_tabbar/grafic_pagetab.dart';
+import 'package:my_money/page/screens/pagedetails/pages_tabbar/wallet_pagetab.dart';
 
 class MonthPageDetails extends StatefulWidget {
   const MonthPageDetails({super.key});
@@ -10,20 +13,14 @@ class MonthPageDetails extends StatefulWidget {
 class _MonthPageDetailsState extends State<MonthPageDetails> {
   int _currenteindex = 0;
   final List<Widget> tab = <Widget>[
-    Container(
-      color: Colors.red,
-    ),
-    Container(
-      color: Colors.yellow,
-    ),
-    Container(
-      color: Colors.green,
-    )
+    WalletPagetab(),
+    DetailTabpage(),
+    GraficPagetab(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    // final height = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
     // final width = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
@@ -34,15 +31,29 @@ class _MonthPageDetailsState extends State<MonthPageDetails> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          elevation: 1,
+          iconSize: height * 0.035,
+          unselectedIconTheme: IconThemeData(
+            color: Color.fromARGB(255, 178, 182, 186),
+            size: height * 0.025,
+          ),
+          selectedItemColor: Colors.white,
+          selectedFontSize: height * 0.02,
           backgroundColor: const Color(0xff4F4D8C),
           currentIndex: _currenteindex,
           items: [
             BottomNavigationBarItem(
-                label: 'Carteira', icon: Icon(Icons.wallet_rounded)),
+                tooltip: 'Seus Saldos',
+                label: 'Carteira',
+                icon: Icon(Icons.wallet_rounded)),
             BottomNavigationBarItem(
-                label: 'Dealhes', icon: Icon(Icons.list_rounded)),
+                tooltip: 'Suas Movimentações',
+                label: 'Dealhes',
+                icon: Icon(Icons.list_rounded)),
             BottomNavigationBarItem(
-                label: 'Graficos', icon: Icon(Icons.pie_chart_rounded))
+                tooltip: 'Analise Dos Dados',
+                label: 'Graficos',
+                icon: Icon(Icons.pie_chart_rounded))
           ],
           onTap: (index) {
             setState(() {
