@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/page/screens/pagedetails/pages_tabbar/detail_tabpage.dart';
-import 'package:my_money/page/screens/pagedetails/pages_tabbar/grafic_pagetab.dart';
-import 'package:my_money/page/screens/pagedetails/pages_tabbar/wallet_pagetab.dart';
+import 'package:my_money/page/screens/pagedetails/pages_buttombar/detail_buttompage.dart';
+import 'package:my_money/page/screens/pagedetails/pages_buttombar/grafic_buttompag.dart';
+import 'package:my_money/page/screens/pagedetails/pages_buttombar/wallet_buttompage.dart';
 
 class MonthPageDetails extends StatefulWidget {
   const MonthPageDetails({super.key});
@@ -13,9 +13,9 @@ class MonthPageDetails extends StatefulWidget {
 class _MonthPageDetailsState extends State<MonthPageDetails> {
   int _currenteindex = 0;
   final List<Widget> tab = <Widget>[
-    WalletPagetab(),
-    DetailTabpage(),
-    GraficPagetab(),
+    WalletButtompage(),
+    DetailButtompage(),
+    GraficButtompag(),
   ];
 
   @override
