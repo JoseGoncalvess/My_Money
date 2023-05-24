@@ -13,9 +13,9 @@ class MonthPageDetails extends StatefulWidget {
 class _MonthPageDetailsState extends State<MonthPageDetails> {
   int _currenteindex = 0;
   final List<Widget> tab = <Widget>[
-    WalletButtompage(),
-    DetailButtompage(),
-    GraficButtompag(),
+    const WalletButtompage(),
+    const DetailButtompage(),
+    const GraficButtompag(),
   ];
 
   @override
