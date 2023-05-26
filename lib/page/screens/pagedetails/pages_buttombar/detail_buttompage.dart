@@ -116,13 +116,13 @@ class _DetailButtompageState extends State<DetailButtompage>
                   w: 0.7,
                   eventnumber: meses.length.toString(),
                   icon: Icons.list_alt_rounded,
-                  namepayment: 'Eventos de ${mes}',
+                  namepayment: 'Eventos de $mes',
                   value: '3000',
                 ),
               ),
               Positioned(
                   top: 0,
-                  child: Container(
+                  child: SizedBox(
                     width: width,
                     height: height * 0.07,
                     child: PageView(
