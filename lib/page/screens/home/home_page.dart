@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   List eventos = [];
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-
+  @override
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     itemCount: eventos.isEmpty ? 1 : eventos.length,
                     itemBuilder: (context, index) => Container()),
           ),
-          const TabbarMenuWidget()
+          TabbarMenuWidget()
         ]),
       ),
       floatingActionButton: SizedBox(
