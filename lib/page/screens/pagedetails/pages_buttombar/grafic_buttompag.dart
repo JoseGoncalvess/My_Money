@@ -33,20 +33,20 @@ class Moneypayment {
 
 List<Cardpayment> getdatacard() {
   final List<Cardpayment> datpayment = [
-    Cardpayment(dia: 23, valuercard: 200),
+    Cardpayment(dia: 1, valuercard: 200),
     Cardpayment(dia: 3, valuercard: 4),
-    Cardpayment(dia: 12, valuercard: 800),
-    Cardpayment(dia: 7, valuercard: 30),
+    Cardpayment(dia: 1, valuercard: 800),
+    Cardpayment(dia: 3, valuercard: 30),
   ];
   return datpayment;
 }
 
 List<Moneypayment> getmoneypayment() {
   final List<Moneypayment> moneypayment = [
-    Moneypayment(dia: 20, valuercard: 500),
+    Moneypayment(dia: 4, valuercard: 500),
     Moneypayment(dia: 6, valuercard: 20),
-    Moneypayment(dia: 2, valuercard: 0),
-    Moneypayment(dia: 30, valuercard: 100),
+    Moneypayment(dia: 6, valuercard: 10),
+    Moneypayment(dia: 1, valuercard: 100),
   ];
   return moneypayment;
 }
@@ -100,21 +100,54 @@ class _GraficButtompagState extends State<GraficButtompag> {
             SizedBox(
               height: height * 0.01,
             ),
+            Text(
+              'Movimentações',
+              style: TextStyle(
+                  color: const Color(0xff5F5DA6),
+                  fontWeight: FontWeight.bold,
+                  fontSize: height * 0.03),
+            ),
             Container(
               height: height * 0.3,
-              width: width * 0.9,
-              color: Colors.brown,
+              width: width * 0.97,
+              // color: Colors.brown,
               child: SfCartesianChart(
-                series: <ChartSeries>[
-                  LineSeries<Cardpayment, double>(
-                    dataSource: _datacard,
-                    xValueMapper: (Cardpayment data, _) => data.dia,
-                    yValueMapper: (Cardpayment data, _) => data.valuercard,
+                primaryXAxis: CategoryAxis(
+                  isVisible: true,
+                  labelStyle: TextStyle(color: const Color(0xff5F5DA6)),
+                  edgeLabelPlacement: EdgeLabelPlacement.shift,
+                  majorGridLines: MajorGridLines(color: Colors.amber),
+                  axisLine: AxisLine(
+                    color: const Color(0xff5F5DA6),
+                    width: 2,
                   ),
-                  LineSeries<Moneypayment, double>(
+                ),
+                primaryYAxis: NumericAxis(
+                    isVisible: true,
+                    labelStyle: TextStyle(color: const Color(0xff5F5DA6)),
+                    axisLine: AxisLine(color: const Color(0xff5F5DA6))),
+                series: <ChartSeries>[
+                  SplineSeries<Cardpayment, double>(
+                    dataSource: _datacard,
+                    xValueMapper: (Cardpayment data, _) => data.valuercard,
+                    yValueMapper: (Cardpayment data, _) => data.dia,
+                    dataLabelSettings: DataLabelSettings(
+                      isVisible: true,
+                      color: const Color(0xff5F5DA6),
+                      connectorLineSettings:
+                          ConnectorLineSettings(type: ConnectorType.curve),
+                    ),
+                  ),
+                  SplineSeries<Moneypayment, double>(
                     dataSource: _datamoney,
-                    xValueMapper: (Moneypayment data, _) => data.dia,
-                    yValueMapper: (Moneypayment data, _) => data.valuercard,
+                    xValueMapper: (Moneypayment data, _) => data.valuercard,
+                    yValueMapper: (Moneypayment data, _) => data.dia,
+                    dataLabelSettings: DataLabelSettings(
+                      isVisible: true,
+                      color: const Color(0xff5F5DA6),
+                      connectorLineSettings:
+                          ConnectorLineSettings(type: ConnectorType.curve),
+                    ),
                   )
                 ],
               ),
