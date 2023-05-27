@@ -1,9 +1,65 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import '../grafic_widgets_components/card_info_widget.dart';
 
-class GraficButtompag extends StatelessWidget {
+import '../grafic_widgets_components/card_info_widget.dart';
+import '../grafic_widgets_components/grafic_category_widget.dart';
+import '../grafic_widgets_components/media_month_widget.dart';
+
+class GraficButtompag extends StatefulWidget {
   const GraficButtompag({Key? key}) : super(key: key);
+
+  @override
+  State<GraficButtompag> createState() => _GraficButtompagState();
+}
+
+class Cardpayment {
+  double dia;
+  double valuercard;
+  Cardpayment({
+    required this.dia,
+    required this.valuercard,
+  });
+}
+
+class Moneypayment {
+  double dia;
+  double valuercard;
+  Moneypayment({
+    required this.dia,
+    required this.valuercard,
+  });
+}
+
+List<Cardpayment> getdatacard() {
+  final List<Cardpayment> datpayment = [
+    Cardpayment(dia: 23, valuercard: 200),
+    Cardpayment(dia: 3, valuercard: 4),
+    Cardpayment(dia: 12, valuercard: 800),
+    Cardpayment(dia: 7, valuercard: 30),
+  ];
+  return datpayment;
+}
+
+List<Moneypayment> getmoneypayment() {
+  final List<Moneypayment> moneypayment = [
+    Moneypayment(dia: 20, valuercard: 500),
+    Moneypayment(dia: 6, valuercard: 20),
+    Moneypayment(dia: 2, valuercard: 0),
+    Moneypayment(dia: 30, valuercard: 100),
+  ];
+  return moneypayment;
+}
+
+class _GraficButtompagState extends State<GraficButtompag> {
+  late List<Cardpayment> _datacard;
+  late List<Moneypayment> _datamoney;
+  @override
+  void initState() {
+    _datacard = getdatacard();
+    _datamoney = getmoneypayment();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,38 +92,29 @@ class GraficButtompag extends StatelessWidget {
             SizedBox(
               height: height * 0.01,
             ),
-            Row(
-              children: [],
+            const GraficCategoryWidget(),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            const MediaMonthWidget(),
+            SizedBox(
+              height: height * 0.01,
             ),
             Container(
-              width: width * 0.97,
-              height: height * 0.4,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color.fromARGB(176, 95, 93, 166),
-                  width: 4.0,
-                ),
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Dispesas por Categoria',
-                    style: TextStyle(
-                        color: const Color(0xff5F5DA6),
-                        fontWeight: FontWeight.bold,
-                        fontSize: height * 0.03),
+              height: height * 0.3,
+              width: width * 0.9,
+              color: Colors.brown,
+              child: SfCartesianChart(
+                series: <ChartSeries>[
+                  LineSeries<Cardpayment, double>(
+                    dataSource: _datacard,
+                    xValueMapper: (Cardpayment data, _) => data.dia,
+                    yValueMapper: (Cardpayment data, _) => data.valuercard,
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        color: Colors.amber,
-                        width: width * 0.6,
-                        height: height * 0.3,
-                        child: Container(),
-                      )
-                    ],
+                  LineSeries<Moneypayment, double>(
+                    dataSource: _datamoney,
+                    xValueMapper: (Moneypayment data, _) => data.dia,
+                    yValueMapper: (Moneypayment data, _) => data.valuercard,
                   )
                 ],
               ),
