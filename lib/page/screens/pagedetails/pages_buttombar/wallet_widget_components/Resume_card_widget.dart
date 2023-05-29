@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../eventopage/evento_page.dart';
+
 class ResumeCardWidget extends StatelessWidget {
   const ResumeCardWidget({Key? key}) : super(key: key);
 
@@ -77,26 +79,30 @@ class ResumeCardWidget extends StatelessWidget {
                       fontSize: height * 0.03),
                 ),
               ),
-              Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Novo Evento ',
-                      style: TextStyle(
-                          color: const Color(0xff5F5DA6),
-                          fontWeight: FontWeight.bold,
-                          fontSize: height * 0.02),
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.add_circle_rounded,
-                          color: const Color(0xff5F5DA6),
-                        ))
-                  ],
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Novo Evento ',
+                    style: TextStyle(
+                        color: const Color(0xff5F5DA6),
+                        fontWeight: FontWeight.bold,
+                        fontSize: height * 0.02),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const EventoPage(),
+                            ));
+                      },
+                      icon: const Icon(
+                        Icons.add_circle_rounded,
+                        color: Color(0xff5F5DA6),
+                      ))
+                ],
               )
             ],
           ),

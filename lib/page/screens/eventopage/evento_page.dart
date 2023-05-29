@@ -4,7 +4,6 @@ import 'package:my_money/page/screens/eventopage/payment_category_widget.dart';
 import 'package:my_money/page/screens/eventopage/row_infoform_widget.dart';
 import 'package:my_money/page/widgets/buttom_custom_widget.dart';
 import 'package:my_money/page/widgets/custom_formfiel_widget.dart';
-
 import '../../widgets/logo_inline_widget.dart';
 import 'category_event_widget.dart';
 
@@ -37,7 +36,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
               // color: Colors.red,
               height: height * 0.18,
               width: width,
-              child: const LogoInlineWidget(fontsiz: 0.05, imagescale: 3),
+              child: const LogoInlineWidget(fontsiz: 0.05, imagescale: 4),
             ),
             Column(mainAxisAlignment: MainAxisAlignment.end, children: [
               Container(
@@ -131,7 +130,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(3.0),
                       child: Container(
                         width: width * 0.6,
                         height: height * 0.08,
@@ -146,24 +145,15 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                             colortext: Colors.white),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: width * 0.4,
-                        height: height * 0.05,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15)),
-                        child: ButtomCustomWidget(
-                            altura: 0.6,
-                            largura: 0.08,
-                            name: 'Cancelar',
-                            onpressed: () {
-                              Navigator.pop(context);
-                            },
-                            backgroud: const Color(0xFF2E4159),
-                            colortext: Colors.white),
-                      ),
-                    )
+                    ButtomCustomWidget(
+                        altura: 0.045,
+                        largura: 0.4,
+                        name: 'Cancelar',
+                        onpressed: () {
+                          Navigator.pop(context);
+                        },
+                        backgroud: const Color(0xFF2E4159),
+                        colortext: Colors.white)
                   ],
                 ),
               ),
