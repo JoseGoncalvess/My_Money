@@ -65,13 +65,14 @@ class _MediaMonthWidgetState extends State<MediaMonthWidget> {
             width: width * 0.96,
             height: height * 0.35,
             child: SfCartesianChart(
-              margin: EdgeInsets.all(2),
+              margin: const EdgeInsets.all(2),
               primaryXAxis: CategoryAxis(
-                  title: AxisTitle(),
-                  labelStyle: TextStyle(color: const Color(0xff5F5DA6))),
+                  labelStyle: const TextStyle(
+                color: Color(0xff5F5DA6),
+              )),
               primaryYAxis: NumericAxis(
                   title: AxisTitle(),
-                  labelStyle: TextStyle(color: const Color(0xff5F5DA6))),
+                  labelStyle: const TextStyle(color: Color(0xff5F5DA6))),
               series: <ChartSeries>[
                 ColumnSeries<Datacolun, String>(
                     enableTooltip: true,
@@ -79,8 +80,8 @@ class _MediaMonthWidgetState extends State<MediaMonthWidget> {
                     xValueMapper: (Datacolun data, _) => data.x,
                     yValueMapper: (Datacolun data, _) => data.y,
                     color: const Color(0xff5F5DA6),
-                    dataLabelSettings: DataLabelSettings(
-                        isVisible: true, color: const Color(0xff5F5DA6))),
+                    dataLabelSettings: const DataLabelSettings(
+                        isVisible: true, color: Color(0xff5F5DA6))),
               ],
             ),
           )
