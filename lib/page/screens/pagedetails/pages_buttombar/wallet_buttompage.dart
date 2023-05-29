@@ -69,12 +69,12 @@ class WalletButtompage extends StatelessWidget {
                 ),
               ),
             ),
-            ResumeCardWidget(),
+            const ResumeCardWidget(),
             Positioned(
                 top: 20,
                 left: width * 0.353,
                 // right: width * 0.3,
-                child: Container(
+                child: SizedBox(
                   child: Text('Carteira',
                       style: TextStyle(
                           color: Colors.white,

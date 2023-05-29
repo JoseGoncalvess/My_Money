@@ -26,6 +26,10 @@ class _CustomFormfielWidgetState extends State<CustomFormfielWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) return 'Por favor Ensira os seus dados';
+        return null;
+      },
       style: TextStyle(
           color: widget.cortext,
           decorationThickness: 0.0,
