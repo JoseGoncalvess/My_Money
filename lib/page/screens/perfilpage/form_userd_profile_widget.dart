@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import '../../../controller/mixins/validador_mixin.dart';
 import '../../widgets/buttom_custom_widget.dart';
@@ -30,10 +32,17 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
               width: width * 0.7,
               height: height * 0.12,
               child: TextFormField(
-                validator: (value) =>
-                    isempyt(value, 'Ops, Como é mesmo seu Nome?'),
+                validator: (value) => combvalidator(
+                  validator: [
+                    () => isempyt(
+                        msg: 'Ops, Como você se cham mesmo ?', value: value),
+                    () => islengthMin(value, 'O que acha de um nome maior?', 2),
+                    () =>
+                        isContainNuber(value, 'Permitido apenas Letras [A-Z].')
+                  ],
+                ),
                 style: TextStyle(
-                    color: Color(0xff4F4D8C).withOpacity(0.6),
+                    color: const Color(0xff4F4D8C).withOpacity(0.6),
                     decorationThickness: 0.0,
                     fontWeight: FontWeight.w600),
                 controller: _nameController,
@@ -63,8 +72,16 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
               width: width * 0.6,
               height: height * 0.1,
               child: TextFormField(
-                validator: (value) =>
-                    isempyt(value, 'Ops, Faltou infomrar seu patrimonio!'),
+                validator: (value) => combvalidator(
+                  validator: [
+                    () => isempyt(
+                        msg: 'Ops, Como você se cham mesmo ?', value: value),
+                    () =>
+                        islengthMax(value, 'O que acha de um nome maior?', 10),
+                    () =>
+                        isContaintext(value, 'Permitido apenas Números [0-9].')
+                  ],
+                ),
                 style: TextStyle(
                     color: Color(0xff4F4D8C).withOpacity(0.6),
                     decorationThickness: 0.0,
@@ -103,6 +120,8 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
                       MaterialPageRoute(
                         builder: (context) => const HomePage(),
                       ));
+
+                  log('${_nameController.text},${_moneyController.text}');
                 }
               })
         ],

@@ -1,20 +1,48 @@
 mixin ValidadorMixin {
-  isempyt(String? value, String? msg) {
+  String? combvalidator({required List<String? Function()> validator}) {
+    for (var func in validator) {
+      // final validation = func();
+
+      if (func() != null) return func();
+    }
+    return null;
+  }
+
+  String? isempyt({String? value, String? msg}) {
     if (value!.isEmpty) return msg ?? 'O campo precisa ser Pprenenchido';
     return null;
   }
 
-  islengthMin(String? value, String? msg) {
-    if (value!.length < 2)
+  String? islengthMin(String? value, String? msg, int length) {
+    if (value!.length < length)
       return msg ?? 'Acredio que o nome informado é pequeno, não ?';
     return null;
   }
 
-  String? combvalidator(List<String Function()> validators) {
-    for (var func in validators) {
-      final validation = func();
-      // ignore: unnecessary_null_comparison
-      if (validation != null) return validation;
+  String? islengthMax(String? value, String? msg, int length) {
+    if (value!.length > length)
+      return msg ?? 'Acredio que o nome informado é pequeno, não ?';
+    return null;
+  }
+
+  String? isContainNuber(String? value, String? msg) {
+    final name = value!.split('');
+
+    for (var item in name) {
+      if (item.contains(RegExp(r'[0-9]'))) {
+        return msg ?? 'VAmos lá, Ultilize apenas letras!';
+      }
+    }
+    return null;
+  }
+
+  String? isContaintext(String? value, String? msg) {
+    final name = value!.split('');
+
+    for (var item in name) {
+      if (item.contains(RegExp(r'[A-Z|a-z]'))) {
+        return msg ?? 'VAmos lá, Ultilize apenas letras!';
+      }
     }
     return null;
   }
