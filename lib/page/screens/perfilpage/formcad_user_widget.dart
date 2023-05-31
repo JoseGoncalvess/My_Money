@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/avatar_profile_widget.dart';
+import 'avatar_image_selectpage.dart';
 import 'form_userd_profile_widget.dart';
 
 class FormcadUserWidget extends StatefulWidget {
@@ -25,7 +26,15 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
                 TextStyle(fontSize: height * 0.03, fontWeight: FontWeight.w800),
           ),
         ),
-        const AvatarProfileWidget(image: 'assets/img/sem_logo.jpg'),
+        InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AvatarImageSelectpage(),
+                  ));
+            },
+            child: const AvatarProfileWidget(image: 'assets/img/sem_logo.jpg')),
         FormUserdProfileWidget(),
       ],
     );

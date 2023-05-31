@@ -77,7 +77,7 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
                     () => isempyt(
                         msg: 'Ops, Como você se cham mesmo ?', value: value),
                     () =>
-                        islengthMax(value, 'O que acha de um nome maior?', 10),
+                        islengthMax(value, 'O que acha de um nome menor?', 10),
                     () =>
                         isContaintext(value, 'Permitido apenas Números [0-9].')
                   ],
