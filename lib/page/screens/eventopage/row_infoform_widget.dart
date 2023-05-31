@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/custom_formfiel_widget.dart';
 
-class RowInfoformWidget extends StatelessWidget {
+class RowInfoformWidget extends StatefulWidget {
   final TextEditingController valorController;
   const RowInfoformWidget({Key? key, required this.valorController})
       : super(key: key);
 
+  @override
+  State<RowInfoformWidget> createState() => _RowInfoformWidgetState();
+}
+
+class _RowInfoformWidgetState extends State<RowInfoformWidget> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -59,7 +64,7 @@ class RowInfoformWidget extends StatelessWidget {
                 child: CustomFormfielWidget(
                     internlabel: 'valor',
                     keybordtype: TextInputType.number,
-                    controller: valorController,
+                    controller: widget.valorController,
                     cortext: Colors.white,
                     backgrou: const Color(0xff4F4D8C),
                     border: Colors.white),

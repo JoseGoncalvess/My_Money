@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../controller/mixins/validador_mixin.dart';
+
 class CustomFormfielWidget extends StatefulWidget {
   final String internlabel;
   final TextInputType keybordtype;
@@ -8,28 +10,25 @@ class CustomFormfielWidget extends StatefulWidget {
   final Color backgrou;
   final Color border;
 
-  const CustomFormfielWidget(
-      {Key? key,
-      required this.internlabel,
-      required this.keybordtype,
-      required this.controller,
-      required this.cortext,
-      required this.backgrou,
-      required this.border})
-      : super(key: key);
+  const CustomFormfielWidget({
+    Key? key,
+    required this.internlabel,
+    required this.keybordtype,
+    required this.controller,
+    required this.cortext,
+    required this.backgrou,
+    required this.border,
+  }) : super(key: key);
 
   @override
   State<CustomFormfielWidget> createState() => _CustomFormfielWidgetState();
 }
 
-class _CustomFormfielWidgetState extends State<CustomFormfielWidget> {
+class _CustomFormfielWidgetState extends State<CustomFormfielWidget>
+    with ValidadorMixin {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) return 'Por favor Ensira os seus dados';
-        return null;
-      },
+    return TextField(
       style: TextStyle(
           color: widget.cortext,
           decorationThickness: 0.0,

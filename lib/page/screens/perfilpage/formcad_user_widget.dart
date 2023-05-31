@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/page/screens/home/home_page.dart';
-
 import '../../widgets/avatar_profile_widget.dart';
-import '../../widgets/buttom_custom_widget.dart';
-import '../../widgets/custom_formfiel_widget.dart';
+import 'form_userd_profile_widget.dart';
 
 class FormcadUserWidget extends StatefulWidget {
   const FormcadUserWidget({Key? key}) : super(key: key);
@@ -13,21 +10,10 @@ class FormcadUserWidget extends StatefulWidget {
 }
 
 class _FormcadUserWidgetState extends State<FormcadUserWidget> {
-  final TextEditingController _namecontroller = TextEditingController();
-  final TextEditingController _moneycontroller = TextEditingController();
-
-  getpage() {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => HomePage(),
-        ));
-  }
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    // final width = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -40,41 +26,7 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
           ),
         ),
         const AvatarProfileWidget(image: 'assets/img/sem_logo.jpg'),
-        SizedBox(
-          width: width * 0.7,
-          height: height * 0.12,
-          child: CustomFormfielWidget(
-              backgrou: Colors.white,
-              border: Colors.white,
-              cortext: const Color(0xff4F4D8C).withOpacity(0.6),
-              controller: _namecontroller,
-              keybordtype: TextInputType.text,
-              internlabel: 'Olá, Me chamo...'),
-        ),
-        SizedBox(
-          width: width * 0.6,
-          height: height * 0.1,
-          child: CustomFormfielWidget(
-              backgrou: Colors.white,
-              border: Colors.white,
-              cortext: const Color(0xff4F4D8C).withOpacity(0.6),
-              controller: _moneycontroller,
-              keybordtype: TextInputType.number,
-              internlabel: 'Meu patrimonio atual é ...'),
-        ),
-        ButtomCustomWidget(
-            altura: 0.07,
-            largura: 0.4,
-            backgroud: const Color(0xff4F4D8C),
-            colortext: Colors.white,
-            name: 'Salvar',
-            onpressed: () {
-              // Navigator.pushReplacement(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => const HomePage(),
-              //     ));
-            })
+        FormUserdProfileWidget(),
       ],
     );
   }
