@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../widgets/custom_formfiel_widget.dart';
+import 'package:my_money/controller/mixins/validador_mixin.dart';
 
 class RowInfoformWidget extends StatefulWidget {
   final TextEditingController valorController;
@@ -11,7 +10,8 @@ class RowInfoformWidget extends StatefulWidget {
   State<RowInfoformWidget> createState() => _RowInfoformWidgetState();
 }
 
-class _RowInfoformWidgetState extends State<RowInfoformWidget> {
+class _RowInfoformWidgetState extends State<RowInfoformWidget>
+    with ValidadorMixin {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -61,13 +61,41 @@ class _RowInfoformWidgetState extends State<RowInfoformWidget> {
                 alignment: Alignment.center,
                 width: width * 0.4,
                 height: height * 0.08,
-                child: CustomFormfielWidget(
-                    internlabel: 'valor',
-                    keybordtype: TextInputType.number,
-                    controller: widget.valorController,
-                    cortext: Colors.white,
-                    backgrou: const Color(0xff4F4D8C),
-                    border: Colors.white),
+                child: TextFormField(
+                  maxLines: 1,
+                  autocorrect: true,
+                  validator: (value) => combvalidator(validator: [
+                    () => isempyt(value: value, msg: 'Realmente foi Gratís ?'),
+                    () =>
+                        islengthMin(value, 'Ops, Naõ vai infomra o valor ?', 1),
+                    () => islengthMax(value, 'Nossa Quanto dinheiro !', 8)
+                  ]),
+                  style: const TextStyle(
+                      color: Colors.white,
+                      decorationThickness: 0.0,
+                      fontWeight: FontWeight.w600),
+                  controller: widget.valorController,
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 2)),
+                    focusedBorder: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(
+                        width: 2,
+                        color: Colors.white,
+                      ),
+                    ),
+                    hintText: 'Valor',
+                    hintStyle: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    filled: true,
+                    fillColor: const Color(0xff4F4D8C),
+                  ),
+                ),
               ),
             ],
           ),
