@@ -1,6 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:my_money/page/screens/home/new_item_widget.dart';
 import 'package:my_money/page/screens/home/tabbar_menu_widget.dart';
+import 'package:my_money/page/screens/home/widget%20componets/card_event_list_widget.dart';
 
 import '../eventopage/evento_page.dart';
 import 'list_drawer_widget.dart';
@@ -18,9 +20,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
+      backgroundColor: Colors.white,
       drawer: const Drawer(
         backgroundColor: Color(0xff5F5DA6),
         child: ListDrawerWidget(),
@@ -30,17 +33,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: height,
         width: width,
         child: Stack(children: [
-          Container(
-            height: height,
-            width: width,
-            color: Colors.white,
-            child: eventos.isEmpty
-                ? const NewItemWidget()
-                : ListView.builder(
-                    itemCount: eventos.isEmpty ? 1 : eventos.length,
-                    itemBuilder: (context, index) => Container()),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              height: height * 0.887,
+              width: width,
+              color: Colors.white,
+              child:
+
+                  //  eventos.isEmpty
+                  //     ? const NewItemWidget()
+                  //     :
+                  ListView.builder(
+                      itemCount: eventos.isEmpty ? 30 : eventos.length,
+                      itemBuilder: (context, index) => CardEventListWidget()),
+            ),
           ),
-          TabbarMenuWidget()
+          const TabbarMenuWidget()
         ]),
       ),
       floatingActionButton: SizedBox(

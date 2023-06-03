@@ -23,6 +23,14 @@ class _TabbarMenuWidgetState extends State<TabbarMenuWidget> {
       height: height * 0.15,
       width: width,
       decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+              color: Color.fromARGB(255, 80, 78, 140),
+              offset: Offset(0, 2),
+              blurRadius: 20,
+              blurStyle: BlurStyle.normal,
+              spreadRadius: 1)
+        ],
         borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
         color: Color(0xff4F4D8C),

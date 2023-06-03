@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 
@@ -30,13 +28,13 @@ class _FaqPageState extends State<FaqPage> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff5F5DA6),
+        backgroundColor: const Color(0xff5F5DA6),
         title: const Text('Perguntas Frequentes'),
       ),
       body: Container(
           width: width,
           height: height,
-          color: Color(0xFF2E4159),
+          color: const Color(0xFF2E4159),
           child: ListView.builder(
             itemCount: faqTypes.length,
             itemBuilder: (context, i) {
