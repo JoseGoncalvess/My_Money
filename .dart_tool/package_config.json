@@ -75,7 +75,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///C:/Users/JG%20Silva/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.0",
+      "rootUri": "file:///C:/Users/JG%20Silva/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -135,13 +135,13 @@
     },
     {
       "name": "syncfusion_flutter_charts",
-      "rootUri": "file:///C:/Users/JG%20Silva/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_charts-21.2.6",
+      "rootUri": "file:///C:/Users/JG%20Silva/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_charts-21.2.8",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "syncfusion_flutter_core",
-      "rootUri": "file:///C:/Users/JG%20Silva/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-21.2.6",
+      "rootUri": "file:///C:/Users/JG%20Silva/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-21.2.8",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -170,7 +170,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-05-26T22:11:16.735331Z",
+  "generated": "2023-06-03T21:19:50.984731Z",
   "generator": "pub",
-  "generatorVersion": "3.0.0"
+  "generatorVersion": "3.0.2"
 }
