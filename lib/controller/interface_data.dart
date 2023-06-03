@@ -23,4 +23,30 @@ class InterfaceData {
       IconData: Icons.payments_rounded,
     },
   ];
+
+  List<Map> faqTypes = [
+    {
+      'doubt': 'Quem criou o App?',
+      'res': 'Criado Para fins didatico, de um Desenvolvedor Legal ai!.'
+    },
+    {
+      'doubt': 'O aplicativo é seguro ?',
+      'res':
+          'Toda e qualquer informação  inserida no app, está armazenada no dispositivo sem qualquer acesso por parte de 3º. Garantnido a seguranção do usuario.'
+    },
+    {
+      'doubt': 'Tive porblemas com o App!',
+      'res':
+          'Relate seus problemas através do nosso canal de comunicação na guia suporte!'
+    },
+    {
+      'doubt': 'Porque tem Anúncios?',
+      'res':
+          'Para financiar a manutenção e futuras atualizaçõesdo do App, atualizações essas baseadas na sua necessidade.'
+    },
+    {
+      'doubt': 'Como posso contribuir com o Projeto?',
+      'res': 'Atravez dos anúncios ou por meio da sugestão de melhoria.'
+    }
+  ];
 }
