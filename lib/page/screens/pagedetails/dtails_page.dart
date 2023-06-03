@@ -43,14 +43,14 @@ class _DtailsPageState extends State<DtailsPage> {
           elevation: 1,
           iconSize: height * 0.035,
           unselectedIconTheme: IconThemeData(
-            color: Color.fromARGB(255, 178, 182, 186),
+            color: const Color.fromARGB(255, 178, 182, 186),
             size: height * 0.025,
           ),
           selectedItemColor: Colors.white,
           selectedFontSize: height * 0.02,
           backgroundColor: const Color(0xff4F4D8C),
           currentIndex: _currenteindex,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 tooltip: 'Seus Saldos',
                 label: 'Carteira',

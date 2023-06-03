@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/page/screens/eventopage/parcela_widget.dart';
 import 'package:my_money/page/screens/eventopage/payment_category_widget.dart';
 import 'package:my_money/page/widgets/buttom_custom_widget.dart';
@@ -21,6 +22,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
   int parcel = 12;
   String pvalue = '';
   bool payment = false;
+  late String paymenttype = 'Dinheiro';
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +117,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                         name: 'Cartão',
                                         onpressed: () {
                                           setState(() {
+                                            paymenttype = 'Cartão';
                                             payment = true;
                                           });
                                         },
@@ -143,8 +146,12 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                               name: 'Salvar',
                               onpressed: () {
                                 if (_keyevent.currentState!.validate()) {
-                                  log(_keyevent.currentState!
-                                      .validate()
+                                  log(EventoModel(
+                                          nameEvent: _eventoController.text,
+                                          dateEvent: '24/02/3033',
+                                          velueEvent: _valorController.text,
+                                          categoryEvent: Icons.abc,
+                                          paymentEvent: paymenttype)
                                       .toString());
                                 }
                               },

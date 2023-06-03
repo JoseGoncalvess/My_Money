@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/page/screens/home/tabbar_menu_widget.dart';
 import 'package:my_money/page/screens/home/widget%20componets/card_event_list_widget.dart';
@@ -45,7 +43,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   //     ? const NewItemWidget()
                   //     :
                   ListView.builder(
-                      itemCount: eventos.isEmpty ? 30 : eventos.length,
+                      itemCount: eventos.isEmpty ? 10 : eventos.length,
                       itemBuilder: (context, index) => CardEventListWidget()),
             ),
           ),
