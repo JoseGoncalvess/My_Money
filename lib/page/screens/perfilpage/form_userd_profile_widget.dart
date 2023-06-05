@@ -118,7 +118,7 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomePage(),
+                        builder: (context) => const HomePage(eventos: []),
                       ));
 
                   log('${_nameController.text},${_moneyController.text}');

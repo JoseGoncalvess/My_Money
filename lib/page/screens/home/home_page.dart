@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/page/screens/home/tabbar_menu_widget.dart';
 import 'package:my_money/page/screens/home/widget%20componets/card_event_list_widget.dart';
 
 import '../eventopage/evento_page.dart';
 import 'list_drawer_widget.dart';
+import 'new_item_widget.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final List<Evento>? eventos;
+  const HomePage({Key? key, required this.eventos}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  List eventos = [];
+  List<Evento> eventos = [];
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-  @override
+
+  getlista() {
+    eventos = widget.eventos as List<Evento>;
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
@@ -37,14 +44,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               height: height * 0.887,
               width: width,
               color: Colors.white,
-              child:
-
-                  //  eventos.isEmpty
-                  //     ? const NewItemWidget()
-                  //     :
-                  ListView.builder(
-                      itemCount: eventos.isEmpty ? 10 : eventos.length,
-                      itemBuilder: (context, index) => CardEventListWidget()),
+              child: eventos.isEmpty
+                  ? const NewItemWidget()
+                  : FutureBuilder(
+                      future: getlista(),
+                      builder: (context, snapshot) {
+                        return ListView.builder(
+                            itemCount: eventos.isEmpty ? 1 : eventos.length,
+                            itemBuilder: (context, index) =>
+                                CardEventListWidget());
+                      },
+                    ),
             ),
           ),
           const TabbarMenuWidget()

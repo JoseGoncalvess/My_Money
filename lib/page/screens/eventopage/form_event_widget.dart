@@ -4,10 +4,14 @@ import 'package:my_money/page/screens/eventopage/row_infoform_widget.dart';
 import 'category_event_widget.dart';
 
 class FormEventWidget extends StatefulWidget {
+  final PageController PagecontrollerCat;
   final TextEditingController eventocontroller;
   final TextEditingController valuecontroller;
   const FormEventWidget(
-      {Key? key, required this.eventocontroller, required this.valuecontroller})
+      {Key? key,
+      required this.eventocontroller,
+      required this.valuecontroller,
+      required this.PagecontrollerCat})
       : super(key: key);
 
   @override
@@ -64,7 +68,9 @@ class _FormEventWidgetState extends State<FormEventWidget> with ValidadorMixin {
         RowInfoformWidget(
           valorController: widget.valuecontroller,
         ),
-        const CategoryEventWidget(),
+        CategoryEventWidget(
+          PagecontrollerCat: widget.PagecontrollerCat,
+        ),
       ],
     );
   }

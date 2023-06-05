@@ -1,10 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:my_money/model/evento_model.dart';
+import 'package:my_money/controller/interface_data.dart';
+import 'package:my_money/controller/parcela_controller.dart';
 import 'package:my_money/page/screens/eventopage/parcela_widget.dart';
 import 'package:my_money/page/screens/eventopage/payment_category_widget.dart';
+import 'package:my_money/page/screens/home/home_page.dart';
 import 'package:my_money/page/widgets/buttom_custom_widget.dart';
+import '../../../controller/repositories/repository_data.dart';
 import '../../widgets/logo_inline_widget.dart';
 import 'form_event_widget.dart';
 
@@ -16,13 +17,29 @@ class EventoPage extends StatefulWidget {
 }
 
 class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
-  GlobalKey<FormState> _keyevent = GlobalKey<FormState>();
-  TextEditingController _eventoController = TextEditingController();
-  TextEditingController _valorController = TextEditingController();
-  int parcel = 12;
-  String pvalue = '';
+  final PageController _pagecontrollecat = PageController();
+  final GlobalKey<FormState> _keyevent = GlobalKey<FormState>();
+  final TextEditingController _eventoController = TextEditingController();
+  final TextEditingController _valorController = TextEditingController();
   bool payment = false;
   late String paymenttype = 'Dinheiro';
+
+  ParcelaController parcelcontroller = ParcelaController();
+
+  @override
+  void initState() {
+    parcelcontroller.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    parcelcontroller.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +88,14 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                       Form(
                         key: _keyevent,
                         child: FormEventWidget(
+                            PagecontrollerCat: _pagecontrollecat,
                             eventocontroller: _eventoController,
                             valuecontroller: _valorController),
                       ),
                       SizedBox(
                         width: width,
                         height: height * 0.19,
+
                         // color: Colors.blueGrey,
                         child: Column(
                           children: [
@@ -126,7 +145,11 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                   ),
                                 ),
                                 payment == true
-                                    ? const ParcelaWidget()
+                                    ? ParcelaWidget(
+                                        parcelaController: parcelcontroller,
+                                        pacelValue:
+                                            parcelcontroller.value.toString(),
+                                      )
                                     : Container(),
                               ],
                             ),
@@ -145,14 +168,27 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                               altura: 0.08,
                               name: 'Salvar',
                               onpressed: () {
+                                int cat = _pagecontrollecat.page!.round();
+
                                 if (_keyevent.currentState!.validate()) {
-                                  log(EventoModel(
+                                  RepositoryData()
+                                      .onSaveEvent(
                                           nameEvent: _eventoController.text,
-                                          dateEvent: '24/02/3033',
+                                          dateEvent: '24/03/2020',
                                           velueEvent: _valorController.text,
-                                          categoryEvent: Icons.abc,
-                                          paymentEvent: paymenttype)
-                                      .toString());
+                                          categoryEvent: InterfaceData()
+                                              .categoryIcons[cat][IconData],
+                                          paymentEvent: paymenttype,
+                                          parcelEvnet:
+                                              parcelcontroller.value.toString())
+                                      .then((value) =>
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      HomePage(
+                                                        eventos: [],
+                                                      ))));
                                 }
                               },
                               backgroud: const Color(0xff4F4D8C),
@@ -163,9 +199,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                           altura: 0.045,
                           largura: 0.4,
                           name: 'Cancelar',
-                          onpressed: () {
-                            Navigator.pop(context);
-                          },
+                          onpressed: () => Navigator.pop(context),
                           backgroud: const Color(0xFF2E4159),
                           colortext: Colors.white)
                     ],

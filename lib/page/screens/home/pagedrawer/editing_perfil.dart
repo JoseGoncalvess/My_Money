@@ -105,7 +105,7 @@ class _EditingPerfilState extends State<EditingPerfil> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomePage(),
+                                    builder: (context) => HomePage(eventos: []),
                                   ));
                             }),
                         ButtomCustomWidget(

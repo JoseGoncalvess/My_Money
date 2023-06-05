@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/controller/parcela_controller.dart';
 
+// ignore: must_be_immutable
 class ParcelaWidget extends StatefulWidget {
-  const ParcelaWidget({super.key});
+  final ParcelaController parcelaController;
+  final String pacelValue;
+
+  const ParcelaWidget({
+    Key? key,
+    required this.parcelaController,
+    required this.pacelValue,
+  }) : super(key: key);
 
   @override
   State<ParcelaWidget> createState() => _ParcelaWidgetState();
 }
 
 class _ParcelaWidgetState extends State<ParcelaWidget> {
-  int parcel = 12;
-  String pvalue = '1x';
+  int parcel = 13;
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -36,12 +45,8 @@ class _ParcelaWidgetState extends State<ParcelaWidget> {
                         child: ListView.builder(
                           itemCount: parcel,
                           itemBuilder: (context, index) => GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                pvalue = '$index x';
-                                Navigator.pop(context);
-                              });
-                            },
+                            onTap: () => widget.parcelaController
+                                .setValue(index, context),
                             child: ListTile(
                               title: Center(
                                 child: Text('$index x',
@@ -67,7 +72,7 @@ class _ParcelaWidgetState extends State<ParcelaWidget> {
                   color: const Color(0xff4F4D8C),
                   borderRadius: BorderRadius.circular(4)),
               child: Text(
-                pvalue,
+                widget.pacelValue.toString(),
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: width * 0.05,

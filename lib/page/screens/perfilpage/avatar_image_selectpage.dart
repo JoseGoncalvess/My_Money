@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../controller/avatar_image_selectd_data.dart';
+import 'package:my_money/controller/interface_data.dart';
 import 'avatar select components/card_avatar_select_widget.dart';
 
 class AvatarImageSelectpage extends StatefulWidget {
@@ -18,7 +17,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
 
   @override
   void initState() {
-    slider = AvatarImageSelectdData().imageAvatr;
+    slider = InterfaceData().imageAvatr;
     _pageController.addListener(() {
       setState(() {
         _currentepage = _pageController.page!.round();

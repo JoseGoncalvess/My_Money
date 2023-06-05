@@ -5,23 +5,25 @@ import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/page/widgets/iconcategory_event_widget.dart';
 
 class CategoryEventWidget extends StatefulWidget {
-  const CategoryEventWidget({Key? key}) : super(key: key);
+  final PageController PagecontrollerCat;
+
+  const CategoryEventWidget({Key? key, required this.PagecontrollerCat})
+      : super(key: key);
 
   @override
   State<CategoryEventWidget> createState() => _CategoryEventWidgetState();
 }
 
 class _CategoryEventWidgetState extends State<CategoryEventWidget> {
-  final PageController _PagecontrollerCat = PageController();
   bool arrowidicat = true;
   int _currentpage = 0;
   late List<Map> categoryEvent;
   @override
   void initState() {
     categoryEvent = InterfaceData().categoryIcons;
-    _PagecontrollerCat.addListener(() {
+    widget.PagecontrollerCat.addListener(() {
       setState(() {
-        _currentpage = _PagecontrollerCat.page!.round();
+        _currentpage = widget.PagecontrollerCat.page!.round();
         log(_currentpage.toString());
       });
 
@@ -49,7 +51,7 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
             height: height * 0.2,
             width: width,
             child: PageView.builder(
-                controller: _PagecontrollerCat,
+                controller: widget.PagecontrollerCat,
                 scrollDirection: Axis.vertical,
                 itemCount: categoryEvent.length,
                 itemBuilder: (context, i) {
@@ -65,7 +67,7 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
           child: Container(
             child: IconButton(
                 onPressed: () {
-                  _PagecontrollerCat.jumpToPage(_currentpage - 1);
+                  widget.PagecontrollerCat.jumpToPage(_currentpage - 1);
                 },
                 icon: Icon(
                   arrowidicat
