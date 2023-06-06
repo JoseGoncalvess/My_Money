@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/page/page_text.dart';
 import 'package:my_money/page/screens/splash/splash_page.dart';
 
 class AppWidegt extends StatefulWidget {
@@ -20,6 +21,6 @@ class _AppWidegtState extends State<AppWidegt> {
 
           // useMaterial3: true,
         ),
-        home: const SplashPage());
+        home: PageText());
   }
 }
