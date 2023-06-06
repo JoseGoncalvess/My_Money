@@ -18,7 +18,8 @@ class RepositoryData {
         dateEvent: dateEvent,
         velueEvent: velueEvent,
         categoryEvent: categoryEvent,
-        paymentEvent: paymentEvent));
+        paymentEvent: paymentEvent,
+        parcelEvnet: parcelEvnet));
 
     return listEventos;
   }

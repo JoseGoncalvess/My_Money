@@ -16,7 +16,7 @@ class Evento {
     required this.velueEvent,
     required this.categoryEvent,
     required this.paymentEvent,
-    this.parcelEvnet,
+    required this.parcelEvnet,
   });
 
   Map<String, dynamic> toMap() {
@@ -43,7 +43,7 @@ class Evento {
     );
   }
 
-  String toJson() => json.encode(toMap());
+  String toJson() => jsonEncode(toMap());
 
   factory Evento.fromJson(String source) =>
       Evento.fromMap(json.decode(source) as Map<String, dynamic>);

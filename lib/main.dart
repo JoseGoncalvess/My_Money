@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/page/app_widegt.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'model/shared_preferences.dart';
 

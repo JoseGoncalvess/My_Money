@@ -51,8 +51,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       builder: (context, snapshot) {
                         return ListView.builder(
                             itemCount: eventos.isEmpty ? 1 : eventos.length,
-                            itemBuilder: (context, index) =>
-                                CardEventListWidget());
+                            itemBuilder: (context, index) => Container()
+                            //      CardEventListWidget(),
+                            );
                       },
                     ),
             ),

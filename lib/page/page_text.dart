@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
+import 'package:my_money/page/screens/home/widget%20componets/card_event_list_widget.dart';
 
 import '../model/shared_preferences.dart';
 
@@ -25,18 +26,19 @@ class _PageTextState extends State<PageText> {
 
 //TRANSFORMAR O O OBJETO EM JSON OU MAP EM JSON
   Evento evento = Evento(
-      nameEvent: 'futebol',
-      dateEvent: '23/03/2020',
-      velueEvent: '200',
-      categoryEvent: Icons.abc_outlined,
-      paymentEvent: 'cartão');
+      parcelEvnet: '4',
+      nameEvent: 'Churarsco',
+      dateEvent: '23/01/2020',
+      velueEvent: '3000',
+      categoryEvent: Icons.food_bank_rounded,
+      paymentEvent: 'Dineheiro');
   //1 - Salvea  Evento .tostring
 
   List<Map> listaEventos = [];
   // final prefs = SharedPrefs.prefs;
 
   Future loadname() async {
-    var usernme = await SharedPrefs.prefs.getStringList('evento');
+    var usernme = await SharedPrefs.prefs.getStringList('evento1');
     return usernme;
   }
 
@@ -45,21 +47,20 @@ class _PageTextState extends State<PageText> {
       setState(() {
         eventosstring = value;
       });
+      getelemnet();
     });
   }
 
   List<String> eventosstring = [];
-
-  percorrerlista() {
-    for (var e in eventosstring) {
-      var item = jsonEncode(e);
-      var json = jsonDecode(item);
-      var object = jsonDecode(json) as Map<String, dynamic>;
-      var evento = Evento.fromMap(object);
-      log(toString());
-      // log(jsonDecode(e));
-      // log(json);
-    }
+  List<Evento> eventos = [];
+  getelemnet() {
+    setState(() {
+      for (var element in eventosstring) {
+        var event = jsonDecode(element);
+        var i = Evento.fromMap(event);
+        eventos.add(i);
+      }
+    });
   }
 
   Future savename({required key, required list}) async {
@@ -83,28 +84,36 @@ class _PageTextState extends State<PageText> {
           Positioned(
             top: 0,
             child: Container(
-              color: Color.fromARGB(255, 236, 66, 15),
-              width: width,
-              height: height * 0.7,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: width,
-                    alignment: Alignment.center,
-                    child: Text(
-                      data,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 30,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+                color: Color.fromARGB(255, 236, 66, 15),
+                width: width,
+                height: height * 0.7,
+                child: ListView.builder(
+                    itemCount: eventos.isEmpty ? 1 : eventos.length,
+                    itemBuilder: (context, index) => eventos.isEmpty
+                        ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: width,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  data,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 30,
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+                        : CardEventListWidget(
+                            EventData: eventos[index].dateEvent,
+                            eventName: eventos[index].nameEvent,
+                            eventValue: eventos[index].velueEvent,
+                            iconCategory: eventos[index].categoryEvent,
+                          ))),
           ),
           Positioned(
               bottom: 0,
@@ -118,10 +127,11 @@ class _PageTextState extends State<PageText> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          var StringJson = evento.toJson();
-                          eventosstring.add(StringJson);
-                          log(eventosstring.toList().toString());
+                          var eventojson = evento.toJson();
+
+                          eventosstring.add(eventojson);
                           savename(key: 'evento1', list: eventosstring);
+
                           log('Salvo..');
                         },
                         child: Container(
@@ -138,25 +148,8 @@ class _PageTextState extends State<PageText> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // setState(() {
-                          //   // //TRANSFORMEI MEU OBJETO EM  UM TOPO STRING
-                          //   // var jsonevent =
-                          //   //     jsonEncode(evento); //agora é apenas uma string
-                          //   // //
-                          //   // var StringJson =
-                          //   //     evento.toJson(); //agora eum String Json
+                          getname();
 
-                          //   // //TRANSFORMA MINHA STRNG EM UM OBJETO JSON
-                          //   // var objectJson = jsonDecode(
-                          //   //     StringJson); //me retora uma  _Map<String, dynamic>
-
-                          //   // log(objectJson.runtimeType.toString());
-
-                          //   // data = eventosstring;
-
-                          // });
-                          percorrerlista();
-                          // getname();
                           log('Carregou...');
                         },
                         child: Container(

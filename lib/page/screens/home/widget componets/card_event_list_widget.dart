@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CardEventListWidget extends StatefulWidget {
-  const CardEventListWidget({Key? key}) : super(key: key);
+  final String eventName;
+  final String EventData;
+  final String eventValue;
+  final IconData iconCategory;
+  const CardEventListWidget(
+      {Key? key,
+      required this.eventName,
+      required this.EventData,
+      required this.eventValue,
+      required this.iconCategory})
+      : super(key: key);
 
   @override
   State<CardEventListWidget> createState() => _CardEventListWidgetState();
@@ -42,7 +52,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: Icon(
-                  Icons.work,
+                  widget.iconCategory,
                   size: width * 0.09,
                   color: const Color(0xFFEBE9E9),
                 ),
@@ -54,7 +64,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
               children: [
                 Flexible(
                   child: Text(
-                    'Pc Gamer',
+                    widget.eventName,
                     style: TextStyle(
                         fontSize: height * 0.023, fontWeight: FontWeight.w600),
                   ),
@@ -63,14 +73,14 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                   height: height * 0.03,
                 ),
                 Text(
-                  '24/05/2023',
+                  widget.EventData,
                   style: TextStyle(
                       fontSize: height * 0.017, fontWeight: FontWeight.w400),
                 ),
               ],
             ),
             Text(
-              'R\$ 200,00',
+              widget.eventValue,
               style: TextStyle(
                   fontSize: height * 0.02, fontWeight: FontWeight.w600),
             )
