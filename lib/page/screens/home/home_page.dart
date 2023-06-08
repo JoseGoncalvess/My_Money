@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
+import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/page/screens/home/tabbar_menu_widget.dart';
 import 'package:my_money/page/screens/home/widget%20componets/card_event_list_widget.dart';
 
@@ -14,6 +15,8 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
+var isso = SharedPrefs.prefs;
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   List<Evento> eventos = [];

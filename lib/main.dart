@@ -5,7 +5,7 @@ import 'model/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPrefs().init();
+  SharedPrefs().init;
 
   runApp(const AppWidegt());
 }

@@ -127,12 +127,19 @@ class _PageTextState extends State<PageText> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          var eventojson = evento.toJson();
+                          setState(() {
+                            //mapeio o objeto em transformo em json Sring;
+                            String jsonstring = evento.toJson();
+                            var item = Evento.fromJson(jsonstring);
+                            data = item.nameEvent;
+                          });
 
-                          eventosstring.add(eventojson);
-                          savename(key: 'evento1', list: eventosstring);
+                          // var eventojson = evento.toJson();
 
-                          log('Salvo..');
+                          // eventosstring.add(eventojson);
+                          // savename(key: 'evento1', list: eventosstring);
+
+                          // log('Salvo..');
                         },
                         child: Container(
                           alignment: Alignment.center,
