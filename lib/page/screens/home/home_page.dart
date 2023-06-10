@@ -1,12 +1,14 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/page/screens/home/tabbar_menu_widget.dart';
-import 'package:my_money/page/screens/home/widget%20componets/card_event_list_widget.dart';
-
 import '../eventopage/evento_page.dart';
 import 'list_drawer_widget.dart';
 import 'new_item_widget.dart';
+import 'widget componets/card_event_list_widget.dart';
 
 class HomePage extends StatefulWidget {
   final List<Evento>? eventos;
@@ -16,18 +18,37 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-var isso = SharedPrefs.prefs;
+var isso = SharedPrefs().prefs;
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  final SharedPrefs prefs = SharedPrefs();
   List<Evento> eventos = [];
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+  String skey = 'evento1';
+  List<Evento> getEventsList({required String skey}) {
+    prefs.loadList(key: skey).then((value) {
+      List<String>? listString = value;
+      for (var e in listString!) {
+        var ev = jsonDecode(e);
+        var i = Evento.fromMap(ev);
+        eventos.add(i);
+      }
+    });
+    return eventos;
+  }
 
-  getlista() {
-    eventos = widget.eventos as List<Evento>;
+  @override
+  void initState() {
+    getEventsList(skey: 'evento1');
+    log(eventos.toString());
+    log(eventos.length.toString());
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    log(eventos.length.toString());
+    log(eventos.toString());
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
@@ -49,15 +70,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               color: Colors.white,
               child: eventos.isEmpty
                   ? const NewItemWidget()
-                  : FutureBuilder(
-                      future: getlista(),
-                      builder: (context, snapshot) {
-                        return ListView.builder(
-                            itemCount: eventos.isEmpty ? 1 : eventos.length,
-                            itemBuilder: (context, index) => Container()
-                            //      CardEventListWidget(),
-                            );
-                      },
+                  : ListView.builder(
+                      itemCount: eventos.isEmpty ? 1 : eventos.length,
+                      itemBuilder: (context, index) => CardEventListWidget(
+                        EventData: eventos[index].dateEvent,
+                        eventName: eventos[index].nameEvent,
+                        eventValue: eventos[index].velueEvent,
+                        iconCategory: eventos[index].categoryEvent,
+                      ),
                     ),
             ),
           ),

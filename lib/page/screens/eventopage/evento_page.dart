@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/controller/parcela_controller.dart';
+import 'package:my_money/model/evento_model.dart';
+import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/page/screens/eventopage/parcela_widget.dart';
 import 'package:my_money/page/screens/eventopage/payment_category_widget.dart';
 import 'package:my_money/page/screens/home/home_page.dart';
 import 'package:my_money/page/widgets/buttom_custom_widget.dart';
-import '../../../controller/repositories/repository_data.dart';
 import '../../widgets/logo_inline_widget.dart';
 import 'form_event_widget.dart';
 
@@ -17,6 +18,7 @@ class EventoPage extends StatefulWidget {
 }
 
 class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
+  final SharedPrefs prefs = SharedPrefs();
   final PageController _pagecontrollecat = PageController();
   final GlobalKey<FormState> _keyevent = GlobalKey<FormState>();
   final TextEditingController _eventoController = TextEditingController();
@@ -171,16 +173,19 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                 int cat = _pagecontrollecat.page!.round();
 
                                 if (_keyevent.currentState!.validate()) {
-                                  RepositoryData()
-                                      .onSaveEvent(
-                                          nameEvent: _eventoController.text,
-                                          dateEvent: '24/03/2020',
-                                          velueEvent: _valorController.text,
-                                          categoryEvent: InterfaceData()
-                                              .categoryIcons[cat][IconData],
-                                          paymentEvent: paymenttype,
-                                          parcelEvnet:
-                                              parcelcontroller.value.toString())
+                                  prefs
+                                      .saveNewEvent(
+                                          key: 'evento1',
+                                          evento: Evento(
+                                              nameEvent: _eventoController.text,
+                                              dateEvent: '24/03/2023',
+                                              velueEvent: _valorController.text,
+                                              categoryEvent: InterfaceData()
+                                                  .categoryIcons[cat][IconData],
+                                              paymentEvent: paymenttype,
+                                              parcelEvnet: parcelcontroller
+                                                  .value
+                                                  .toString()))
                                       .then((value) =>
                                           Navigator.pushReplacement(
                                               context,
