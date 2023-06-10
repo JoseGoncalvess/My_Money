@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
+import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/page/screens/home/widget%20componets/card_event_list_widget.dart';
-
-import '../model/shared_preferences.dart';
 
 class PageText extends StatefulWidget {
   const PageText({Key? key}) : super(key: key);
@@ -18,56 +16,42 @@ String mapString = '{"user": "Inacio", "newuser": "Inacio"}';
 Map map = {'user': 'Inacio', 'newuser': 'Inacio'};
 
 class _PageTextState extends State<PageText> {
-  String name = '';
   String data = 'Aguardando comando';
-
-  //TRANSFOMRA STRING EM MAP
-// JsonDecoder
+  final SharedPrefs prefs = SharedPrefs();
 
 //TRANSFORMAR O O OBJETO EM JSON OU MAP EM JSON
   Evento evento = Evento(
-      parcelEvnet: '4',
-      nameEvent: 'Churarsco',
-      dateEvent: '23/01/2020',
-      velueEvent: '3000',
-      categoryEvent: Icons.food_bank_rounded,
-      paymentEvent: 'Dineheiro');
+      parcelEvnet: '6',
+      nameEvent: 'saúde',
+      dateEvent: '04/06/2024',
+      velueEvent: '1000',
+      categoryEvent: Icons.add_business_rounded,
+      paymentEvent: 'Cartão');
   //1 - Salvea  Evento .tostring
 
-  List<Map> listaEventos = [];
-  // final prefs = SharedPrefs.prefs;
-
-  Future loadname() async {
-    var usernme = await SharedPrefs.prefs.getStringList('evento1');
-    return usernme;
-  }
-
-  getname() {
-    loadname().then((value) {
-      setState(() {
-        eventosstring = value;
-      });
-      getelemnet();
-    });
-  }
-
-  List<String> eventosstring = [];
   List<Evento> eventos = [];
-  getelemnet() {
-    setState(() {
-      for (var element in eventosstring) {
-        var event = jsonDecode(element);
+  getEventsList({required String key}) {
+    prefs.loadList(key: key).then((value) {
+      List<String>? listString = value;
+      for (var e in listString!) {
+        var event = jsonDecode(e);
         var i = Evento.fromMap(event);
-        eventos.add(i);
+        setState(() {
+          eventos.add(i);
+        });
       }
     });
   }
 
-  Future savename({required key, required list}) async {
-    await SharedPrefs.prefs.setStringList(key, list);
+  List<String>? listStrng = [];
+  saveNewEvent({required String key}) {
+    prefs.loadList(key: key).then((value) => {
+          listStrng = value,
+          listStrng!.add(evento.toJson()),
+          prefs.saveList(key: key, list: listStrng),
+          log(listStrng.toString())
+        });
   }
-
-  // var result = jsonEncode(map);
 
   @override
   Widget build(BuildContext context) {
@@ -130,16 +114,10 @@ class _PageTextState extends State<PageText> {
                           setState(() {
                             //mapeio o objeto em transformo em json Sring;
                             String jsonstring = evento.toJson();
-                            var item = Evento.fromJson(jsonstring);
-                            data = item.nameEvent;
+                            data = jsonstring;
                           });
-
-                          // var eventojson = evento.toJson();
-
-                          // eventosstring.add(eventojson);
-                          // savename(key: 'evento1', list: eventosstring);
-
-                          // log('Salvo..');
+                          saveNewEvent(key: 'evento1');
+                          log('Salvo..');
                         },
                         child: Container(
                           alignment: Alignment.center,
@@ -155,8 +133,7 @@ class _PageTextState extends State<PageText> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          getname();
-
+                          getEventsList(key: 'evento1');
                           log('Carregou...');
                         },
                         child: Container(

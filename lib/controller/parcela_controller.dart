@@ -7,8 +7,4 @@ class ParcelaController extends ValueNotifier<int> {
     value = index;
     Navigator.pop(context);
   }
-
-  discardValue(ValueNotifier value) {
-    value.dispose();
-  }
 }
