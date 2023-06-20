@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-var isso = SharedPrefs().prefs;
+final prefs = SharedPrefs();
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final SharedPrefs prefs = SharedPrefs();
@@ -72,11 +72,35 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ? const NewItemWidget()
                   : ListView.builder(
                       itemCount: eventos.isEmpty ? 1 : eventos.length,
-                      itemBuilder: (context, index) => CardEventListWidget(
-                        EventData: eventos[index].dateEvent,
-                        eventName: eventos[index].nameEvent,
-                        eventValue: eventos[index].velueEvent,
-                        iconCategory: eventos[index].categoryEvent,
+                      itemBuilder: (context, index) => GestureDetector(
+                        onLongPress: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text('Deseja memso Excluir o item?'),
+                                actions: [
+                                  Row(
+                                    children: [
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            prefs.removeEvnetList(
+                                                key: 'evento1', index: index);
+                                          },
+                                          child: Text('sim'))
+                                    ],
+                                  )
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: CardEventListWidget(
+                          eventData: eventos[index].dateEvent,
+                          eventName: eventos[index].nameEvent,
+                          eventValue: eventos[index].velueEvent,
+                          iconCategory: eventos[index].categoryEvent,
+                        ),
                       ),
                     ),
             ),

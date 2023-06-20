@@ -33,6 +33,14 @@ class SharedPrefs {
     await prefs.remove(key);
   }
 
+  //
+  //METODO QUE REVMOVE EVENTO ESPECIFIICO DA LISA DE EVENTOS
+  Future removeEvnetList({required String key, required int index}) async {
+    loadList(key: key).then((value) {
+      log(value![0]);
+    });
+  }
+
   Future saveNewEvent({required String key, required Evento evento}) async {
     List<String>? listStrng = [];
     loadList(key: key).then((value) => {

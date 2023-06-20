@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 
 class CardEventListWidget extends StatefulWidget {
   final String eventName;
-  final String EventData;
+  final String eventData;
   final String eventValue;
   final IconData iconCategory;
-  const CardEventListWidget(
-      {Key? key,
-      required this.eventName,
-      required this.EventData,
-      required this.eventValue,
-      required this.iconCategory})
-      : super(key: key);
+
+  const CardEventListWidget({
+    Key? key,
+    required this.eventName,
+    required this.eventData,
+    required this.eventValue,
+    required this.iconCategory,
+  }) : super(key: key);
 
   @override
   State<CardEventListWidget> createState() => _CardEventListWidgetState();
@@ -33,7 +34,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
             boxShadow: [
               BoxShadow(
                   spreadRadius: 0.5,
-                  color: const Color.fromARGB(193, 0, 0, 0),
+                  color: Color(0xC1000000),
                   blurRadius: 1,
                   blurStyle: BlurStyle.normal,
                   offset: Offset(1, 5))
@@ -73,7 +74,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                   height: height * 0.03,
                 ),
                 Text(
-                  widget.EventData,
+                  widget.eventData,
                   style: TextStyle(
                       fontSize: height * 0.017, fontWeight: FontWeight.w400),
                 ),
