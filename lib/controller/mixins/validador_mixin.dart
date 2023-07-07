@@ -41,7 +41,7 @@ mixin ValidadorMixin {
 
     for (var item in name) {
       if (item.contains(RegExp(r'[A-Z|a-z]'))) {
-        return msg ?? 'VAmos lá, Ultilize apenas letras!';
+        return msg ?? 'Vamos lá, Ultilize apenas letras!';
       }
     }
     return null;

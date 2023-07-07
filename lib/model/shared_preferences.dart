@@ -9,6 +9,7 @@ import 'evento_model.dart';
 
 class SharedPrefs {
   static late SharedPreferences _prefs;
+  List<Evento> eventos = [];
 
   Future<SharedPreferences> get init async {
     return _prefs = await SharedPreferences.getInstance();
@@ -23,7 +24,7 @@ class SharedPrefs {
 
   ///METODO RESPONSSAVEL POR SALVAR A LISTA DE EVENTOS:
   Future<List<String>?> loadList({required String key}) async {
-    var listResult = await prefs.getStringList(key) ?? [];
+    var listResult = prefs.getStringList(key) ?? [];
     return listResult;
   }
 
@@ -33,11 +34,17 @@ class SharedPrefs {
     await prefs.remove(key);
   }
 
-  //
-  //METODO QUE REVMOVE EVENTO ESPECIFIICO DA LISA DE EVENTOS
-  Future removeEvnetList({required String key, required int index}) async {
-    loadList(key: key).then((value) {
-      log(value![0]);
+  ///PERCORRRER OS INTEM DA LISTA CONVERTENDO sTRINGJSON EM OBJECT MODL
+  getListEventos({required String key}) async {
+    List<Evento> eventos = [];
+    loadList(key: key).then((v) {
+      List<String> listString = v!;
+      for (var i in listString) {
+        var event = jsonDecode(i);
+        var item = Evento.fromMap(event);
+        eventos.add(item);
+      }
+      return eventos;
     });
   }
 
@@ -51,18 +58,14 @@ class SharedPrefs {
         });
   }
 
-  //PERCORRRER OS INTEM DA LISTA CONVERTENDO sTRINGJSON EM OBJECT MODLE
-  List<Evento> getEventsList({required String key}) {
-    List<Evento> eventos = [];
-    loadList(key: key).then((value) {
-      List<String>? listString = value;
-      for (var e in listString!) {
-        var event = jsonDecode(e);
-        var i = Evento.fromMap(event);
-        return eventos.add(i);
-      }
+  ///METODO QUE REVMOVE EVENTO ESPECIFIICO DA LISA DE EVENTOS
+  Future removeEvnetList({required String key, required int index}) async {
+    List<String>? listStrng = [];
+    loadList(key: key).then((v) {
+      listStrng = v;
+      listStrng!.removeAt(index);
+      saveList(key: key, list: listStrng);
     });
-    return eventos;
   }
 }
 

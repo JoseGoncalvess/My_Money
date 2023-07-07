@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
+import '../model/category_event.dart';
+import '../model/payment_type.dart';
 
 class InterfaceData {
-  List<Map> categoryIcons = [
-    {'id': 0, 'name': 'Ferias', IconData: Icons.luggage_rounded},
-    {'id': 1, 'name': 'Lazer', IconData: Icons.park_rounded},
-    {'id': 2, 'name': 'Investimento', IconData: Icons.auto_graph_rounded},
-    {'id': 3, 'name': 'Viagem', IconData: Icons.flight_rounded},
-    {'id': 4, 'name': 'Saúde', IconData: Icons.medical_services_rounded},
-    {'id': 5, 'name': 'Alimentação', IconData: Icons.restaurant_rounded},
-    {'id': 6, 'name': 'Trabalho', IconData: Icons.work},
+  List<CategoryEvent> category = [
+    CategoryEvent(name: 'Feria', icon: Icons.luggage_rounded),
+    CategoryEvent(name: 'Lazer', icon: Icons.park_rounded),
+    CategoryEvent(name: 'Investimento', icon: Icons.auto_graph_rounded),
+    CategoryEvent(name: 'Viagem', icon: Icons.flight_rounded),
+    CategoryEvent(name: 'Saúde', icon: Icons.medical_services_rounded),
+    CategoryEvent(name: 'Trabalho', icon: Icons.work),
   ];
 
-  List<Map> paymentIcons = [
-    {
-      'id': 0,
-      'name': 'Cartão',
-      IconData: Icons.credit_card_rounded,
-    },
-    {
-      'id': 1,
-      'name': 'Dinehiro',
-      IconData: Icons.payments_rounded,
-    },
+  List<PaymentType> paymentType = [
+    PaymentType(name: 'Cartão', icon: Icons.credit_card_rounded),
+    PaymentType(name: 'Dinehiro', icon: Icons.payments_rounded)
   ];
+
   List<Map> imageAvatr = [
     {
       'id': 0,
