@@ -35,7 +35,7 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
                   ));
             },
             child: const AvatarProfileWidget(image: 'assets/img/sem_logo.jpg')),
-        FormUserdProfileWidget(),
+        const FormUserdProfileWidget(),
       ],
     );
   }

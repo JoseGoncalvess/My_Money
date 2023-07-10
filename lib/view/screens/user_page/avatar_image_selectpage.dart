@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
-import 'avatar select components/card_avatar_select_widget.dart';
+import 'avatar_select_components/card_avatar_select_widget.dart';
 
 class AvatarImageSelectpage extends StatefulWidget {
   const AvatarImageSelectpage({Key? key}) : super(key: key);

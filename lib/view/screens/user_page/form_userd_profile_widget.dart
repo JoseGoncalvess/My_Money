@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../controller/mixins/validador_mixin.dart';
 import '../../widgets/buttom_custom_widget.dart';
 import '../home_page/home_page.dart';
+import 'user_controller.dart';
 
 class FormUserdProfileWidget extends StatefulWidget {
   const FormUserdProfileWidget({
@@ -16,6 +17,7 @@ class FormUserdProfileWidget extends StatefulWidget {
 
 class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
     with ValidadorMixin {
+  final UserController _userController = UserController();
   final GlobalKey<FormState> _keyUser = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _moneyController = TextEditingController();
@@ -32,6 +34,7 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
               width: width * 0.7,
               height: height * 0.12,
               child: TextFormField(
+                enableInteractiveSelection: false,
                 validator: (value) => combvalidator(
                   validator: [
                     () => isempyt(
@@ -49,11 +52,12 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white, width: 2)),
                     focusedBorder: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(width: 2, color: Colors.white),
+                      borderSide:
+                          const BorderSide(width: 2, color: Colors.white),
                     ),
                     hintText: 'Olá, Me chamo...',
                     hintStyle: TextStyle(
@@ -72,6 +76,7 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
               width: width * 0.6,
               height: height * 0.1,
               child: TextFormField(
+                enableInteractiveSelection: false,
                 validator: (value) => combvalidator(
                   validator: [
                     () => isempyt(
@@ -83,18 +88,19 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
                   ],
                 ),
                 style: TextStyle(
-                    color: Color(0xff4F4D8C).withOpacity(0.6),
+                    color: const Color(0xff4F4D8C).withOpacity(0.6),
                     decorationThickness: 0.0,
                     fontWeight: FontWeight.w600),
                 controller: _moneyController,
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white, width: 2)),
                     focusedBorder: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(width: 2, color: Colors.white),
+                      borderSide:
+                          const BorderSide(width: 2, color: Colors.white),
                     ),
                     hintText: 'Meu patrimonio atual é ...',
                     hintStyle: TextStyle(
@@ -113,14 +119,19 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
               colortext: Colors.white,
               name: 'Salvar',
               onpressed: () {
-                // log(_keyUser.currentState!.validate().toString());
                 if (_keyUser.currentState!.validate()) {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomePage(),
-                      ));
-
+                  _userController
+                      .setuser(
+                          nameUser: _nameController.text,
+                          moneyUser: _moneyController.text)
+                      .then(
+                        (value) => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        ),
+                      );
                   log('${_nameController.text},${_moneyController.text}');
                 }
               })

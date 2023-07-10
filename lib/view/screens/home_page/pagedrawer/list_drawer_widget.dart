@@ -4,7 +4,8 @@ import 'package:my_money/view/screens/home_page/pagedrawer/faq_page.dart';
 import 'package:my_money/view/screens/home_page/pagedrawer/suport_page.dart';
 
 class ListDrawerWidget extends StatefulWidget {
-  const ListDrawerWidget({Key? key}) : super(key: key);
+  final String nameUser;
+  const ListDrawerWidget({Key? key, required this.nameUser}) : super(key: key);
 
   @override
   State<ListDrawerWidget> createState() => _ListDrawerWidgetState();
@@ -26,7 +27,7 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
               // color: Colors.white,
               child: Center(
                 child: Text(
-                  'Ola, Sr. Gonçalves!',
+                  'Ola, Sr(a). ${widget.nameUser}!',
                   style: TextStyle(
                       fontSize: width * 0.03, fontWeight: FontWeight.w400),
                 ),

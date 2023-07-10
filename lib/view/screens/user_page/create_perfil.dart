@@ -44,7 +44,7 @@ class CreatePerfil extends StatelessWidget {
               ),
               Flexible(
                 child: Text(
-                  'Falta pouco para você está controle\n              da sua vida financeira',
+                  'Falta pouco para você está controle\n              da sua vida financeira!',
                   style: TextStyle(
                       fontSize: height * 0.018, fontWeight: FontWeight.w600),
                 ),

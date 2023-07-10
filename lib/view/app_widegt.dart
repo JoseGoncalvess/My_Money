@@ -20,6 +20,6 @@ class _AppWidegtState extends State<AppWidegt> {
 
           // useMaterial3: true,
         ),
-        home: SplashPage());
+        home: const SplashPage());
   }
 }

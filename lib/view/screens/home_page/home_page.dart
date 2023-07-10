@@ -1,5 +1,7 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
+import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/view/screens/home_page/widgets/tabbar_menu_widget.dart';
 import '../eventopage/evento_page.dart';
 import 'home_controller.dart';
@@ -23,6 +25,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    _homecontroller.userMoney$.addListener(() {
+      setState(() {});
+    });
+    _homecontroller.userName$.addListener(() {
+      setState(() {});
+    });
+    _homecontroller.addListener(() {
+      setState(() {});
+    });
+    _homecontroller.getevetList(key: keyList);
   }
 
   @override
@@ -31,9 +43,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: const Drawer(
-        backgroundColor: Color(0xff5F5DA6),
-        child: ListDrawerWidget(),
+      drawer: Drawer(
+        backgroundColor: const Color(0xff5F5DA6),
+        child: ListDrawerWidget(nameUser: _homecontroller.userName),
       ),
       key: _key,
       body: SizedBox(
@@ -66,7 +78,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
             ),
           ),
-          const TabbarMenuWidget()
+          TabbarMenuWidget(
+            money: _homecontroller.userMoney,
+          )
         ]),
       ),
       floatingActionButton: SizedBox(
@@ -74,11 +88,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: height * 0.15,
         child: FloatingActionButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const EventoPage(),
-                  ));
+              _homecontroller.getevetList(key: keyList);
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => const EventoPage(),
+              //     ));
             },
             elevation: 2,
             backgroundColor: const Color(0xff5F5DA6),

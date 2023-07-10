@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import '../../page_details/dtails_page.dart';
 
 class TabbarMenuWidget extends StatefulWidget {
+  final String money;
   const TabbarMenuWidget({
     Key? key,
+    required this.money,
   }) : super(key: key);
 
   @override
@@ -71,7 +73,7 @@ class _TabbarMenuWidgetState extends State<TabbarMenuWidget> {
                         fontWeight: FontWeight.w400, fontSize: height * 0.02),
                   ),
                   Text(
-                    '\$R 2000',
+                    'R\$ ${widget.money}',
                     style: TextStyle(
                         fontWeight: FontWeight.w700, fontSize: height * 0.02),
                   )

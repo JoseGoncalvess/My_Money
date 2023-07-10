@@ -175,7 +175,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                 if (_keyevent.currentState!.validate()) {
                                   prefs
                                       .saveNewEvent(
-                                          key: 'evento1',
+                                          key: keyList,
                                           evento: Evento(
                                               nameEvent: _eventoController.text,
                                               dateEvent: '24/03/2023',

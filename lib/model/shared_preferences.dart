@@ -2,50 +2,54 @@
 
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'evento_model.dart';
 
 class SharedPrefs {
-  static late SharedPreferences _prefs;
-  List<Evento> eventos = [];
-
-  Future<SharedPreferences> get init async {
-    return _prefs = await SharedPreferences.getInstance();
-  }
-
-  SharedPreferences get prefs => _prefs;
+  List<String> listString = [];
 
   ///METODO RESPONSSAVEL POR SALVAR A LISTA DE EVENTOS:
   Future saveList({required key, required list}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(key, list);
   }
 
   ///METODO RESPONSSAVEL POR SALVAR A LISTA DE EVENTOS:
-  Future<List<String>?> loadList({required String key}) async {
-    var listResult = prefs.getStringList(key) ?? [];
-    return listResult;
+  Future<List<String>> loadList({required String key}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var listResult = prefs.getStringList(key);
+    return listResult!;
   }
 
   ///METODO RESPONSSAVEL POR DELETAR A LISTA DE EVENTOS:
   /// Passando o KEY anes ultilizada no metodo de salvar.
   Future deletList({required String key}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove(key);
   }
 
+  ///METODO PARA SALVAR USER NAME
+  setUserName({required String nameUser, required String key}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, nameUser);
+  }
+
+  /// METODO PARA SALVAR USER MONEY
+  setUserMoney({required String moneyUser, required String key}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, moneyUser);
+  }
+
   ///PERCORRRER OS INTEM DA LISTA CONVERTENDO sTRINGJSON EM OBJECT MODL
-  getListEventos({required String key}) async {
+  Future<List<Evento>> getListEventos({required String key}) async {
     List<Evento> eventos = [];
-    loadList(key: key).then((v) {
-      List<String> listString = v!;
-      for (var i in listString) {
-        var event = jsonDecode(i);
-        var item = Evento.fromMap(event);
-        eventos.add(item);
-      }
-      return eventos;
-    });
+    listString = await loadList(key: key);
+    for (var i in listString) {
+      var event = jsonDecode(i);
+      var item = Evento.fromMap(event);
+      eventos.add(item);
+    }
+    return eventos;
   }
 
   Future saveNewEvent({required String key, required Evento evento}) async {
@@ -67,8 +71,22 @@ class SharedPrefs {
       saveList(key: key, list: listStrng);
     });
   }
+
+  ///Carregar Name do usuario
+  Future getNameUser({required String key}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(key);
+  }
+
+  ///Carregar Money do usuario
+  Future getMoneyUser({required String key}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(key);
+  }
 }
 
 const String keyList = '@evento';
+const String keyUsername = '@user';
+const String keyUserMoney = '@Money';
 //chave da lista 'evento1'
 
