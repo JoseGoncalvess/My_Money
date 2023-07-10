@@ -5,10 +5,9 @@ import '../../../model/shared_preferences.dart';
 
 class HomeController extends ValueNotifier<List<Evento>> {
   HomeController() : super([]);
-  ValueNotifier userName$ = ValueNotifier<String?>('');
-  ValueNotifier userMoney$ = ValueNotifier<String?>('');
-  String get userName => userName$.value;
-  String get userMoney => userMoney$.value;
+  final userName = ValueNotifier<String?>('');
+  final userMoney = ValueNotifier<String?>('');
+
   final SharedPrefs prefs = SharedPrefs();
 
   ///PERCORRRER OS INTEM DA LISTA CONVERTENDO sTRINGJSON EM OBJECT MODL
@@ -30,15 +29,20 @@ class HomeController extends ValueNotifier<List<Evento>> {
   }
 
   Future getName({required String key}) async {
-    await prefs
-        .getNameUser(key: key)
-        .then((value) => {userName$.value = value});
+    await prefs.getNameUser(key: key).then((value) => {
+          //
+          userName.value = value,
+          //
+          log('O name é $value')
+        });
   }
 
   Future getMoney({required String key}) async {
-    await prefs.getMoneyUser(key: key).then(
-          (value) => userName$.value = value,
-        );
-    log('usemoney value = ${userMoney$.value!}');
+    await prefs.getMoneyUser(key: key).then((value) => {
+          //
+          userMoney.value = value,
+          //
+          log('usemoney value = $value')
+        });
   }
 }

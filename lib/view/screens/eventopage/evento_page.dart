@@ -8,6 +8,7 @@ import 'package:my_money/view/screens/eventopage/payment_category_widget.dart';
 import 'package:my_money/view/screens/home_page/home_page.dart';
 import 'package:my_money/view/widgets/buttom_custom_widget.dart';
 import '../../widgets/logo_inline_widget.dart';
+import '../home_page/home_controller.dart';
 import 'form_event_widget.dart';
 
 class EventoPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class EventoPage extends StatefulWidget {
 }
 
 class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
-  final SharedPrefs prefs = SharedPrefs();
+  final HomeController _homecontroller = HomeController();
   final PageController _pagecontrollecat = PageController();
   final GlobalKey<FormState> _keyevent = GlobalKey<FormState>();
   final TextEditingController _eventoController = TextEditingController();
@@ -173,8 +174,8 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                 int cat = _pagecontrollecat.page!.round();
 
                                 if (_keyevent.currentState!.validate()) {
-                                  prefs
-                                      .saveNewEvent(
+                                  _homecontroller
+                                      .saveEvent(
                                           key: keyList,
                                           evento: Evento(
                                               nameEvent: _eventoController.text,
@@ -192,7 +193,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      HomePage())));
+                                                      const HomePage())));
                                 }
                               },
                               backgroud: const Color(0xff4F4D8C),

@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
@@ -25,10 +26,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _homecontroller.userMoney$.addListener(() {
-      setState(() {});
-    });
-    _homecontroller.userName$.addListener(() {
+    _homecontroller.userName.addListener(() {
       setState(() {});
     });
     _homecontroller.addListener(() {
@@ -45,7 +43,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       backgroundColor: Colors.white,
       drawer: Drawer(
         backgroundColor: const Color(0xff5F5DA6),
-        child: ListDrawerWidget(nameUser: _homecontroller.userName),
+        child: ListDrawerWidget(nameUser: _homecontroller.userName.value!),
       ),
       key: _key,
       body: SizedBox(
@@ -79,7 +77,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           TabbarMenuWidget(
-            money: _homecontroller.userMoney,
+            money: _homecontroller.userMoney.value!,
           )
         ]),
       ),
@@ -88,7 +86,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: height * 0.15,
         child: FloatingActionButton(
             onPressed: () {
-              _homecontroller.getevetList(key: keyList);
+              print(_homecontroller.userName.value);
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(
