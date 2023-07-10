@@ -19,8 +19,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _homecontroller.getName(key: keyUsername);
-    _homecontroller.getMoney(key: keyUserMoney);
     _userController.lodUser(key: keyUsername);
     Future.delayed(const Duration(seconds: 2)).then((value) => {
           if (_userController.value)

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
@@ -29,10 +28,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _homecontroller.userName.addListener(() {
       setState(() {});
     });
+    _homecontroller.userMoney.addListener(() {
+      setState(() {});
+    });
     _homecontroller.addListener(() {
       setState(() {});
     });
     _homecontroller.getevetList(key: keyList);
+    _homecontroller.getMoney(key: keyUserMoney);
+    _homecontroller.getName(key: keyUsername);
   }
 
   @override
@@ -86,7 +90,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: height * 0.15,
         child: FloatingActionButton(
             onPressed: () {
-              print(_homecontroller.userName.value);
+              print(_homecontroller.getMoney(key: keyUserMoney));
+              log(_homecontroller.userMoney.value!);
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(

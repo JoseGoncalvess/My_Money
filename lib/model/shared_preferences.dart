@@ -18,7 +18,7 @@ class SharedPrefs {
   Future<List<String>> loadList({required String key}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var listResult = prefs.getStringList(key);
-    return listResult!;
+    return listResult ?? [];
   }
 
   ///METODO RESPONSSAVEL POR DELETAR A LISTA DE EVENTOS:
@@ -75,13 +75,15 @@ class SharedPrefs {
   ///Carregar Name do usuario
   Future getNameUser({required String key}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key);
+    var name = prefs.getString(key);
+    return name;
   }
 
   ///Carregar Money do usuario
   Future getMoneyUser({required String key}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key);
+    var money = prefs.getString(key);
+    return money;
   }
 }
 
