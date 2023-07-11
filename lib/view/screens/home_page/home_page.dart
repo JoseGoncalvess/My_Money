@@ -46,7 +46,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       backgroundColor: Colors.white,
       drawer: Drawer(
         backgroundColor: const Color(0xff5F5DA6),
-        child: ListDrawerWidget(nameUser: _homecontroller.userName.value!),
+        child: ListDrawerWidget(
+          nameUser: _homecontroller.userName.value!,
+          moneyUser: _homecontroller.userMoney.value!,
+        ),
       ),
       key: _key,
       body: SizedBox(

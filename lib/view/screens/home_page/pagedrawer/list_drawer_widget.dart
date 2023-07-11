@@ -5,7 +5,10 @@ import 'package:my_money/view/screens/home_page/pagedrawer/suport_page.dart';
 
 class ListDrawerWidget extends StatefulWidget {
   final String nameUser;
-  const ListDrawerWidget({Key? key, required this.nameUser}) : super(key: key);
+  final String moneyUser;
+  const ListDrawerWidget(
+      {Key? key, required this.nameUser, required this.moneyUser})
+      : super(key: key);
 
   @override
   State<ListDrawerWidget> createState() => _ListDrawerWidgetState();
@@ -39,7 +42,7 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => EditingPerfil(
-                          name: 'gonçlaves',
+                          name: widget.nameUser,
                           profileimg: 'assets/img/sem_logo.jpg',
                           totalmoney: '2000'),
                     ));

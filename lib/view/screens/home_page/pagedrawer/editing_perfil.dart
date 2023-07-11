@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/buttom_custom_widget.dart';
 import '../../../widgets/custom_formfiel_widget.dart';
+import '../../user_page/user_controller.dart';
 import '../home_page.dart';
 
 class EditingPerfil extends StatefulWidget {
@@ -19,6 +20,7 @@ class EditingPerfil extends StatefulWidget {
 }
 
 class _EditingPerfilState extends State<EditingPerfil> {
+  final UserController _userController = UserController();
   final TextEditingController _namecontroller = TextEditingController();
   final TextEditingController _moneycontroller = TextEditingController();
 
@@ -102,11 +104,18 @@ class _EditingPerfilState extends State<EditingPerfil> {
                             colortext: Colors.white,
                             name: 'Salvar',
                             onpressed: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => HomePage(),
-                                  ));
+                              _userController
+                                  .setuser(
+                                      nameUser: _namecontroller.text,
+                                      moneyUser: _moneycontroller.text)
+                                  .then((value) => {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const HomePage(),
+                                            ))
+                                      });
                             }),
                         ButtomCustomWidget(
                             altura: 0.07,
