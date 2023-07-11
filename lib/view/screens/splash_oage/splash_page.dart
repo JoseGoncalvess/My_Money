@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/view/screens/home_page/home_page.dart';
 import 'package:my_money/view/screens/user_page/create_perfil.dart';
-
-import '../home_page/home_controller.dart';
 import '../user_page/user_controller.dart';
 
 class SplashPage extends StatefulWidget {
@@ -14,7 +12,6 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final HomeController _homecontroller = HomeController();
   final UserController _userController = UserController();
   @override
   void initState() {
