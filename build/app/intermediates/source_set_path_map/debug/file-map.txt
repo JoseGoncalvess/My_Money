@@ -12,3 +12,4 @@ com.JGdev.my_money.app-mergeDebugResources-10 C:\Users\JG Silva\GitHub\My_Money\
 com.JGdev.my_money.app-merged_res-11 C:\Users\JG Silva\GitHub\My_Money\build\app\intermediates\merged_res\debug
 com.JGdev.my_money.app-packaged_res-12 C:\Users\JG Silva\GitHub\My_Money\build\package_info_plus\intermediates\packaged_res\debug
 com.JGdev.my_money.app-packaged_res-13 C:\Users\JG Silva\GitHub\My_Money\build\shared_preferences_android\intermediates\packaged_res\debug
+com.JGdev.my_money.app-packaged_res-14 C:\Users\JG Silva\GitHub\My_Money\build\url_launcher_android\intermediates\packaged_res\debug

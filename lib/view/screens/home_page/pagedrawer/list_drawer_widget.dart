@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/view/screens/home_page/pagedrawer/editing_perfil.dart';
 import 'package:my_money/view/screens/home_page/pagedrawer/faq_page.dart';
-import 'package:my_money/view/screens/home_page/pagedrawer/suport_page.dart';
+import 'package:my_money/view/screens/home_page/pagedrawer/suport_page/suport_page.dart';
 
 class ListDrawerWidget extends StatefulWidget {
   final String nameUser;
@@ -66,7 +66,7 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SuportPage(),
+                      builder: (context) => const SuportPage(),
                     ));
               },
               leading: const Icon(
@@ -84,7 +84,7 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => FaqPage(),
+                      builder: (context) => const FaqPage(),
                     ));
               },
               leading: const Icon(

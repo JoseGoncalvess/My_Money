@@ -102,12 +102,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: height * 0.15,
         child: FloatingActionButton(
             onPressed: () {
-              _versionController.getinfo();
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => const EventoPage(),
-              //     ));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EventoPage(),
+                  ));
             },
             elevation: 2,
             backgroundColor: const Color(0xff5F5DA6),
