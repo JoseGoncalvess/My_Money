@@ -35,6 +35,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _homecontroller.addListener(() {
       setState(() {});
     });
+    _versionController.addListener(() {
+      setState(() {});
+    });
+    _versionController.addListener(() {
+      setState(() {});
+    });
+    _versionController.getinfo();
     _homecontroller.getevetList(key: keyList);
     _homecontroller.getMoney(key: keyUserMoney);
     _homecontroller.getName(key: keyUsername);
@@ -95,7 +102,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: height * 0.15,
         child: FloatingActionButton(
             onPressed: () {
-              VersionDetails().getinfo(); // Navigator.push(
+              _versionController.getinfo();
+              // Navigator.push(
               //     context,
               //     MaterialPageRoute(
               //       builder: (context) => const EventoPage(),
