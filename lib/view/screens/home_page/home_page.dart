@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/view/screens/home_page/widgets/tabbar_menu_widget.dart';
+import '../../../controller/version_details.dart';
 import '../eventopage/evento_page.dart';
 import 'home_controller.dart';
 import 'pagedrawer/list_drawer_widget.dart';
@@ -19,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final HomeController _homecontroller = HomeController();
+  final VersionDetails _versionController = VersionDetails();
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   @override
@@ -47,6 +49,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       drawer: Drawer(
         backgroundColor: const Color(0xff5F5DA6),
         child: ListDrawerWidget(
+          versioApp: _versionController.value,
           nameUser: _homecontroller.userName.value!,
           moneyUser: _homecontroller.userMoney.value!,
         ),
@@ -92,11 +95,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: height * 0.15,
         child: FloatingActionButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const EventoPage(),
-                  ));
+              VersionDetails().getinfo(); // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => const EventoPage(),
+              //     ));
             },
             elevation: 2,
             backgroundColor: const Color(0xff5F5DA6),

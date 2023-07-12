@@ -6,8 +6,12 @@ import 'package:my_money/view/screens/home_page/pagedrawer/suport_page.dart';
 class ListDrawerWidget extends StatefulWidget {
   final String nameUser;
   final String moneyUser;
+  final String versioApp;
   const ListDrawerWidget(
-      {Key? key, required this.nameUser, required this.moneyUser})
+      {Key? key,
+      required this.nameUser,
+      required this.moneyUser,
+      required this.versioApp})
       : super(key: key);
 
   @override
@@ -93,6 +97,24 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
                       fontSize: 20,
                       color: Colors.white)),
             ),
+            SizedBox(
+              height: height * 0.61,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Versão: ${widget.versioApp}',
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20,
+                        color: Colors.white)),
+                Icon(
+                  Icons.verified_user_outlined,
+                  size: height * 0.04,
+                )
+              ],
+            )
           ],
         ),
       ),

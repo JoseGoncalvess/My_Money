@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/view/screens/home_page/home_page.dart';
 import 'package:my_money/view/screens/user_page/create_perfil.dart';
+import '../../../controller/version_details.dart';
 import '../user_page/user_controller.dart';
 
 class SplashPage extends StatefulWidget {
@@ -13,9 +14,11 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   final UserController _userController = UserController();
+  final VersionDetails _versionController = VersionDetails();
   @override
   void initState() {
     super.initState();
+    // _versionController.getinfo();
     _userController.lodUser(key: keyUsername);
     Future.delayed(const Duration(seconds: 2)).then((value) => {
           if (_userController.value)
@@ -35,6 +38,13 @@ class _SplashPageState extends State<SplashPage> {
                   ))
             }
         });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _versionController.dispose();
+    _userController.dispose();
   }
 
   @override
