@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/view/widgets/iconcategory_event_widget.dart';
 
-import '../../../model/category_event.dart';
+import '../../../../model/category_event.dart';
 
 class CategoryEventWidget extends StatefulWidget {
   final PageController PagecontrollerCat;

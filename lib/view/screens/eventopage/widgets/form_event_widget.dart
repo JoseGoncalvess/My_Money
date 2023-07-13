@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/mixins/validador_mixin.dart';
-import 'package:my_money/view/screens/eventopage/row_infoform_widget.dart';
+import 'package:my_money/view/screens/eventopage/widgets/row_infoform_widget.dart';
+
 import 'category_event_widget.dart';
 
 class FormEventWidget extends StatefulWidget {
-  final PageController PagecontrollerCat;
+  final PageController pagecontrollerCat;
   final TextEditingController eventocontroller;
   final TextEditingController valuecontroller;
   const FormEventWidget(
       {Key? key,
       required this.eventocontroller,
       required this.valuecontroller,
-      required this.PagecontrollerCat})
+      required this.pagecontrollerCat})
       : super(key: key);
 
   @override
@@ -69,7 +70,7 @@ class _FormEventWidgetState extends State<FormEventWidget> with ValidadorMixin {
           valorController: widget.valuecontroller,
         ),
         CategoryEventWidget(
-          PagecontrollerCat: widget.PagecontrollerCat,
+          PagecontrollerCat: widget.pagecontrollerCat,
         ),
       ],
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/mixins/validador_mixin.dart';
 
+import '../evento_controller.dart';
+
 class RowInfoformWidget extends StatefulWidget {
   final TextEditingController valorController;
   const RowInfoformWidget({Key? key, required this.valorController})
@@ -12,6 +14,15 @@ class RowInfoformWidget extends StatefulWidget {
 
 class _RowInfoformWidgetState extends State<RowInfoformWidget>
     with ValidadorMixin {
+  final EventoController _eventocontroller = EventoController();
+  @override
+  void initState() {
+    super.initState();
+    _eventocontroller.addListener(() {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -33,16 +44,24 @@ class _RowInfoformWidgetState extends State<RowInfoformWidget>
                     fontSize: width * 0.05,
                     fontWeight: FontWeight.w700),
               ),
-              Container(
-                alignment: Alignment.center,
-                width: width * 0.4,
-                height: height * 0.074,
-                decoration: BoxDecoration(
-                    color: const Color(0xff4F4D8C),
-                    borderRadius: BorderRadius.circular(4)),
-                child: const Text(
-                  'Data',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+              InkWell(
+                onTap: () {
+                  _eventocontroller.openBox(context: context);
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: width * 0.4,
+                  height: height * 0.074,
+                  decoration: BoxDecoration(
+                      color: const Color(0xff4F4D8C),
+                      borderRadius: BorderRadius.circular(4)),
+                  child: ValueListenableBuilder(
+                    valueListenable: _eventocontroller,
+                    builder: (context, value, child) => Text(
+                      value,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
               ),
             ],

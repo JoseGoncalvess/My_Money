@@ -1,15 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/controller/parcela_controller.dart';
 import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
-import 'package:my_money/view/screens/eventopage/parcela_widget.dart';
-import 'package:my_money/view/screens/eventopage/payment_category_widget.dart';
+import 'package:my_money/view/screens/eventopage/widgets/parcela_widget.dart';
+import 'package:my_money/view/screens/eventopage/widgets/payment_category_widget.dart';
 import 'package:my_money/view/screens/home_page/home_page.dart';
 import 'package:my_money/view/widgets/buttom_custom_widget.dart';
 import '../../widgets/logo_inline_widget.dart';
 import '../home_page/home_controller.dart';
-import 'form_event_widget.dart';
+import 'evento_controller.dart';
+import 'widgets/form_event_widget.dart';
 
 class EventoPage extends StatefulWidget {
   const EventoPage({super.key});
@@ -26,11 +28,14 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
   final TextEditingController _valorController = TextEditingController();
   bool payment = false;
   late String paymenttype = 'Dinheiro';
-
-  ParcelaController parcelcontroller = ParcelaController();
+  final ParcelaController parcelcontroller = ParcelaController();
+  final EventoController _evento = EventoController();
 
   @override
   void initState() {
+    _evento.addListener(() {
+      setState(() {});
+    });
     parcelcontroller.addListener(() {
       setState(() {});
     });
@@ -91,7 +96,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                       Form(
                         key: _keyevent,
                         child: FormEventWidget(
-                            PagecontrollerCat: _pagecontrollecat,
+                            pagecontrollerCat: _pagecontrollecat,
                             eventocontroller: _eventoController,
                             valuecontroller: _valorController),
                       ),

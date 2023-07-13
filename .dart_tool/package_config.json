@@ -68,6 +68,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_localizations",
+      "rootUri": "file:///C:/Users/JG%20Silva/Documents/src/flutter/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/Users/JG%20Silva/Documents/src/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -93,7 +99,7 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///C:/Users/JG%20Silva/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
+      "rootUri": "file:///C:/Users/JG%20Silva/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -356,7 +362,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-07-12T23:11:37.838621Z",
+  "generated": "2023-07-13T20:46:28.494966Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }

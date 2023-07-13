@@ -39,6 +39,9 @@ dependencies:
   shared_preferences: ^2.1.1
   package_info_plus: ^4.0.2
   url_launcher: ^6.1.12
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 dev_dependencies:
   flutter_test:
