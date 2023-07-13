@@ -41,7 +41,7 @@ class _SuportPageState extends State<SuportPage> with ValidadorMixin {
                       child: Text('Você esta gostando do My Money?',
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w600)))),
-              Container(
+              SizedBox(
                 // color: Colors.amber,
                 height: height * 0.24,
                 width: width * 0.55,
