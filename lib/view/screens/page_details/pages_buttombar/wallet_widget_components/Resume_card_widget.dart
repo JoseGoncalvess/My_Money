@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-
 import '../../../eventopage/evento_page.dart';
 
-class ResumeCardWidget extends StatelessWidget {
+class ResumeCardWidget extends StatefulWidget {
   const ResumeCardWidget({Key? key}) : super(key: key);
 
+  @override
+  State<ResumeCardWidget> createState() => _ResumeCardWidgetState();
+}
+
+class _ResumeCardWidgetState extends State<ResumeCardWidget> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -70,14 +74,12 @@ class ResumeCardWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                child: Text(
-                  '- - - - - - - - - - ',
-                  style: TextStyle(
-                      color: const Color(0xff5F5DA6),
-                      fontWeight: FontWeight.bold,
-                      fontSize: height * 0.03),
-                ),
+              Text(
+                '- - - - - - - - - - ',
+                style: TextStyle(
+                    color: const Color(0xff5F5DA6),
+                    fontWeight: FontWeight.bold,
+                    fontSize: height * 0.03),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

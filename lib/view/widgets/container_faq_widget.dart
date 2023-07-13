@@ -65,7 +65,7 @@ class _ContainerFaqWidgetState extends State<ContainerFaqWidget> {
                 textAlign: TextAlign.center,
                 widget.ress,
                 style: TextStyle(
-                    color: Color(0xff5F5DA6),
+                    color: const Color(0xff5F5DA6),
                     fontWeight: FontWeight.w500,
                     fontSize: width * 0.05),
               ),

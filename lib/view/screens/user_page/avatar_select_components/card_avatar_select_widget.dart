@@ -16,11 +16,11 @@ class _CardAvatarSelectWidgetState extends State<CardAvatarSelectWidget> {
     final top = widget.onselect ? 50.0 : 80.0;
     final bottom = widget.onselect ? 10.0 : 60.0;
     final opacyt = widget.onselect ? 1.0 : 0.3;
-    ;
+
     return AnimatedContainer(
       curve: Curves.easeInOut,
       margin: EdgeInsets.only(top: top, right: 30, left: 10, bottom: bottom),
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
           image: DecorationImage(

@@ -111,10 +111,10 @@ class _TypePaymentWidgetState extends State<TypePaymentWidget> {
                   width: 2,
                   name: 'Dinheiro',
                   enableTooltip: true,
-                  markerSettings:
-                      MarkerSettings(isVisible: true, color: Colors.white),
-                  dataLabelSettings:
-                      DataLabelSettings(color: Colors.amber, isVisible: true))
+                  markerSettings: const MarkerSettings(
+                      isVisible: true, color: Colors.white),
+                  dataLabelSettings: const DataLabelSettings(
+                      color: Colors.amber, isVisible: true))
             ],
           ),
         ),

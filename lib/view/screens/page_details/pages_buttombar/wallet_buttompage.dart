@@ -22,7 +22,7 @@ class WalletButtompage extends StatelessWidget {
               bottom: 0,
               child: Container(
                 decoration: const BoxDecoration(
-                    color: const Color(0xff5F5DA6),
+                    color: Color(0xff5F5DA6),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(22),
                         topRight: Radius.circular(22))),

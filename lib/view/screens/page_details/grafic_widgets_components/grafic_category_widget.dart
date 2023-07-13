@@ -66,14 +66,14 @@ class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
                 child: SfCircularChart(
                   legend: Legend(
                       isVisible: true,
-                      textStyle: TextStyle(color: Color(0xff5F5DA6)),
+                      textStyle: const TextStyle(color: Color(0xff5F5DA6)),
                       overflowMode: LegendItemOverflowMode.wrap),
                   series: <CircularSeries>[
                     PieSeries<categoryevent, String>(
                       dataSource: _datagrafcategory,
                       xValueMapper: (categoryevent data, _) => data.category,
                       yValueMapper: (categoryevent data, _) => data.valeu,
-                      dataLabelSettings: DataLabelSettings(
+                      dataLabelSettings: const DataLabelSettings(
                         isVisible: true,
                         color: Color(0xff5F5DA6),
                       ),

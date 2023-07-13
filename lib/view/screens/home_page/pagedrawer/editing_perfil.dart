@@ -68,7 +68,7 @@ class _EditingPerfilState extends State<EditingPerfil> {
                             height: height * 0.27,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage(
                                     'assets/img/sem_logo.jpg',
                                   ),

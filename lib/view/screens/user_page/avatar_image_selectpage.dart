@@ -10,7 +10,7 @@ class AvatarImageSelectpage extends StatefulWidget {
 }
 
 class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
-  PageController _pageController = PageController(viewportFraction: 0.6);
+  final PageController _pageController = PageController(viewportFraction: 0.6);
 
   int _currentepage = 0;
   late List<Map> slider;
@@ -60,7 +60,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
                     fontSize: height * 0.05, fontWeight: FontWeight.bold),
               ),
             ),
-            Container(
+            SizedBox(
                 width: width,
                 height: height * 0.3,
                 child: Text(slider[_currentepage]['content'],

@@ -5,7 +5,7 @@ class IconcategoryEventWidget extends StatefulWidget {
 
   final Function() onpressed;
   final String namecategory;
-  final onselectd;
+  final bool onselectd;
 
   const IconcategoryEventWidget({
     Key? key,

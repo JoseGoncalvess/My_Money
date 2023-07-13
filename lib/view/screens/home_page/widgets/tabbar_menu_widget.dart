@@ -86,7 +86,7 @@ class _TabbarMenuWidgetState extends State<TabbarMenuWidget> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DtailsPage(),
+                      builder: (context) => const DtailsPage(),
                     ));
               },
               icon: Icon(

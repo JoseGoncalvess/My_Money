@@ -18,7 +18,7 @@ class _FaqPageState extends State<FaqPage> {
   @override
   void initState() {
     faqTypes = InterfaceData().faqTypes;
-    // TODO: implement initState
+
     super.initState();
   }
 
