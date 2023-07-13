@@ -28,7 +28,11 @@ class _CustomFormfielWidgetState extends State<CustomFormfielWidget>
     with ValidadorMixin {
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) => combvalidator(validator: [
+        () => isempyt(value: value, msg: 'Ops, Não deixe o campo vazio!'),
+        () => islengthMin(value, 'Vamos lá um pouco maior!', 3),
+      ]),
       style: TextStyle(
           color: widget.cortext,
           decorationThickness: 0.0,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/controller/mixins/validador_mixin.dart';
 import 'package:my_money/view/widgets/buttom_custom_widget.dart';
 import 'package:my_money/view/widgets/custom_formfiel_widget.dart';
 
@@ -11,9 +12,10 @@ class SuportPage extends StatefulWidget {
   State<SuportPage> createState() => _SuportPageState();
 }
 
-class _SuportPageState extends State<SuportPage> {
+class _SuportPageState extends State<SuportPage> with ValidadorMixin {
   final TextEditingController _corpoemail = TextEditingController();
   final TextEditingController _assuntoemail = TextEditingController();
+  final GlobalKey<FormState> _keySup = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -53,41 +55,67 @@ class _SuportPageState extends State<SuportPage> {
                     style:
                         TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
               ),
-              Container(
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                  height: height * 0.07,
-                  width: width * 0.5,
-                  child: CustomFormfielWidget(
-                      internlabel: 'Assunto',
-                      keybordtype: TextInputType.name,
-                      controller: _assuntoemail,
-                      cortext: Colors.white,
-                      backgrou: const Color(0xff5F5DA6),
-                      border: Colors.white)),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
+              Form(
+                key: _keySup,
+                child: Column(
+                  children: [
+                    Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        height: height * 0.07,
+                        width: width * 0.5,
+                        child: CustomFormfielWidget(
+                            internlabel: 'Assunto',
+                            keybordtype: TextInputType.name,
+                            controller: _assuntoemail,
+                            cortext: Colors.white,
+                            backgrou: const Color(0xff5F5DA6),
+                            border: Colors.white)),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.03,
+                    ),
+                    Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        height: height * 0.07,
+                        width: width * 0.8,
+                        child: CustomFormfielWidget(
+                            internlabel: 'Descreva sua opnião...',
+                            keybordtype: TextInputType.name,
+                            controller: _corpoemail,
+                            cortext: Colors.white,
+                            backgrou: const Color(0xff5F5DA6),
+                            border: Colors.white)),
+                  ],
+                ),
               ),
-              Container(
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                  height: height * 0.07,
-                  width: width * 0.8,
-                  child: CustomFormfielWidget(
-                      internlabel: 'Descreva sua opnião...',
-                      keybordtype: TextInputType.name,
-                      controller: _corpoemail,
-                      cortext: Colors.white,
-                      backgrou: const Color(0xff5F5DA6),
-                      border: Colors.white)),
               Padding(
                 padding: const EdgeInsets.only(top: 15.0),
                 child: ButtomCustomWidget(
                     altura: 0.07,
                     largura: 0.6,
                     onpressed: () {
-                      SuportController().emailLaucher(
-                          assunto: _assuntoemail.text, corpo: _corpoemail.text);
+                      if (_keySup.currentState!.validate()) {
+                        SuportController().emailLaucher(
+                            context: context,
+                            assunto: _assuntoemail.text,
+                            corpo: _corpoemail.text);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: const Text(
+                            'Por favor, preencha os campos!',
+                            style: TextStyle(
+                                color: Color(0xff5F5DA6),
+                                fontWeight: FontWeight.w500),
+                          ),
+                          action: SnackBarAction(
+                            backgroundColor: const Color(0xff5F5DA6),
+                            label: 'Ok',
+                            textColor: Colors.white,
+                            onPressed: () {},
+                          ),
+                        ));
+                      }
                     },
                     name: 'Enviar',
                     colortext: const Color(0xff5F5DA6),
