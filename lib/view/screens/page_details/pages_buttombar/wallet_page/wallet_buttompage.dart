@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_widget_components/Resume_card_widget.dart';
-import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_widget_components/card_payment_widget.dart';
-import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_widget_components/last_events_widget.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_widget_components/Resume_card_widget.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_widget_components/card_payment_widget.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_widget_components/last_events_widget.dart';
 
 class WalletButtompage extends StatelessWidget {
   const WalletButtompage({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class WalletButtompage extends StatelessWidget {
                     SizedBox(
                       height: height * 0.27,
                     ),
-                    LastEventsWidget(),
+                    const LastEventsWidget(),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(

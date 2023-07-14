@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/view/screens/page_details/pages_buttombar/detail_buttompage.dart';
-import 'package:my_money/view/screens/page_details/pages_buttombar/grafic_buttompag.dart';
-import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_buttompage.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/detail_page/detail_buttompage.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/grafic_page/grafic_buttompag.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_buttompage.dart';
 
 class DtailsPage extends StatefulWidget {
   const DtailsPage({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../eventopage/evento_page.dart';
+import '../../../../eventopage/evento_page.dart';
 
 class ResumeCardWidget extends StatefulWidget {
   const ResumeCardWidget({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import '../grafic_widgets_components/card_info_widget.dart';
-import '../grafic_widgets_components/grafic_category_widget.dart';
-import '../grafic_widgets_components/media_month_widget.dart';
-import '../grafic_widgets_components/type_payment_widget.dart';
+import 'grafic_widgets_components/card_info_widget.dart';
+import 'grafic_widgets_components/grafic_category_widget.dart';
+import 'grafic_widgets_components/media_month_widget.dart';
+import 'grafic_widgets_components/type_payment_widget.dart';
 
 class GraficButtompag extends StatefulWidget {
   const GraficButtompag({Key? key}) : super(key: key);
