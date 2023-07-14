@@ -16,18 +16,18 @@ class DetailButtompage extends StatefulWidget {
 class _DetailButtompageState extends State<DetailButtompage>
     with TickerProviderStateMixin {
   List<String> meses = [
-    'janeiro',
-    'fevereiro',
-    'março',
-    'abril',
-    'mail',
-    'junho',
-    'julho',
-    'agosto',
-    'setembro',
-    'outubro',
-    'novembro',
-    'dezembro'
+    'Janeiro',
+    'Fevereiro',
+    'mMarço',
+    'aAbril',
+    'Mail',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
   ];
 
   int page = 0;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/model/shared_preferences.dart';
-
 import '../../../../../../model/evento_model.dart';
 import '../../../../home_page/home_controller.dart';
 import '../../../../home_page/widgets/card_event_list_widget.dart';
@@ -14,6 +13,7 @@ class LastEventsWidget extends StatefulWidget {
 
 class _LastEventsWidgetState extends State<LastEventsWidget> {
   final HomeController _homecontroller = HomeController();
+
   @override
   void initState() {
     super.initState();
@@ -41,13 +41,13 @@ class _LastEventsWidgetState extends State<LastEventsWidget> {
         ),
         Container(
           width: width * 0.9,
-          height: height * 0.26,
+          height: height * 0.281,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(12)),
           child: ValueListenableBuilder<List<Evento>>(
             valueListenable: _homecontroller,
             builder: (_, value, child) => ListView.builder(
-              itemCount: value.length,
+              itemCount: value.length < 2 ? value.length : 2,
               itemBuilder: (context, index) {
                 return CardEventListWidget(
                   eventData: value[index].dateEvent,

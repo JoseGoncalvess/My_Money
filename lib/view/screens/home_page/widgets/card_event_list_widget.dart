@@ -27,7 +27,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Padding(
-      padding: const EdgeInsets.all(9),
+      padding: const EdgeInsets.all(7),
       child: Container(
         width: width * 0.8,
         height: height * 0.12,

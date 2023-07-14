@@ -1,10 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_widget_components/Resume_card_widget.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_controller.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_widget_components/resume_card.dart';
 import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_widget_components/card_payment_widget.dart';
 import 'package:my_money/view/screens/page_details/pages_buttombar/wallet_page/wallet_widget_components/last_events_widget.dart';
 
-class WalletButtompage extends StatelessWidget {
+import '../../../../../model/shared_preferences.dart';
+import '../../../home_page/home_controller.dart';
+
+class WalletButtompage extends StatefulWidget {
   const WalletButtompage({Key? key}) : super(key: key);
+
+  @override
+  State<WalletButtompage> createState() => _WalletButtompageState();
+}
+
+class _WalletButtompageState extends State<WalletButtompage> {
+  final WalletController _walletcontroller = WalletController();
+  final HomeController _homecontroller = HomeController();
+  @override
+  void initState() {
+    super.initState();
+
+    _walletcontroller.despesas.addListener(() {
+      setState(() {});
+    });
+    _homecontroller.addListener(() {
+      setState(() {});
+    });
+    _homecontroller.getevetList(key: keyList).then((value) => {
+          _walletcontroller.sumValue(eventos: _homecontroller.value),
+          _walletcontroller.sumtrasation(eventos: _homecontroller.value)
+        });
+    _homecontroller.getMoney(key: keyUserMoney);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +97,9 @@ class WalletButtompage extends StatelessWidget {
                 ),
               ),
             ),
-            const ResumeCardWidget(),
+            ResumeCardWidget(
+                dispesas: _walletcontroller.despesas.value,
+                saldoucont: _homecontroller.userMoney.value!),
             Positioned(
                 top: 20,
                 left: width * 0.353,

@@ -16,6 +16,7 @@ class _DtailsPageState extends State<DtailsPage> {
   int _currenteindex = 0;
   late PageController controler;
   int initialPage = 0;
+
   @override
   void initState() {
     controler = PageController(viewportFraction: 0.4, initialPage: initialPage);

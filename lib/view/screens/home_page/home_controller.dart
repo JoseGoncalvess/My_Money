@@ -6,12 +6,12 @@ import '../../../model/shared_preferences.dart';
 class HomeController extends ValueNotifier<List<Evento>> {
   HomeController() : super([]);
   var userName = ValueNotifier<String?>('Usuario');
-  var userMoney = ValueNotifier<String?>('R\$ 0,00');
+  var userMoney = ValueNotifier<String?>('0,00');
 
   final SharedPrefs prefs = SharedPrefs();
 
   ///PERCORRRER OS INTEM DA LISTA CONVERTENDO sTRINGJSON EM OBJECT MODL
-  getevetList({required String key}) {
+  Future getevetList({required String key}) async {
     prefs.getListEventos(key: key).then((v) => {log(v.toString()), value = v});
   }
 

@@ -19,7 +19,7 @@ class CardPaymentWidget extends StatelessWidget {
     final width = MediaQuery.of(context).size.height;
     return Container(
       width: width * 0.23,
-      height: height * 0.15,
+      height: height * 0.13,
       decoration: BoxDecoration(
           color: const Color(0xFF2E4159),
           borderRadius: BorderRadius.circular(12)),
@@ -33,16 +33,16 @@ class CardPaymentWidget extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: width * 0.06,
+                size: width * 0.05,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(7.0),
                 child: Text(
                   namepayment,
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
-                      fontSize: height * 0.023),
+                      fontSize: height * 0.022),
                 ),
               ),
             ],
@@ -55,7 +55,7 @@ class CardPaymentWidget extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
-                    fontSize: height * 0.019),
+                    fontSize: height * 0.018),
               ),
               Text(
                 'Transações: $eventnumber',
