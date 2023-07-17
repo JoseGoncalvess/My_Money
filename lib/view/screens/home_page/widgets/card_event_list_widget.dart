@@ -43,49 +43,51 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                   offset: Offset(1, 5))
             ]),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    width: width * 0.2,
-                    height: height * 0.1,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff5F5DA6),
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: Icon(
-                      widget.iconCategory,
-                      size: width * 0.09,
-                      color: const Color(0xFFEBE9E9),
+            SizedBox(
+              width: width * 0.75,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Container(
+                      width: width * 0.2,
+                      height: height * 0.1,
+                      decoration: BoxDecoration(
+                        color: const Color(0xff5F5DA6),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Icon(
+                        widget.iconCategory,
+                        size: width * 0.09,
+                        color: const Color(0xFFEBE9E9),
+                      ),
                     ),
                   ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      EventType().getEvent(icon: widget.iconCategory),
-                      style: TextStyle(
-                          fontSize: height * 0.02, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      widget.eventName,
-                      style: TextStyle(
-                          fontSize: height * 0.023,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              width: width * 0.14,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        EventType().getEvent(icon: widget.iconCategory),
+                        style: TextStyle(
+                            fontSize: height * 0.02,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        widget.eventName,
+                        style: TextStyle(
+                            fontSize: height * 0.023,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,

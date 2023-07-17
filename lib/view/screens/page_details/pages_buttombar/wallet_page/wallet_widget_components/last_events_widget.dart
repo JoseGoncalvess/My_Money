@@ -46,17 +46,19 @@ class _LastEventsWidgetState extends State<LastEventsWidget> {
               color: Colors.white, borderRadius: BorderRadius.circular(12)),
           child: ValueListenableBuilder<List<Evento>>(
             valueListenable: _homecontroller,
-            builder: (_, value, child) => ListView.builder(
-              itemCount: value.length < 2 ? value.length : 2,
-              itemBuilder: (context, index) {
-                return CardEventListWidget(
-                  eventData: value[index].dateEvent,
-                  eventName: value[index].nameEvent,
-                  eventValue: value[index].velueEvent,
-                  iconCategory: value[index].categoryEvent,
-                );
-              },
-            ),
+            builder: (_, value, child) {
+              return ListView.builder(
+                itemCount: value.length < 2 ? value.length : 2,
+                itemBuilder: (context, index) {
+                  return CardEventListWidget(
+                    eventData: value[index].dateEvent,
+                    eventName: value[index].nameEvent,
+                    eventValue: value[index].velueEvent,
+                    iconCategory: value[index].categoryEvent,
+                  );
+                },
+              );
+            },
           ),
         )
       ],

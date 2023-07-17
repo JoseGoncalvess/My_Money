@@ -27,9 +27,16 @@ class _WalletButtompageState extends State<WalletButtompage> {
     _homecontroller.addListener(() {
       setState(() {});
     });
+    _walletcontroller.trasationcard.addListener(() {
+      setState(() {});
+    });
+    _walletcontroller.trasationmoney.addListener(() {
+      setState(() {});
+    });
+
     _homecontroller.getevetList(key: keyList).then((value) => {
           _walletcontroller.sumValue(eventos: _homecontroller.value),
-          _walletcontroller.sumtrasation(eventos: _homecontroller.value)
+          _walletcontroller.sumtrasation(eventos: _homecontroller.value),
         });
     _homecontroller.getMoney(key: keyUserMoney);
   }
@@ -75,20 +82,20 @@ class _WalletButtompageState extends State<WalletButtompage> {
                     SizedBox(
                       width: width * 0.96,
                       height: height * 0.15,
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CardPaymentWidget(
+                            trasitioninfo:
+                                _walletcontroller.trasationmoney.value,
                             icon: Icons.attach_money_rounded,
-                            eventnumber: '3',
                             namepayment: 'Dinheiro',
-                            value: '300',
                           ),
                           CardPaymentWidget(
                             icon: Icons.credit_card_rounded,
-                            eventnumber: '1',
                             namepayment: 'Cartão',
-                            value: '2000',
+                            trasitioninfo:
+                                _walletcontroller.trasationcard.value,
                           )
                         ],
                       ),

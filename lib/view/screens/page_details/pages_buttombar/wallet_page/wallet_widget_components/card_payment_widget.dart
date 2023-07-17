@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../model/trasation_info.dart';
+
 class CardPaymentWidget extends StatelessWidget {
   final String namepayment;
-  final String value;
-  final String eventnumber;
+
   final IconData icon;
+  final TrasationInfo trasitioninfo;
   const CardPaymentWidget(
       {Key? key,
       required this.namepayment,
-      required this.value,
-      required this.eventnumber,
-      required this.icon})
+      required this.icon,
+      required this.trasitioninfo})
       : super(key: key);
 
   @override
@@ -51,14 +52,14 @@ class CardPaymentWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'R\$ $value',
+                'R\$ ${trasitioninfo.strasition}',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
                     fontSize: height * 0.018),
               ),
               Text(
-                'Transações: $eventnumber',
+                'Transações: ${trasitioninfo.ntransition}',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
