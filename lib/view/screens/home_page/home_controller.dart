@@ -12,7 +12,7 @@ class HomeController extends ValueNotifier<List<Evento>> {
 
   ///PERCORRRER OS INTEM DA LISTA CONVERTENDO sTRINGJSON EM OBJECT MODL
   Future getevetList({required String key}) async {
-    prefs.getListEventos(key: key).then((v) => {log(v.toString()), value = v});
+    prefs.getListEventos(key: key).then((v) => {value = v});
   }
 
   saveEvent({required String key, required Evento evento}) async {

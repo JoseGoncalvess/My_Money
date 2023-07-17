@@ -16,6 +16,20 @@ class InterfaceData {
     PaymentType(name: 'Cartão', icon: Icons.credit_card_rounded),
     PaymentType(name: 'Dinehiro', icon: Icons.payments_rounded)
   ];
+  List<String> months = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Mail',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  ];
 
   List<Map> imageAvatr = [
     {

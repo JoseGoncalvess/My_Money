@@ -56,7 +56,7 @@ class EventosInfoWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'R\$ $value',
+                value,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,

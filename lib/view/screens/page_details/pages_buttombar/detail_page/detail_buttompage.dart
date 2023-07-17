@@ -1,5 +1,6 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:my_money/controller/interface_data.dart';
+import 'details_controller.dart';
 import 'details_widget_components/eventos_info_widget.dart';
 
 class DetailButtompage extends StatefulWidget {
@@ -15,41 +16,22 @@ class DetailButtompage extends StatefulWidget {
 
 class _DetailButtompageState extends State<DetailButtompage>
     with TickerProviderStateMixin {
-  List<String> meses = [
-    'Janeiro',
-    'Fevereiro',
-    'mMarço',
-    'aAbril',
-    'Mail',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro'
-  ];
+  final DetailsController _detailsController = DetailsController();
+  bool loading = false;
 
-  int page = 0;
-  Future getmes({required int index}) async {
-    var item = '';
-
-    item = meses[index];
-    setState(() {
-      mes = item;
+  @override
+  void initState() {
+    super.initState();
+    _detailsController.addListener(() {
+      setState(() {});
     });
-
-    return item;
-  }
-
-  String mes = '';
-
-  _onpagechange(int pagenum) {
-    setState(() {
-      page = pagenum;
+    _detailsController.infoevent.addListener(() {
+      setState(() {});
     });
-    // return Text('("Current Page: +${page.toString()})');
-    log('("Current Page: +${page.toString()})');
+    _detailsController.month.addListener(() {
+      setState(() {});
+    });
+    _detailsController.getInfoMoth(pagenum: 1);
   }
 
   @override
@@ -83,27 +65,32 @@ class _DetailButtompageState extends State<DetailButtompage>
                           width: width * 0.9,
                           height: height * 0.5,
                           decoration: BoxDecoration(
-                              color: Color(0xFF5F5DA6).withAlpha(200),
+                              color: const Color(0xFF5F5DA6).withAlpha(200),
                               borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(12),
                                   topRight: Radius.circular(12))),
-                          child: FutureBuilder(
-                            future: getmes(index: page),
-                            builder: (context, snapshot) => ListView.builder(
-                              itemCount: meses.length,
-                              itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: const Color(0xFF2E4159),
-                                      borderRadius: BorderRadius.circular(22)),
-                                  width: width * 0.8,
-                                  height: height * 0.1,
-                                  alignment: Alignment.center,
-                                  child: Text(snapshot.data.toString()),
-                                ),
-                              ),
-                            ),
+                          child: ValueListenableBuilder(
+                            valueListenable: _detailsController,
+                            builder: (context, value, child) {
+                              return ListView.builder(
+                                  itemCount: InterfaceData().months.length,
+                                  itemBuilder: (context, index) {
+                                    var snapshot = InterfaceData().months;
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFF2E4159),
+                                            borderRadius:
+                                                BorderRadius.circular(22)),
+                                        width: width * 0.8,
+                                        height: height * 0.1,
+                                        alignment: Alignment.center,
+                                        child: Text(snapshot[index]),
+                                      ),
+                                    );
+                                  });
+                            },
                           )),
                     ],
                   )),
@@ -111,13 +98,16 @@ class _DetailButtompageState extends State<DetailButtompage>
                 top: 50,
                 left: 4,
                 right: 4,
-                child: EventosInfoWidget(
-                  h: 0.2,
-                  w: 0.7,
-                  eventnumber: meses.length.toString(),
-                  icon: Icons.list_alt_rounded,
-                  namepayment: 'Eventos de $mes',
-                  value: '3000',
+                child: ValueListenableBuilder(
+                  valueListenable: _detailsController.infoevent,
+                  builder: (context, value, child) => EventosInfoWidget(
+                    h: 0.2,
+                    w: 0.7,
+                    eventnumber: value.ntransition,
+                    icon: Icons.list_alt_rounded,
+                    namepayment: 'Eventos de ${_detailsController.month.value}',
+                    value: value.strasition,
+                  ),
                 ),
               ),
               Positioned(
@@ -126,10 +116,13 @@ class _DetailButtompageState extends State<DetailButtompage>
                     width: width,
                     height: height * 0.07,
                     child: PageView(
-                        onPageChanged: _onpagechange,
+                        onPageChanged: (value) {
+                          _detailsController.onpagechange(pagenum: value);
+                        },
                         scrollDirection: Axis.horizontal,
                         controller: widget.pagecontroller,
-                        children: meses
+                        children: InterfaceData()
+                            .months
                             .map((e) => Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
