@@ -47,7 +47,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              width: width * 0.75,
+              width: width * 0.72,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,

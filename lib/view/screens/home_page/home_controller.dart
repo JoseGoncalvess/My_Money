@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer';
 import '../../../model/evento_model.dart';
 import '../../../model/shared_preferences.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
+import '../../../home_page/widgets/card_event_list_widget.dart';
 import 'details_controller.dart';
 import 'details_widget_components/eventos_info_widget.dart';
 
@@ -62,7 +63,7 @@ class _DetailButtompageState extends State<DetailButtompage>
                             fontSize: height * 0.03),
                       ),
                       Container(
-                          width: width * 0.9,
+                          width: width,
                           height: height * 0.5,
                           decoration: BoxDecoration(
                               color: const Color(0xFF5F5DA6).withAlpha(200),
@@ -73,21 +74,13 @@ class _DetailButtompageState extends State<DetailButtompage>
                             valueListenable: _detailsController,
                             builder: (context, value, child) {
                               return ListView.builder(
-                                  itemCount: InterfaceData().months.length,
+                                  itemCount: value.length,
                                   itemBuilder: (context, index) {
-                                    var snapshot = InterfaceData().months;
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: const Color(0xFF2E4159),
-                                            borderRadius:
-                                                BorderRadius.circular(22)),
-                                        width: width * 0.8,
-                                        height: height * 0.1,
-                                        alignment: Alignment.center,
-                                        child: Text(snapshot[index]),
-                                      ),
+                                    return CardEventListWidget(
+                                      eventData: value[index].dateEvent,
+                                      eventName: value[index].nameEvent,
+                                      eventValue: value[index].velueEvent,
+                                      iconCategory: value[index].categoryEvent,
                                     );
                                   });
                             },

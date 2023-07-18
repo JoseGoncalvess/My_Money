@@ -38,16 +38,19 @@ class DetailsController extends ValueNotifier<List<Evento>> {
   }
 
   Future getInfoMoth({required int pagenum}) async {
+    List<Evento> eventMonth = [];
     int nuberTrasition = 0;
     int valueTrasition = 0;
     await homeController.getevetList(key: keyList);
     List<Evento> listEve = homeController.value;
     for (var e in listEve) {
       if (getmes(data: e.dateEvent) == '0$pagenum') {
+        eventMonth.add(e);
         valueTrasition = valueTrasition + int.parse(e.velueEvent);
         nuberTrasition++;
       }
     }
+    value = eventMonth;
     infoevent.value = TrasationInfo(
         ntransition: nuberTrasition.toString(),
         strasition: 'R\$ $valueTrasition');
