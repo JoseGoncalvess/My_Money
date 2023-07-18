@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import '../../../home_page/widgets/card_event_list_widget.dart';
+import '../../../home_page/widgets/new_item_widget.dart';
 import 'details_controller.dart';
 import 'details_widget_components/eventos_info_widget.dart';
 
@@ -70,21 +71,28 @@ class _DetailButtompageState extends State<DetailButtompage>
                               borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(12),
                                   topRight: Radius.circular(12))),
-                          child: ValueListenableBuilder(
-                            valueListenable: _detailsController,
-                            builder: (context, value, child) {
-                              return ListView.builder(
-                                  itemCount: value.length,
-                                  itemBuilder: (context, index) {
-                                    return CardEventListWidget(
-                                      eventData: value[index].dateEvent,
-                                      eventName: value[index].nameEvent,
-                                      eventValue: value[index].velueEvent,
-                                      iconCategory: value[index].categoryEvent,
-                                    );
-                                  });
-                            },
-                          )),
+                          child: _detailsController.value.isEmpty
+                              ? NewItemWidget(
+                                  coloricon: Colors.white,
+                                  colortext: Colors.white,
+                                  mensseger: 'Sem eventos este mês !',
+                                )
+                              : ValueListenableBuilder(
+                                  valueListenable: _detailsController,
+                                  builder: (context, value, child) {
+                                    return ListView.builder(
+                                        itemCount: value.length,
+                                        itemBuilder: (context, index) {
+                                          return CardEventListWidget(
+                                            eventData: value[index].dateEvent,
+                                            eventName: value[index].nameEvent,
+                                            eventValue: value[index].velueEvent,
+                                            iconCategory:
+                                                value[index].categoryEvent,
+                                          );
+                                        });
+                                  },
+                                )),
                     ],
                   )),
               Positioned(

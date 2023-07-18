@@ -27,7 +27,7 @@ class DetailsController extends ValueNotifier<List<Evento>> {
   onpagechange({required int pagenum}) {
     month.value = months[pagenum];
     page$.value = pagenum;
-    getInfoMoth(pagenum: pagenum);
+    getInfoMoth(pagenum: pagenum + 1);
     log('("Current Page: +${page.toString()})');
   }
 

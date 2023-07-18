@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class NewItemWidget extends StatelessWidget {
-  const NewItemWidget({Key? key}) : super(key: key);
+  final String mensseger;
+  final Color colortext;
+  final Color coloricon;
+  const NewItemWidget(
+      {Key? key,
+      required this.mensseger,
+      required this.colortext,
+      required this.coloricon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,17 +18,21 @@ class NewItemWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Icon(
+        Icon(
           Icons.note_add_rounded,
           size: 130,
-          color: Color(0xFF2E4159),
+          color: coloricon,
         ),
-        Text('Adicione Novos  Eventos',
+        Text(mensseger,
             style: TextStyle(
-                color: const Color(0xff5F5DA6),
+                color: colortext,
                 fontWeight: FontWeight.bold,
                 fontSize: height * 0.03))
       ],
     );
   }
 }
+// const Color(0xff5F5DA6)
+
+
+//  Color(0xFF2E4159)
