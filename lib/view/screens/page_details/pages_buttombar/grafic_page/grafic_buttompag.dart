@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:my_money/model/shared_preferences.dart';
+import 'package:my_money/view/screens/home_page/home_controller.dart';
+import 'grafic_controller.dart';
 import 'grafic_widgets_components/card_info_widget.dart';
 import 'grafic_widgets_components/grafic_category_widget.dart';
 import 'grafic_widgets_components/media_month_widget.dart';
@@ -13,6 +16,21 @@ class GraficButtompag extends StatefulWidget {
 }
 
 class _GraficButtompagState extends State<GraficButtompag> {
+  final GraficController _graficController = GraficController();
+  final HomeController _homeController = HomeController();
+  @override
+  void initState() {
+    super.initState();
+    _homeController.addListener(() {
+      setState(() {});
+    });
+    _graficController.listcategory.addListener(() {
+      setState(() {});
+    });
+    _homeController.getevetList(key: keyList).then((value) =>
+        {_graficController.getcategorylist(list: _homeController.value)});
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
