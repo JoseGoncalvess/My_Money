@@ -14,21 +14,23 @@ class NewItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Icon(
-          Icons.note_add_rounded,
-          size: 130,
-          color: coloricon,
-        ),
-        Text(mensseger,
-            style: TextStyle(
-                color: colortext,
-                fontWeight: FontWeight.bold,
-                fontSize: height * 0.03))
-      ],
+    return SizedBox(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.note_add_rounded,
+            size: 130,
+            color: coloricon,
+          ),
+          Text(mensseger,
+              style: TextStyle(
+                  color: colortext,
+                  fontWeight: FontWeight.bold,
+                  fontSize: height * 0.03))
+        ],
+      ),
     );
   }
 }

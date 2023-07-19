@@ -18,16 +18,23 @@ class DetailsController extends ValueNotifier<List<Evento>> {
 
   final month = ValueNotifier<String>('');
   //
-  final page$ = ValueNotifier<int>(0);
+  final loading$ = ValueNotifier<bool>(false);
+  //
+  final _page$ = ValueNotifier<int>(0);
+  //
   final infoevent = ValueNotifier<TrasationInfo>(
       TrasationInfo(ntransition: '0', strasition: 'R\$ 0.00'));
 
-  int get page => page$.value;
+  int get page => _page$.value;
+  //
+  bool get loading => loading$.value;
+  //
 
   onpagechange({required int pagenum}) {
     month.value = months[pagenum];
-    page$.value = pagenum;
+    _page$.value = pagenum;
     getInfoMoth(pagenum: pagenum + 1);
+
     log('("Current Page: +${page.toString()})');
   }
 
@@ -54,5 +61,7 @@ class DetailsController extends ValueNotifier<List<Evento>> {
     infoevent.value = TrasationInfo(
         ntransition: nuberTrasition.toString(),
         strasition: 'R\$ $valueTrasition');
+
+    loading$.value = true;
   }
 }

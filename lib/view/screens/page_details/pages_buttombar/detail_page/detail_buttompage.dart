@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import '../../../home_page/widgets/card_event_list_widget.dart';
@@ -33,6 +35,10 @@ class _DetailButtompageState extends State<DetailButtompage>
     _detailsController.month.addListener(() {
       setState(() {});
     });
+    _detailsController.loading$.addListener(() {
+      setState(() {});
+    });
+
     _detailsController.getInfoMoth(pagenum: 1);
   }
 
@@ -71,25 +77,40 @@ class _DetailButtompageState extends State<DetailButtompage>
                               borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(12),
                                   topRight: Radius.circular(12))),
-                          child: _detailsController.value.isEmpty
-                              ? NewItemWidget(
-                                  coloricon: Colors.white,
-                                  colortext: Colors.white,
-                                  mensseger: 'Sem eventos este mês !',
+                          child: !_detailsController.loading
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 5,
+                                  ),
                                 )
                               : ValueListenableBuilder(
                                   valueListenable: _detailsController,
                                   builder: (context, value, child) {
                                     return ListView.builder(
-                                        itemCount: value.length,
+                                        itemCount:
+                                            value.isEmpty ? 1 : value.length,
                                         itemBuilder: (context, index) {
-                                          return CardEventListWidget(
-                                            eventData: value[index].dateEvent,
-                                            eventName: value[index].nameEvent,
-                                            eventValue: value[index].velueEvent,
-                                            iconCategory:
-                                                value[index].categoryEvent,
-                                          );
+                                          return value.isEmpty
+                                              ? SizedBox(
+                                                  height: height * 0.5,
+                                                  child: const NewItemWidget(
+                                                    coloricon: Colors.white,
+                                                    colortext: Colors.white,
+                                                    mensseger:
+                                                        'Sem eventos este mês !',
+                                                  ),
+                                                )
+                                              : CardEventListWidget(
+                                                  eventData:
+                                                      value[index].dateEvent,
+                                                  eventName:
+                                                      value[index].nameEvent,
+                                                  eventValue:
+                                                      value[index].velueEvent,
+                                                  iconCategory: value[index]
+                                                      .categoryEvent,
+                                                );
                                         });
                                   },
                                 )),
@@ -119,6 +140,7 @@ class _DetailButtompageState extends State<DetailButtompage>
                     child: PageView(
                         onPageChanged: (value) {
                           _detailsController.onpagechange(pagenum: value);
+                          log(widget.pagecontroller.page!.round().toString());
                         },
                         scrollDirection: Axis.horizontal,
                         controller: widget.pagecontroller,
@@ -131,7 +153,11 @@ class _DetailButtompageState extends State<DetailButtompage>
                                     Text(
                                       e.toUpperCase(),
                                       style: TextStyle(
-                                          color: const Color(0xff5F5DA6),
+                                          color:
+                                              _detailsController.month.value ==
+                                                      e
+                                                  ? const Color(0xff5F5DA6)
+                                                  : Colors.grey,
                                           fontWeight: FontWeight.bold,
                                           fontSize: height * 0.02),
                                     ),
