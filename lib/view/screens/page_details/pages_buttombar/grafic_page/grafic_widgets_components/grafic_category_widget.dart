@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/model/shared_preferences.dart';
+import 'package:my_money/view/screens/home_page/home_controller.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import '../grafic_controller.dart';
+import '../models/category_event.dart';
 
 class GraficCategoryWidget extends StatefulWidget {
   const GraficCategoryWidget({Key? key}) : super(key: key);
@@ -8,33 +12,21 @@ class GraficCategoryWidget extends StatefulWidget {
   State<GraficCategoryWidget> createState() => _GraficCategoryWidgetState();
 }
 
-class categoryevent {
-  String category;
-  int valeu;
-  categoryevent({
-    required this.category,
-    required this.valeu,
-  });
-}
-
-late List<categoryevent> _datagrafcategory;
-
-List<categoryevent> getcategory() {
-  final List<categoryevent> dataEvent = [
-    categoryevent(category: 'Viagem', valeu: 800),
-    categoryevent(category: 'Saude', valeu: 2000),
-    categoryevent(category: 'Lazer', valeu: 100),
-    categoryevent(category: 'trabalho', valeu: 30),
-    categoryevent(category: 'Investimento', valeu: 300),
-  ];
-  return dataEvent;
-}
-
 @override
 class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
+  GraficController _graficController = GraficController();
+  HomeController _homeController = HomeController();
+
   void initState() {
-    _datagrafcategory = getcategory();
     super.initState();
+    _homeController.addListener(() {
+      setState(() {});
+    });
+    _graficController.listcategory.addListener(() {
+      setState(() {});
+    });
+    _homeController.getevetList(key: keyList).then((value) =>
+        {_graficController.getcategorylist(list: _homeController.value)});
   }
 
   @override
@@ -63,23 +55,26 @@ class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
                 // color: Colors.amber,
                 width: width * 0.97,
                 height: height * 0.34,
-                child: SfCircularChart(
-                  legend: Legend(
-                      isVisible: true,
-                      textStyle: const TextStyle(color: Color(0xff5F5DA6)),
-                      overflowMode: LegendItemOverflowMode.wrap),
-                  series: <CircularSeries>[
-                    PieSeries<categoryevent, String>(
-                      dataSource: _datagrafcategory,
-                      xValueMapper: (categoryevent data, _) => data.category,
-                      yValueMapper: (categoryevent data, _) => data.valeu,
-                      dataLabelSettings: const DataLabelSettings(
+                child: ValueListenableBuilder<List<CategoryEvent>>(
+                  valueListenable: _graficController.listcategory,
+                  builder: (context, value, child) => SfCircularChart(
+                    legend: Legend(
                         isVisible: true,
-                        color: Color(0xff5F5DA6),
+                        textStyle: const TextStyle(color: Color(0xff5F5DA6)),
+                        overflowMode: LegendItemOverflowMode.wrap),
+                    series: <CircularSeries>[
+                      PieSeries<CategoryEvent, String>(
+                        dataSource: value,
+                        xValueMapper: (CategoryEvent data, _) => data.category,
+                        yValueMapper: (CategoryEvent data, _) => data.valeu,
+                        dataLabelSettings: const DataLabelSettings(
+                          isVisible: true,
+                          color: Color(0xff5F5DA6),
+                        ),
+                        enableTooltip: true,
                       ),
-                      enableTooltip: true,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               )
             ],
