@@ -8,11 +8,15 @@ class FormEventWidget extends StatefulWidget {
   final PageController pagecontrollerCat;
   final TextEditingController eventocontroller;
   final TextEditingController valuecontroller;
+  final Function()? timetable;
+  final String datevalue;
   const FormEventWidget(
       {Key? key,
       required this.eventocontroller,
       required this.valuecontroller,
-      required this.pagecontrollerCat})
+      required this.pagecontrollerCat,
+      required this.timetable,
+      required this.datevalue})
       : super(key: key);
 
   @override
@@ -67,6 +71,8 @@ class _FormEventWidgetState extends State<FormEventWidget> with ValidadorMixin {
           ),
         ),
         RowInfoformWidget(
+          datevalue: widget.datevalue,
+          timeTble: widget.timetable,
           valorController: widget.valuecontroller,
         ),
         CategoryEventWidget(

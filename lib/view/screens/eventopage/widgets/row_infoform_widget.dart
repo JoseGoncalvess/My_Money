@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:my_money/controller/mixins/validador_mixin.dart';
 
 import '../evento_controller.dart';
 
 class RowInfoformWidget extends StatefulWidget {
+  final Function? timeTble;
+  final String datevalue;
   final TextEditingController valorController;
-  const RowInfoformWidget({Key? key, required this.valorController})
+  const RowInfoformWidget(
+      {Key? key,
+      required this.valorController,
+      required this.timeTble,
+      required this.datevalue})
       : super(key: key);
 
   @override
@@ -46,7 +53,7 @@ class _RowInfoformWidgetState extends State<RowInfoformWidget>
               ),
               InkWell(
                 onTap: () {
-                  _eventocontroller.openBox(context: context);
+                  widget.timeTble!();
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -55,12 +62,9 @@ class _RowInfoformWidgetState extends State<RowInfoformWidget>
                   decoration: BoxDecoration(
                       color: const Color(0xff4F4D8C),
                       borderRadius: BorderRadius.circular(4)),
-                  child: ValueListenableBuilder(
-                    valueListenable: _eventocontroller,
-                    builder: (context, value, child) => Text(
-                      value,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                  child: Text(
+                    widget.datevalue,
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

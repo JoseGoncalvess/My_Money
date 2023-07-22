@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/controller/parcela_controller.dart';
@@ -23,22 +25,27 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
   final HomeController _homecontroller = HomeController();
   final PageController _pagecontrollecat = PageController();
   final GlobalKey<FormState> _keyevent = GlobalKey<FormState>();
-  final TextEditingController _eventoController = TextEditingController();
+  final TextEditingController _eventotexteditController =
+      TextEditingController();
   final TextEditingController _valorController = TextEditingController();
   bool payment = false;
   late String paymenttype = 'Dinheiro';
   final ParcelaController parcelcontroller = ParcelaController();
-  final EventoController _evento = EventoController();
+  final EventoController _eventocontroller = EventoController();
 
   @override
   void initState() {
-    _evento.addListener(() {
+    super.initState();
+    _eventocontroller.addListener(() {
+      setState(() {});
+      log(_eventocontroller.value);
+    });
+    _eventocontroller.newdate.addListener(() {
       setState(() {});
     });
     parcelcontroller.addListener(() {
       setState(() {});
     });
-    super.initState();
   }
 
   @override
@@ -95,8 +102,11 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                       Form(
                         key: _keyevent,
                         child: FormEventWidget(
+                            datevalue: _eventocontroller.value,
+                            timetable: () =>
+                                _eventocontroller.openBox(context: context),
                             pagecontrollerCat: _pagecontrollecat,
-                            eventocontroller: _eventoController,
+                            eventocontroller: _eventotexteditController,
                             valuecontroller: _valorController),
                       ),
                       SizedBox(
@@ -182,8 +192,11 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                       .saveEvent(
                                           key: keyList,
                                           evento: Evento(
-                                              nameEvent: _eventoController.text,
-                                              dateEvent: '24/03/2023',
+                                              nameEvent:
+                                                  _eventotexteditController
+                                                      .text,
+                                              dateEvent:
+                                                  _eventocontroller.value,
                                               velueEvent: _valorController.text,
                                               categoryEvent: InterfaceData()
                                                   .category[cat]

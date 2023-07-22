@@ -17,6 +17,7 @@ class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
   GraficController _graficController = GraficController();
   HomeController _homeController = HomeController();
 
+  @override
   void initState() {
     super.initState();
     _homeController.addListener(() {
@@ -52,7 +53,7 @@ class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
           Row(
             children: [
               Container(
-                // color: Colors.amber,
+                //color: Colors.amber,
                 width: width * 0.97,
                 height: height * 0.34,
                 child: ValueListenableBuilder<List<CategoryEvent>>(

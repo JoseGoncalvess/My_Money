@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               child: _homecontroller.value.isEmpty
                   ? const NewItemWidget(
                       coloricon: Color(0xFF2E4159),
-                      colortext: const Color(0xff5F5DA6),
+                      colortext: Color(0xff5F5DA6),
                       mensseger: 'Adicione Novos  Eventos',
                     )
                   : ValueListenableBuilder<List<Evento>>(
