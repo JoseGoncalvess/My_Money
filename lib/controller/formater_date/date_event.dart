@@ -29,4 +29,35 @@ class DateEvent {
     }
     return date;
   }
+
+  getMonth({required String date}) {
+    var item = date.split('/');
+    switch (item[1]) {
+      case '01':
+        return 'JAN';
+      case '02':
+        return 'FEV';
+      case '03':
+        return 'MARC';
+      case '04':
+        return 'ABR';
+      case '05':
+        return 'MAI';
+      case '06':
+        return 'JUN';
+      case '07':
+        return 'JUL';
+      case '08':
+        return 'AGO';
+      case '09':
+        return 'SET';
+      case '10':
+        return 'OUT';
+      case '11':
+        return 'NOV';
+      case '12':
+        return 'DEZ';
+    }
+    return '';
+  }
 }

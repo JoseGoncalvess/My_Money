@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/model/shared_preferences.dart';
+import 'package:my_money/view/screens/page_details/pages_buttombar/grafic_page/models/colun_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../../../../home_page/home_controller.dart';
+import '../grafic_controller.dart';
 
 class MediaMonthWidget extends StatefulWidget {
   const MediaMonthWidget({Key? key}) : super(key: key);
@@ -18,28 +23,20 @@ class Datacolun {
 }
 
 class _MediaMonthWidgetState extends State<MediaMonthWidget> {
-  late List<Datacolun> _datacolum;
-  dynamic getdatacolun() {
-    final List<Datacolun> datacolum = <Datacolun>[
-      Datacolun(x: 'JAN', y: 200),
-      Datacolun(x: 'FEV', y: 50),
-      Datacolun(x: 'MAR', y: 300),
-      Datacolun(x: 'MAI', y: 880),
-      Datacolun(x: 'JUN', y: 150),
-      Datacolun(x: 'JUL', y: 200),
-      Datacolun(x: 'AGO', y: 88),
-      Datacolun(x: 'SET', y: 44),
-      Datacolun(x: 'OUT', y: 1000),
-      Datacolun(x: 'NOV', y: 362),
-      Datacolun(x: 'DEZ', y: 67),
-    ];
-    return datacolum;
-  }
+  final GraficController _graficController = GraficController();
+  final HomeController _homeController = HomeController();
 
   @override
   void initState() {
-    _datacolum = getdatacolun();
     super.initState();
+    _homeController.addListener(() {
+      setState(() {});
+    });
+    _graficController.listcategory.addListener(() {
+      setState(() {});
+    });
+    _homeController.getevetList(key: keyList).then((value) =>
+        {_graficController.getdataColun(list: _homeController.value)});
   }
 
   @override
@@ -64,25 +61,28 @@ class _MediaMonthWidgetState extends State<MediaMonthWidget> {
             // color: Colors.red,
             width: width * 0.96,
             height: height * 0.35,
-            child: SfCartesianChart(
-              margin: const EdgeInsets.all(2),
-              primaryXAxis: CategoryAxis(
-                  labelStyle: const TextStyle(
-                color: Color(0xff5F5DA6),
-              )),
-              primaryYAxis: NumericAxis(
-                  title: AxisTitle(),
-                  labelStyle: const TextStyle(color: Color(0xff5F5DA6))),
-              series: <ChartSeries>[
-                ColumnSeries<Datacolun, String>(
-                    enableTooltip: true,
-                    dataSource: _datacolum,
-                    xValueMapper: (Datacolun data, _) => data.x,
-                    yValueMapper: (Datacolun data, _) => data.y,
-                    color: const Color(0xff5F5DA6),
-                    dataLabelSettings: const DataLabelSettings(
-                        isVisible: true, color: Color(0xff5F5DA6))),
-              ],
+            child: ValueListenableBuilder(
+              valueListenable: _graficController.listgastomonth,
+              builder: (context, value, child) => SfCartesianChart(
+                margin: const EdgeInsets.all(2),
+                primaryXAxis: CategoryAxis(
+                    labelStyle: const TextStyle(
+                  color: Color(0xff5F5DA6),
+                )),
+                primaryYAxis: NumericAxis(
+                    title: AxisTitle(),
+                    labelStyle: const TextStyle(color: Color(0xff5F5DA6))),
+                series: <ChartSeries>[
+                  ColumnSeries<ColunData, String>(
+                      enableTooltip: true,
+                      dataSource: value,
+                      xValueMapper: (ColunData data, _) => data.xmonth,
+                      yValueMapper: (ColunData data, _) => data.yvalue,
+                      color: const Color(0xff5F5DA6),
+                      dataLabelSettings: const DataLabelSettings(
+                          isVisible: true, color: Color(0xff5F5DA6))),
+                ],
+              ),
             ),
           )
         ],

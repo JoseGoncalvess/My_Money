@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:my_money/controller/mixins/validador_mixin.dart';
-
 import '../evento_controller.dart';
 
 class RowInfoformWidget extends StatefulWidget {
