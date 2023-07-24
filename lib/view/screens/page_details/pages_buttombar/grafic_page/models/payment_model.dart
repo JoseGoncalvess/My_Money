@@ -1,10 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class PaymentModel {
-  final double x;
-  final double y;
-  final double y2;
+  final double xnubermtrasations;
+  final double ytransationtipo1;
+  final double ytransationtipo2;
   PaymentModel({
-    required this.x,
-    required this.y,
-    required this.y2,
+    required this.xnubermtrasations,
+    required this.ytransationtipo1,
+    required this.ytransationtipo2,
   });
 }
