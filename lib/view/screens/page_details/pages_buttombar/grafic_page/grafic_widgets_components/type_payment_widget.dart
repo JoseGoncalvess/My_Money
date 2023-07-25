@@ -96,9 +96,9 @@ class _TypePaymentWidgetState extends State<TypePaymentWidget> {
                               data.ytransationtipo1,
                           width: 2,
                           name: 'Cartão',
-                          markerSettings: MarkerSettings(
+                          markerSettings: const MarkerSettings(
                               isVisible: true, color: Colors.white),
-                          dataLabelSettings: DataLabelSettings(
+                          dataLabelSettings: const DataLabelSettings(
                               color: Colors.green, isVisible: true)),
                       SplineSeries<PaymentModel, double>(
                           color: Colors.amber,

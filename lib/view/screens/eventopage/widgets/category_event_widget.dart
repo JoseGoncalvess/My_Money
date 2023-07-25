@@ -7,9 +7,9 @@ import 'package:my_money/view/widgets/iconcategory_event_widget.dart';
 import '../../../../model/category_event.dart';
 
 class CategoryEventWidget extends StatefulWidget {
-  final PageController PagecontrollerCat;
+  final PageController pagecontrollerCat;
 
-  const CategoryEventWidget({Key? key, required this.PagecontrollerCat})
+  const CategoryEventWidget({Key? key, required this.pagecontrollerCat})
       : super(key: key);
 
   @override
@@ -23,9 +23,9 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
   @override
   void initState() {
     categoryEvent = InterfaceData().category;
-    widget.PagecontrollerCat.addListener(() {
+    widget.pagecontrollerCat.addListener(() {
       setState(() {
-        _currentpage = widget.PagecontrollerCat.page!.round();
+        _currentpage = widget.pagecontrollerCat.page!.round();
         log(_currentpage.toString());
       });
 
@@ -53,7 +53,7 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
             height: height * 0.2,
             width: width,
             child: PageView.builder(
-                controller: widget.PagecontrollerCat,
+                controller: widget.pagecontrollerCat,
                 scrollDirection: Axis.vertical,
                 itemCount: categoryEvent.length,
                 itemBuilder: (context, i) {
@@ -66,18 +66,16 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
                 })),
         Positioned(
           top: 58,
-          child: Container(
-            child: IconButton(
-                onPressed: () {
-                  widget.PagecontrollerCat.jumpToPage(_currentpage - 1);
-                },
-                icon: Icon(
-                  arrowidicat
-                      ? Icons.arrow_downward_rounded
-                      : Icons.arrow_upward_rounded,
-                  color: const Color(0xFF2E4159),
-                )),
-          ),
+          child: IconButton(
+              onPressed: () {
+                widget.pagecontrollerCat.jumpToPage(_currentpage - 1);
+              },
+              icon: Icon(
+                arrowidicat
+                    ? Icons.arrow_downward_rounded
+                    : Icons.arrow_upward_rounded,
+                color: const Color(0xFF2E4159),
+              )),
         )
       ],
     );

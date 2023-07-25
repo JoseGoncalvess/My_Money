@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/formater_date/date_event.dart';
 import 'package:my_money/controller/formater_date/event_type.dart';

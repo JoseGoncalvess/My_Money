@@ -28,7 +28,7 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
         height: height * 0.78,
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: width,
               height: height * 0.1,
               // color: Colors.white,

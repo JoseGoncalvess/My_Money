@@ -76,7 +76,7 @@ class _FormEventWidgetState extends State<FormEventWidget> with ValidadorMixin {
           valorController: widget.valuecontroller,
         ),
         CategoryEventWidget(
-          PagecontrollerCat: widget.pagecontrollerCat,
+          pagecontrollerCat: widget.pagecontrollerCat,
         ),
       ],
     );

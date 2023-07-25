@@ -62,7 +62,7 @@ class _RowInfoformWidgetState extends State<RowInfoformWidget>
                       borderRadius: BorderRadius.circular(4)),
                   child: Text(
                     widget.datevalue,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

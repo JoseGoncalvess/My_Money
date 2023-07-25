@@ -15,20 +15,20 @@ class GraficCategoryWidget extends StatefulWidget {
 
 @override
 class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
-  GraficController _graficController = GraficController();
-  HomeController _homeController = HomeController();
+  GraficController graficController = GraficController();
+  HomeController homeController = HomeController();
 
   @override
   void initState() {
     super.initState();
-    _homeController.addListener(() {
+    homeController.addListener(() {
       setState(() {});
     });
-    _graficController.listcategory.addListener(() {
+    graficController.listcategory.addListener(() {
       setState(() {});
     });
-    _homeController.getevetList(key: keyList).then((value) =>
-        {_graficController.getcategorylist(list: _homeController.value)});
+    homeController.getevetList(key: keyList).then((value) =>
+        {graficController.getcategorylist(list: homeController.value)});
   }
 
   @override
@@ -58,7 +58,7 @@ class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
                 width: width * 0.97,
                 height: height * 0.34,
                 child: ValueListenableBuilder<List<CategoryEvent>>(
-                  valueListenable: _graficController.listcategory,
+                  valueListenable: graficController.listcategory,
                   builder: (context, value, child) => value.isEmpty
                       ? const CustomAlert(
                           icon: Icons.app_registration_rounded,

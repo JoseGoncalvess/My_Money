@@ -48,7 +48,7 @@ class _EditingPerfilState extends State<EditingPerfil> {
                   alignment: Alignment.center,
                   height: height * 0.12,
                   width: width,
-                  child: Text('Perfil Atual',
+                  child: const Text('Perfil Atual',
                       style:
                           TextStyle(fontSize: 28, fontWeight: FontWeight.w600)),
                 ),
