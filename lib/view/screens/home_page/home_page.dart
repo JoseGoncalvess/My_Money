@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
+import 'package:my_money/view/screens/home_page/widgets/menu_action_event.dart';
 import 'package:my_money/view/screens/home_page/widgets/tabbar_menu_widget.dart';
 import '../../../controller/version_details.dart';
 import '../eventopage/evento_page.dart';
@@ -84,6 +85,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         return ListView.builder(
                           itemCount: value.isEmpty ? 1 : value.length,
                           itemBuilder: (context, index) => GestureDetector(
+                            onLongPress: () {
+                              MenuActionEvent().showButtomSheet(
+                                  context: context,
+                                  nameEvent: value[index].nameEvent,
+                                  edidtingFunction: () {},
+                                  deletFunction: () => _homecontroller
+                                      .removeEvnet(key: keyList, index: index));
+                            },
                             child: CardEventListWidget(
                               eventData: value[index].dateEvent,
                               eventName: value[index].nameEvent,

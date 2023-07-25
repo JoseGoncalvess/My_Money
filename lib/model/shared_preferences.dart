@@ -72,6 +72,18 @@ class SharedPrefs {
     });
   }
 
+  /// EDITA O CONTATO EXISTENTE
+  Future editingEvnetList(
+      {required String key, required int index, required Evento evento}) async {
+    List<String>? listStrng = [];
+    loadList(key: key).then((v) {
+      listStrng = v;
+      listStrng!.removeAt(index);
+      listString.add(evento.toJson());
+      saveList(key: key, list: listStrng);
+    });
+  }
+
   ///Carregar Name do usuario
   Future getNameUser({required String key}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -91,4 +103,3 @@ const String keyList = '@evento';
 const String keyUsername = '@user';
 const String keyUserMoney = '@Money';
 //chave da lista 'evento1'
-

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:my_money/view/screens/splash_oage/splash_page.dart';
+import 'package:my_money/view/screens/splash_page/splash_page.dart';
 
 class AppWidegt extends StatefulWidget {
   const AppWidegt({Key? key}) : super(key: key);
@@ -18,6 +18,10 @@ class _AppWidegtState extends State<AppWidegt> {
       theme: ThemeData(
         fontFamily: 'Fredoka',
         colorScheme: const ColorScheme.dark(onPrimary: Color(0xff4F4D8C)),
+        elevatedButtonTheme: const ElevatedButtonThemeData(
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStatePropertyAll(const Color(0xff5F5DA6)))),
         datePickerTheme: const DatePickerThemeData(
           backgroundColor: Color(0xff4F4D8C),
           headerBackgroundColor: Color(0xFF2E4159),
