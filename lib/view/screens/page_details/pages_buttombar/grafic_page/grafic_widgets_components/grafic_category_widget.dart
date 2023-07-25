@@ -4,6 +4,7 @@ import 'package:my_money/view/screens/home_page/home_controller.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../grafic_controller.dart';
 import '../models/category_event.dart';
+import 'custom_alert.dart';
 
 class GraficCategoryWidget extends StatefulWidget {
   const GraficCategoryWidget({Key? key}) : super(key: key);
@@ -52,30 +53,38 @@ class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
           ),
           Row(
             children: [
-              Container(
+              SizedBox(
                 //color: Colors.amber,
                 width: width * 0.97,
                 height: height * 0.34,
                 child: ValueListenableBuilder<List<CategoryEvent>>(
                   valueListenable: _graficController.listcategory,
-                  builder: (context, value, child) => SfCircularChart(
-                    legend: Legend(
-                        isVisible: true,
-                        textStyle: const TextStyle(color: Color(0xff5F5DA6)),
-                        overflowMode: LegendItemOverflowMode.wrap),
-                    series: <CircularSeries>[
-                      PieSeries<CategoryEvent, String>(
-                        dataSource: value,
-                        xValueMapper: (CategoryEvent data, _) => data.category,
-                        yValueMapper: (CategoryEvent data, _) => data.valeu,
-                        dataLabelSettings: const DataLabelSettings(
-                          isVisible: true,
-                          color: Color(0xff5F5DA6),
+                  builder: (context, value, child) => value.isEmpty
+                      ? const CustomAlert(
+                          icon: Icons.app_registration_rounded,
+                          mensseger: 'Sem Registro de Eventos',
+                        )
+                      : SfCircularChart(
+                          legend: Legend(
+                              isVisible: true,
+                              textStyle:
+                                  const TextStyle(color: Color(0xff5F5DA6)),
+                              overflowMode: LegendItemOverflowMode.wrap),
+                          series: <CircularSeries>[
+                            PieSeries<CategoryEvent, String>(
+                              dataSource: value,
+                              xValueMapper: (CategoryEvent data, _) =>
+                                  data.category,
+                              yValueMapper: (CategoryEvent data, _) =>
+                                  data.valeu,
+                              dataLabelSettings: const DataLabelSettings(
+                                isVisible: true,
+                                color: Color(0xff5F5DA6),
+                              ),
+                              enableTooltip: true,
+                            ),
+                          ],
                         ),
-                        enableTooltip: true,
-                      ),
-                    ],
-                  ),
                 ),
               )
             ],
