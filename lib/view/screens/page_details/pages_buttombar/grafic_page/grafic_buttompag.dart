@@ -24,11 +24,25 @@ class _GraficButtompagState extends State<GraficButtompag> {
     _homeController.addListener(() {
       setState(() {});
     });
+    _homeController.getMoney(key: keyUserMoney);
     _graficController.listcategory.addListener(() {
       setState(() {});
     });
-    _homeController.getevetList(key: keyList).then((value) =>
-        {_graficController.getcategorylist(list: _homeController.value)});
+    _graficController.despesas.addListener(() {
+      setState(() {});
+    });
+    _graficController.saldo.addListener(() {
+      setState(() {});
+    });
+    _graficController.state.addListener(() {
+      setState(() {});
+    });
+
+    _homeController.getevetList(key: keyList).then((value) => {
+          _graficController.sumValue(
+              eventos: _homeController.value,
+              userSaldo: _homeController.userMoney.value!)
+        });
   }
 
   @override
@@ -43,19 +57,21 @@ class _GraficButtompagState extends State<GraficButtompag> {
         child: SingleChildScrollView(
             child: Column(
           children: [
-            const Padding(
-                padding: EdgeInsets.all(8.0),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CardInfoWidget(
+                        state: _graficController.state.value,
                         icon: Icons.attach_money_rounded,
                         nameinfo: 'Saldo',
-                        valueinfo: '200'),
+                        valueinfo: _graficController.saldo.value),
                     CardInfoWidget(
+                      state: _graficController.state.value,
                       icon: Icons.arrow_downward_rounded,
                       nameinfo: 'Dividas',
-                      valueinfo: '100',
+                      valueinfo: _graficController.despesas.value,
                     )
                   ],
                 )),
@@ -70,7 +86,7 @@ class _GraficButtompagState extends State<GraficButtompag> {
             SizedBox(
               height: height * 0.01,
             ),
-            TypePaymentWidget()
+            const TypePaymentWidget()
           ],
         )),
       ),

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/controller/alert_state_payment.dart';
 
 class CardInfoWidget extends StatelessWidget {
   final String nameinfo;
   final String valueinfo;
   final IconData icon;
+  final String state;
+
   const CardInfoWidget(
       {Key? key,
       required this.nameinfo,
       required this.valueinfo,
-      required this.icon})
+      required this.icon,
+      required this.state})
       : super(key: key);
 
   @override
@@ -19,7 +23,8 @@ class CardInfoWidget extends StatelessWidget {
       width: width * 0.45,
       height: height * 0.14,
       decoration: BoxDecoration(
-          color: Color(0xFFA40D05), borderRadius: BorderRadius.circular(12)),
+          color: AlertStatePayment().statePayment(state),
+          borderRadius: BorderRadius.circular(12)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
