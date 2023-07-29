@@ -17,7 +17,7 @@ class ParcelaWidget extends StatefulWidget {
 }
 
 class _ParcelaWidgetState extends State<ParcelaWidget> {
-  int parcel = 13;
+  int parcel = 12;
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +40,21 @@ class _ParcelaWidgetState extends State<ParcelaWidget> {
                     backgroundColor: Colors.white,
                     content: SingleChildScrollView(
                       child: SizedBox(
-                        height: height * 0.5,
-                        width: width * 0.03,
+                        height: height * 0.4,
+                        width: width * 0.05,
                         child: ListView.builder(
                           itemCount: parcel,
                           itemBuilder: (context, index) => GestureDetector(
                             onTap: () => widget.parcelaController
-                                .setValue(index, context),
-                            child: ListTile(
-                              title: Center(
-                                child: Text('$index x',
+                                .setValue(index + 1, context),
+                            child: SizedBox(
+                              height: height * 0.053,
+                              width: width,
+                              child: Center(
+                                child: Text('${index + 1} x',
                                     style: TextStyle(
                                         color: const Color(0xFF2E4159),
-                                        fontSize: width * 0.05,
+                                        fontSize: width * 0.06,
                                         fontWeight: FontWeight.w700)),
                               ),
                             ),

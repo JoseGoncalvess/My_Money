@@ -29,7 +29,17 @@ class _ButtomCustomWidgetState extends State<ButtomCustomWidget> {
     final width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
+      child: Container(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                blurRadius: 4,
+                offset: Offset(2, 4),
+                blurStyle: BlurStyle.solid,
+              )
+            ]),
         width: width * widget.largura,
         height: height * widget.altura,
         child: ElevatedButton(

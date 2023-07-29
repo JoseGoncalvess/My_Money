@@ -42,10 +42,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _versionController.addListener(() {
       setState(() {});
     });
+    _homecontroller.saldo.addListener(() {
+      setState(() {});
+    });
     _versionController.getinfo();
-    _homecontroller.getevetList(key: keyList);
-    _homecontroller.getMoney(key: keyUserMoney);
-    _homecontroller.getName(key: keyUsername);
+    _homecontroller.getevetList(key: keyList).then((value) => {
+          _homecontroller.getMoney(key: keyUserMoney),
+          _homecontroller.getName(key: keyUsername),
+          _homecontroller.sumValue(
+            eventos: _homecontroller.value,
+          )
+        });
   }
 
   @override
@@ -106,7 +113,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           TabbarMenuWidget(
-            money: _homecontroller.userMoney.value!,
+            money: _homecontroller.saldo.value!,
           )
         ]),
       ),
