@@ -49,7 +49,9 @@ class _IconcategoryEventWidgetState extends State<IconcategoryEventWidget> {
           ),
           Text(widget.namecategory,
               style: TextStyle(
-                  color: const Color(0xff5F5DA6),
+                  color: widget.onselectd
+                      ? const Color(0xff4F4D8C)
+                      : const Color(0xFF9090BA),
                   fontSize: width * 0.05,
                   fontWeight: FontWeight.w700))
         ],

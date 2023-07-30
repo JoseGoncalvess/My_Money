@@ -119,7 +119,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                           children: [
                             Text('Pagamento',
                                 style: TextStyle(
-                                    color: const Color(0xff4F4D8C),
+                                    color: const Color(0xff5F5DA6),
                                     fontSize: width * 0.05,
                                     fontWeight: FontWeight.w700)),
                             Row(

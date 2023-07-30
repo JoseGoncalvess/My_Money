@@ -47,37 +47,20 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    return Stack(
-      children: [
-        SizedBox(
-            height: height * 0.2,
-            width: width,
-            child: PageView.builder(
-                controller: widget.pagecontrollerCat,
-                scrollDirection: Axis.horizontal,
-                itemCount: categoryEvent.length,
-                itemBuilder: (context, i) {
-                  bool onselect = _currentpage == i;
-                  return IconcategoryEventWidget(
-                      onselectd: onselect,
-                      icon: categoryEvent[i].icon,
-                      namecategory: categoryEvent[i].name,
-                      onpressed: () {});
-                })),
-        // Positioned(
-        //   top: 58,
-        //   child: IconButton(
-        //       onPressed: () {
-        //         widget.pagecontrollerCat.jumpToPage(_currentpage - 1);
-        //       },
-        //       icon: Icon(
-        //         arrowidicat
-        //             ? Icons.arrow_downward_rounded
-        //             : Icons.arrow_upward_rounded,
-        //         color: const Color(0xFF2E4159),
-        //       )),
-        // )
-      ],
-    );
+    return SizedBox(
+        height: height * 0.2,
+        width: width,
+        child: PageView.builder(
+            controller: widget.pagecontrollerCat,
+            scrollDirection: Axis.horizontal,
+            itemCount: categoryEvent.length,
+            itemBuilder: (context, i) {
+              bool onselect = _currentpage == i;
+              return IconcategoryEventWidget(
+                  onselectd: onselect,
+                  icon: categoryEvent[i].icon,
+                  namecategory: categoryEvent[i].name,
+                  onpressed: () {});
+            }));
   }
 }

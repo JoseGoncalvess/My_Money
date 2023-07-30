@@ -23,14 +23,18 @@ class _PaymentCategoryWidgetState extends State<PaymentCategoryWidget> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(9.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             height: height * 0.08,
             width: width * 0.16,
-            decoration: BoxDecoration(
-                color: widget.color, borderRadius: BorderRadius.circular(100)),
+            decoration: BoxDecoration(boxShadow: const [
+              BoxShadow(
+                  color: Colors.grey, offset: Offset(2, 2), spreadRadius: 1)
+            ], color: widget.color, borderRadius: BorderRadius.circular(100)),
             child: IconButton(
                 onPressed: widget.onpressed,
                 icon: Icon(
