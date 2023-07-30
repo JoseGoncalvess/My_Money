@@ -54,7 +54,7 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
             width: width,
             child: PageView.builder(
                 controller: widget.pagecontrollerCat,
-                scrollDirection: Axis.vertical,
+                scrollDirection: Axis.horizontal,
                 itemCount: categoryEvent.length,
                 itemBuilder: (context, i) {
                   bool onselect = _currentpage == i;
@@ -64,19 +64,19 @@ class _CategoryEventWidgetState extends State<CategoryEventWidget> {
                       namecategory: categoryEvent[i].name,
                       onpressed: () {});
                 })),
-        Positioned(
-          top: 58,
-          child: IconButton(
-              onPressed: () {
-                widget.pagecontrollerCat.jumpToPage(_currentpage - 1);
-              },
-              icon: Icon(
-                arrowidicat
-                    ? Icons.arrow_downward_rounded
-                    : Icons.arrow_upward_rounded,
-                color: const Color(0xFF2E4159),
-              )),
-        )
+        // Positioned(
+        //   top: 58,
+        //   child: IconButton(
+        //       onPressed: () {
+        //         widget.pagecontrollerCat.jumpToPage(_currentpage - 1);
+        //       },
+        //       icon: Icon(
+        //         arrowidicat
+        //             ? Icons.arrow_downward_rounded
+        //             : Icons.arrow_upward_rounded,
+        //         color: const Color(0xFF2E4159),
+        //       )),
+        // )
       ],
     );
   }

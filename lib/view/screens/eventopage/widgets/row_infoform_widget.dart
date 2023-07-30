@@ -58,7 +58,7 @@ class _RowInfoformWidgetState extends State<RowInfoformWidget>
                   width: width * 0.4,
                   height: height * 0.074,
                   decoration: BoxDecoration(
-                      color: const Color(0xff4F4D8C),
+                      color: const Color(0xFF9090BA),
                       borderRadius: BorderRadius.circular(4)),
                   child: Text(
                     widget.datevalue,
@@ -114,7 +114,7 @@ class _RowInfoformWidgetState extends State<RowInfoformWidget>
                       fontWeight: FontWeight.bold,
                     ),
                     filled: true,
-                    fillColor: const Color(0xff4F4D8C),
+                    fillColor: const Color(0xFF9090BA),
                   ),
                 ),
               ),

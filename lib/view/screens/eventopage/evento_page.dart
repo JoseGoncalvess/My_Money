@@ -23,7 +23,8 @@ class EventoPage extends StatefulWidget {
 
 class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
   final HomeController _homecontroller = HomeController();
-  final PageController _pagecontrollecat = PageController();
+  final PageController _pagecontrollecat =
+      PageController(viewportFraction: 0.3);
   final GlobalKey<FormState> _keyevent = GlobalKey<FormState>();
   final TextEditingController _eventotexteditController =
       TextEditingController();

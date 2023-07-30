@@ -66,7 +66,7 @@ class _FormEventWidgetState extends State<FormEventWidget> with ValidadorMixin {
                 fontWeight: FontWeight.bold,
               ),
               filled: true,
-              fillColor: const Color(0xff4F4D8C),
+              fillColor: const Color(0xFF9090BA),
             ),
           ),
         ),
