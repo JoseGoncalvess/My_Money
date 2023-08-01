@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import '../../widgets/logo_inline_widget.dart';
 import 'formcad_user_widget.dart';
 
-class CreatePerfil extends StatelessWidget {
+class CreatePerfil extends StatefulWidget {
   const CreatePerfil({Key? key}) : super(key: key);
 
+  @override
+  State<CreatePerfil> createState() => _CreatePerfilState();
+}
+
+class _CreatePerfilState extends State<CreatePerfil> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;

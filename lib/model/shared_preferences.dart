@@ -9,9 +9,21 @@ class SharedPrefs {
   List<String> listString = [];
 
   ///METODO RESPONSSAVEL POR SALVAR A LISTA DE EVENTOS:
-  Future saveList({required key, required list}) async {
+  Future saveList({required String key, required List<String>? list}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList(key, list);
+    await prefs.setStringList(key, list!);
+  }
+
+  //METODO PARA SALVAR EVATRA DO USUARIO
+  Future saveAvata({required String key, required String avatar}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, avatar);
+  }
+
+  //METODO PARA CARREGAR EVATRA DO USUARIO
+  Future loadAvata({required String key}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(key);
   }
 
   ///METODO RESPONSSAVEL POR SALVAR A LISTA DE EVENTOS:
@@ -102,4 +114,6 @@ class SharedPrefs {
 const String keyList = '@evento';
 const String keyUsername = '@user';
 const String keyUserMoney = '@Money';
+const String keyUserAvatar = '@Avatar';
+const String tempavatar = '@TempAvatar';
 //chave da lista 'evento1'

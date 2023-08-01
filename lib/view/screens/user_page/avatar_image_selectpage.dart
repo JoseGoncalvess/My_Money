@@ -1,5 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
+import 'package:my_money/model/shared_preferences.dart';
+import '../../widgets/buttom_custom_widget.dart';
+import 'avatar_select_components/avatar_select_controller.dart';
 import 'avatar_select_components/card_avatar_select_widget.dart';
 
 class AvatarImageSelectpage extends StatefulWidget {
@@ -11,19 +16,24 @@ class AvatarImageSelectpage extends StatefulWidget {
 
 class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
   final PageController _pageController = PageController(viewportFraction: 0.6);
+  final AvatarSelectController _Avatarcontroller = AvatarSelectController();
 
   int _currentepage = 0;
   late List<Map> slider;
 
   @override
   void initState() {
+    super.initState();
     slider = InterfaceData().imageAvatr;
     _pageController.addListener(() {
       setState(() {
         _currentepage = _pageController.page!.round();
       });
     });
-    super.initState();
+
+    _Avatarcontroller.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -35,6 +45,18 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
         backgroundColor: const Color(0xff4F4D8C),
         title: const Text('Selecionar Avatar'),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                _Avatarcontroller.setAvtar(
+                    key: tempavatar, avatar: slider[_currentepage]['img']);
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.check,
+                size: 30,
+              ))
+        ],
       ),
       body: Container(
         color: const Color(0xff2E4159),
@@ -65,7 +87,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
                 height: height * 0.3,
                 child: Text(slider[_currentepage]['content'],
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: height * 0.03)))
+                    style: TextStyle(fontSize: height * 0.03))),
           ],
         ),
       ),

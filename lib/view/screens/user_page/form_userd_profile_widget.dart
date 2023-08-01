@@ -7,8 +7,10 @@ import '../home_page/home_page.dart';
 import 'user_controller.dart';
 
 class FormUserdProfileWidget extends StatefulWidget {
+  final String avatar;
   const FormUserdProfileWidget({
     Key? key,
+    required this.avatar,
   }) : super(key: key);
 
   @override
@@ -122,6 +124,7 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
                 if (_keyUser.currentState!.validate()) {
                   _userController
                       .setuser(
+                          vatatar: widget.avatar,
                           nameUser: _nameController.text,
                           moneyUser: _moneyController.text)
                       .then(

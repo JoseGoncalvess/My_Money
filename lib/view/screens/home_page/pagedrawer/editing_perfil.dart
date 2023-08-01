@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../../../model/shared_preferences.dart';
 import '../../../widgets/buttom_custom_widget.dart';
 import '../../../widgets/custom_formfiel_widget.dart';
+import '../../user_page/avatar_image_selectpage.dart';
+import '../../user_page/avatar_select_components/avatar_select_controller.dart';
 import '../../user_page/user_controller.dart';
 import '../home_page.dart';
 
@@ -23,9 +26,21 @@ class _EditingPerfilState extends State<EditingPerfil> {
   final UserController _userController = UserController();
   final TextEditingController _namecontroller = TextEditingController();
   final TextEditingController _moneycontroller = TextEditingController();
+  final AvatarSelectController _avatarcontroller = AvatarSelectController();
+  SharedPrefs prefs = SharedPrefs();
 
   late String nameperfil = widget.name;
   late String moneyperfil = widget.totalmoney;
+
+  @override
+  void initState() {
+    super.initState();
+    _avatarcontroller.addListener(() {
+      setState(() {});
+    });
+    _avatarcontroller.chekingAVtar(key: keyUserAvatar);
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -33,7 +48,7 @@ class _EditingPerfilState extends State<EditingPerfil> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff5F5DA6),
-        title: const Text('Perfil'),
+        title: const Text('Seu Perfil'),
       ),
       body: SizedBox(
         width: width,
@@ -63,16 +78,27 @@ class _EditingPerfilState extends State<EditingPerfil> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: width * 0.27,
-                            height: height * 0.27,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                image: const DecorationImage(
-                                  image: AssetImage(
-                                    'assets/img/sem_logo.jpg',
-                                  ),
+                          child: InkWell(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const AvatarImageSelectpage(),
                                 )),
+                            child: ValueListenableBuilder(
+                              valueListenable: _avatarcontroller,
+                              builder: (context, value, child) => Container(
+                                width: width * 0.27,
+                                height: height * 0.27,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        value,
+                                      ),
+                                    )),
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -106,6 +132,7 @@ class _EditingPerfilState extends State<EditingPerfil> {
                             onpressed: () {
                               _userController
                                   .setuser(
+                                      vatatar: _avatarcontroller.value,
                                       nameUser: _namecontroller.text,
                                       moneyUser: _moneycontroller.text)
                                   .then((value) => {
