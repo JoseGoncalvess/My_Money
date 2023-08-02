@@ -124,7 +124,7 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
                 if (_keyUser.currentState!.validate()) {
                   _userController
                       .setuser(
-                          vatatar: widget.avatar,
+                          avatar: widget.avatar,
                           nameUser: _nameController.text,
                           moneyUser: _moneyController.text)
                       .then(

@@ -6,9 +6,11 @@ import '../../page_details/dtails_page.dart';
 
 class TabbarMenuWidget extends StatefulWidget {
   final String money;
+  final String perfil;
   const TabbarMenuWidget({
     Key? key,
     required this.money,
+    required this.perfil,
   }) : super(key: key);
 
   @override
@@ -64,8 +66,8 @@ class _TabbarMenuWidgetState extends State<TabbarMenuWidget> {
                     height: height * 0.06,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        image: const DecorationImage(
-                            image: AssetImage('assets/img/sem_logo.jpg'))),
+                        image:
+                            DecorationImage(image: AssetImage(widget.perfil))),
                   ),
                   Text(
                     'Saldo em Conta',

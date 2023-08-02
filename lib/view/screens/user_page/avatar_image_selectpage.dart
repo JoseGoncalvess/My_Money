@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/model/shared_preferences.dart';
 import '../../../model/avatar_data_model.dart';
-import '../../widgets/buttom_custom_widget.dart';
 import 'avatar_select_components/avatar_select_controller.dart';
 import 'avatar_select_components/card_avatar_select_widget.dart';
 

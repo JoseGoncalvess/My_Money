@@ -7,6 +7,7 @@ class HomeController extends ValueNotifier<List<Evento>> {
   var userName = ValueNotifier<String?>('Usuario');
   var userMoney = ValueNotifier<String?>('0,0');
   var saldo = ValueNotifier<String?>('0,00');
+  var userAvatar = ValueNotifier<String?>('assets/img/sem_logo.jpg');
 
   final SharedPrefs prefs = SharedPrefs();
 
@@ -34,6 +35,10 @@ class HomeController extends ValueNotifier<List<Evento>> {
 
   Future getMoney({required String key}) async {
     return userMoney.value = await prefs.getMoneyUser(key: key);
+  }
+
+  Future getAvatar({required String key}) async {
+    return userAvatar.value = await prefs.getMoneyUser(key: key);
   }
 
   sumValue({required List<Evento> eventos}) async {

@@ -45,10 +45,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _homecontroller.saldo.addListener(() {
       setState(() {});
     });
+    _homecontroller.userAvatar.addListener(() {
+      setState(() {});
+    });
     _versionController.getinfo();
     _homecontroller.getevetList(key: keyList).then((value) => {
           _homecontroller.getMoney(key: keyUserMoney),
           _homecontroller.getName(key: keyUsername),
+          _homecontroller.getAvatar(key: keyUserAvatar),
           _homecontroller.sumValue(
             eventos: _homecontroller.value,
           )
@@ -113,6 +117,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           TabbarMenuWidget(
+            perfil: _homecontroller.userAvatar.value!,
             money: _homecontroller.saldo.value!,
           )
         ]),
@@ -139,27 +144,3 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 }
-//  onLongPress: () {
-//                               showDialog(
-//                                 context: context,
-//                                 builder: (context) {
-//                                   return AlertDialog(
-//                                     content:
-//                                         Text('Deseja memso Excluir o item?'),
-//                                     actions: [
-//                                       Row(
-//                                         children: [
-//                                           ElevatedButton(
-//                                               onPressed: () {
-//                                                 prefs.removeEvnetList(
-//                                                     key: 'evento1',
-//                                                     index: index);
-//                                               },
-//                                               child: Text('sim'))
-//                                         ],
-//                                       )
-//                                     ],
-//                                   );
-//                                 },
-//                               );
-//                             },

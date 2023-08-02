@@ -11,9 +11,10 @@ class UserController extends ValueNotifier<bool> {
   Future setuser(
       {required String nameUser,
       required String moneyUser,
-      required String vatatar}) async {
+      required String avatar}) async {
     prefs.setUserName(nameUser: nameUser, key: keyUsername);
     prefs.setUserMoney(moneyUser: moneyUser, key: keyUserMoney);
+    prefs.saveAvata(key: keyUserAvatar, avatar: avatar);
     log('User Salvo com sucesso');
   }
 
