@@ -50,11 +50,12 @@ class _LastEventsWidgetState extends State<LastEventsWidget> {
               return ListView.builder(
                 itemCount: value.length < 2 ? value.length : 2,
                 itemBuilder: (context, index) {
+                  List<Evento> list = value.reversed.toList();
                   return CardEventListWidget(
-                    eventData: value[index].dateEvent,
-                    eventName: value[index].nameEvent,
-                    eventValue: value[index].velueEvent,
-                    iconCategory: value[index].categoryEvent,
+                    eventData: list[index].dateEvent,
+                    eventName: list[index].nameEvent,
+                    eventValue: list[index].velueEvent,
+                    iconCategory: list[index].categoryEvent,
                   );
                 },
               );

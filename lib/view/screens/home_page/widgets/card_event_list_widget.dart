@@ -73,15 +73,15 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        EventType().getEvent(icon: widget.iconCategory),
-                        style: TextStyle(
-                            fontSize: height * 0.02,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Text(
                         widget.eventName,
                         style: TextStyle(
                             fontSize: height * 0.023,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        EventType().getEvent(icon: widget.iconCategory),
+                        style: TextStyle(
+                            fontSize: height * 0.02,
                             fontWeight: FontWeight.w400),
                       ),
                     ],
