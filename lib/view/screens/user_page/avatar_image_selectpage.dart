@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/model/shared_preferences.dart';
+import '../../../model/avatar_data_model.dart';
 import '../../widgets/buttom_custom_widget.dart';
 import 'avatar_select_components/avatar_select_controller.dart';
 import 'avatar_select_components/card_avatar_select_widget.dart';
@@ -19,7 +20,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
   final AvatarSelectController _Avatarcontroller = AvatarSelectController();
 
   int _currentepage = 0;
-  late List<Map> slider;
+  late List<AvatarDataModel> slider;
 
   @override
   void initState() {
@@ -39,7 +40,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    //final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff4F4D8C),
@@ -49,7 +50,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
           IconButton(
               onPressed: () {
                 _Avatarcontroller.setAvtar(
-                    key: tempavatar, avatar: slider[_currentepage]['img']);
+                    key: tempavatar, avatar: slider[_currentepage].img);
                 Navigator.pop(context);
               },
               icon: const Icon(
@@ -69,7 +70,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
                   itemBuilder: (_, i) {
                     var onselect = _currentepage == i;
                     return CardAvatarSelectWidget(
-                      image: slider[i]['img'],
+                      image: slider[i].img,
                       onselect: onselect,
                     );
                   }),
@@ -77,17 +78,11 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                slider[_currentepage]['name'],
+                slider[_currentepage].name,
                 style: TextStyle(
                     fontSize: height * 0.05, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
-                width: width,
-                height: height * 0.3,
-                child: Text(slider[_currentepage]['content'],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: height * 0.03))),
           ],
         ),
       ),

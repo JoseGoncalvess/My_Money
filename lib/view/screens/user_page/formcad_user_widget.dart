@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/view/widgets/buttom_custom_widget.dart';
 import '../../../controller/interface_data.dart';
+import '../../../model/avatar_data_model.dart';
 import '../../../model/shared_preferences.dart';
 import '../../widgets/avatar_profile_widget.dart';
 import 'avatar_image_selectpage.dart';
@@ -19,7 +21,7 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
   final PageController _pageController = PageController(viewportFraction: 0.6);
 
   int _currentepage = 0;
-  late List<Map> slider;
+  late List<AvatarDataModel> slider;
   @override
   void initState() {
     super.initState();
@@ -59,17 +61,18 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
                 builder: (context) {
                   return SizedBox(
                     width: width,
-                    height: height * 0.4,
+                    height: height * 0.45,
                     child: Column(
                       children: [
                         Text(
                           'Selecione seu Avatar',
-                          style: TextStyle(fontSize: height * 0.04),
+                          style: TextStyle(
+                              fontSize: height * 0.04,
+                              fontWeight: FontWeight.bold),
                         ),
                         Container(
-                          // color: Colors.amber,
                           width: width,
-                          height: height * 0.34,
+                          height: height * 0.3,
                           child: GridView.count(
                             crossAxisCount: 3,
                             crossAxisSpacing: 30,
@@ -80,22 +83,27 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
                                       child: InkWell(
                                         onTap: () {
                                           _avatarcontroller.setAvtar(
-                                              avatar: e['img'],
-                                              key: tempavatar);
-                                          Navigator.pop(context);
+                                              avatar: e.img, key: tempavatar);
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(22),
                                               image: DecorationImage(
-                                                  image: AssetImage(e['img']))),
+                                                  image: AssetImage(e.img))),
                                         ),
                                       ),
                                     ))
                                 .toList(),
                           ),
-                        )
+                        ),
+                        ButtomCustomWidget(
+                            onpressed: () => Navigator.pop(context),
+                            name: 'ok',
+                            colortext: const Color(0xff4F4D8C),
+                            backgroud: Colors.white,
+                            largura: width * 0.001,
+                            altura: height * 0.00007)
                       ],
                     ),
                   );
@@ -111,33 +119,3 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
     );
   }
 }
-//  Container(
-//                             color: Colors.amber,
-//                             width: width,
-//                             height: height * 0.3,
-//                             child: PageView.builder(
-//                                 controller: _pageController,
-//                                 itemCount: slider.length,
-//                                 itemBuilder: (_, i) {
-//                                   var onselect = _currentepage == i;
-//                                   return CardAvatarSelectWidget(
-//                                     image: slider[i]['img'],
-//                                     onselect: onselect,
-//                                   );
-//                                 }),
-//                           ),
-//                           Padding(
-//                             padding: const EdgeInsets.all(3.0),
-//                             child: Text(
-//                               slider[_currentepage]['name'],
-//                               style: TextStyle(
-//                                   fontSize: height * 0.03,
-//                                   fontWeight: FontWeight.bold),
-//                             ),
-//                           ),
-//                           SizedBox(
-//                               width: width,
-//                               height: height * 0.3,
-//                               child: Text(slider[_currentepage]['content'],
-//                                   textAlign: TextAlign.center,
-//                                   style: TextStyle(fontSize: height * 0.03))),

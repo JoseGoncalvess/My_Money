@@ -27,10 +27,11 @@ class _ButtomCustomWidgetState extends State<ButtomCustomWidget> {
   animatio() {
     setState(() {
       press = true;
-      Future.delayed(const Duration(milliseconds: 200)).then((value) => {
+      Future.delayed(const Duration(milliseconds: 190)).then((value) => {
             setState(
               () => press = false,
-            )
+            ),
+            widget.onpressed()
           });
     });
   }
@@ -60,7 +61,6 @@ class _ButtomCustomWidgetState extends State<ButtomCustomWidget> {
           style: ButtonStyle(
               backgroundColor: MaterialStatePropertyAll(widget.backgroud)),
           onPressed: () {
-            widget.onpressed();
             animatio();
           },
           child: Text(widget.name,
