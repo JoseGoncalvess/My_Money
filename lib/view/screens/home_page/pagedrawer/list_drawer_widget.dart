@@ -7,11 +7,13 @@ class ListDrawerWidget extends StatefulWidget {
   final String nameUser;
   final String moneyUser;
   final String versioApp;
+  final String profileUser;
   const ListDrawerWidget(
       {Key? key,
       required this.nameUser,
       required this.moneyUser,
-      required this.versioApp})
+      required this.versioApp,
+      required this.profileUser})
       : super(key: key);
 
   @override
@@ -47,8 +49,8 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
                     MaterialPageRoute(
                       builder: (context) => EditingPerfil(
                           name: widget.nameUser,
-                          profileimg: 'assets/img/sem_logo.jpg',
-                          totalmoney: '2000'),
+                          profileimg: widget.profileUser,
+                          totalmoney: widget.moneyUser),
                     ));
               },
               leading: const Icon(

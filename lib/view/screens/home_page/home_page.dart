@@ -5,6 +5,7 @@ import 'package:my_money/view/screens/home_page/widgets/menu_action_event.dart';
 import 'package:my_money/view/screens/home_page/widgets/tabbar_menu_widget.dart';
 import '../../../controller/version_details.dart';
 import '../eventopage/evento_page.dart';
+import '../user_page/avatar_select_components/avatar_select_controller.dart';
 import 'home_controller.dart';
 import 'pagedrawer/list_drawer_widget.dart';
 import 'widgets/new_item_widget.dart';
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final HomeController _homecontroller = HomeController();
   final VersionDetails _versionController = VersionDetails();
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+  final AvatarSelectController _avatarcontroller = AvatarSelectController();
 
   @override
   void initState() {
@@ -48,7 +50,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _homecontroller.userAvatar.addListener(() {
       setState(() {});
     });
+    _avatarcontroller.addListener(() {
+      setState(() {});
+    });
+
     _versionController.getinfo();
+    _avatarcontroller.chekingAVtar(key: keyUserAvatar);
     _homecontroller.getevetList(key: keyList).then((value) => {
           _homecontroller.getMoney(key: keyUserMoney),
           _homecontroller.getName(key: keyUsername),
@@ -71,6 +78,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           versioApp: _versionController.value,
           nameUser: _homecontroller.userName.value!,
           moneyUser: _homecontroller.userMoney.value!,
+          profileUser: _avatarcontroller.value,
         ),
       ),
       key: _key,

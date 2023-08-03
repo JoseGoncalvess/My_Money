@@ -106,7 +106,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                       fontSize: height * 0.02, fontWeight: FontWeight.w600),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

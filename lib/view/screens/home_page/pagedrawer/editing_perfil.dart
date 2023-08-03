@@ -4,7 +4,6 @@ import '../../../../model/avatar_data_model.dart';
 import '../../../../model/shared_preferences.dart';
 import '../../../widgets/buttom_custom_widget.dart';
 import '../../../widgets/custom_formfiel_widget.dart';
-import '../../user_page/avatar_image_selectpage.dart';
 import '../../user_page/avatar_select_components/avatar_select_controller.dart';
 import '../../user_page/user_controller.dart';
 import '../../user_page/widget/avatar_select.dart';
@@ -41,6 +40,8 @@ class _EditingPerfilState extends State<EditingPerfil> {
     super.initState();
     _avatarcontroller.addListener(() {
       setState(() {});
+      _namecontroller.text = nameperfil;
+      _moneycontroller.text = moneyperfil;
     });
     _avatarcontroller.chekingAVtar(key: keyUserAvatar);
     slider = InterfaceData().imageAvatr;
@@ -189,9 +190,18 @@ class _EditingPerfilState extends State<EditingPerfil> {
                             onpressed: () {
                               _userController
                                   .setuser(
-                                      avatar: _avatarcontroller.value,
-                                      nameUser: _namecontroller.text,
-                                      moneyUser: _moneycontroller.text)
+                                      avatar: _avatarcontroller.value !=
+                                              widget.profileimg
+                                          ? _avatarcontroller.value
+                                          : widget.profileimg,
+                                      nameUser:
+                                          _namecontroller.text != widget.name
+                                              ? _namecontroller.text
+                                              : widget.name,
+                                      moneyUser: _moneycontroller.text !=
+                                              widget.totalmoney
+                                          ? _moneycontroller.text
+                                          : widget.totalmoney)
                                   .then((value) => {
                                         Navigator.pushReplacement(
                                             context,
