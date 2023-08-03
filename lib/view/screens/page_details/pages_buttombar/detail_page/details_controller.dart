@@ -64,4 +64,10 @@ class DetailsController extends ValueNotifier<List<Evento>> {
 
     loading$.value = true;
   }
+
+  initialPage(int refmonth) {
+    _page$.value = refmonth;
+    month.value = months[refmonth];
+    getInfoMoth(pagenum: refmonth);
+  }
 }

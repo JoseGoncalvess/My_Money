@@ -40,6 +40,8 @@ class _DetailButtompageState extends State<DetailButtompage>
     });
 
     _detailsController.getInfoMoth(pagenum: 1);
+
+    _detailsController.initialPage(DateTime.now().month);
   }
 
   @override
@@ -140,7 +142,6 @@ class _DetailButtompageState extends State<DetailButtompage>
                     child: PageView(
                         onPageChanged: (value) {
                           _detailsController.onpagechange(pagenum: value);
-                          log(widget.pagecontroller.page!.round().toString());
                         },
                         scrollDirection: Axis.horizontal,
                         controller: widget.pagecontroller,

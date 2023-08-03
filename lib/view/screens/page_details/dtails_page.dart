@@ -15,7 +15,7 @@ class DtailsPage extends StatefulWidget {
 class _DtailsPageState extends State<DtailsPage> {
   int _currenteindex = 0;
   late PageController controler;
-  int initialPage = 0;
+  int initialPage = DateTime.now().month;
 
   @override
   void initState() {
