@@ -18,6 +18,7 @@ class InterfaceData {
     PaymentType(name: 'Dinehiro', icon: Icons.payments_rounded)
   ];
   List<String> months = [
+    '',
     'Janeiro',
     'Fevereiro',
     'Março',

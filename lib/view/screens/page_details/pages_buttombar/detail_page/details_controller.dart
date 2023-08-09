@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/model/evento_model.dart';
@@ -33,7 +32,7 @@ class DetailsController extends ValueNotifier<List<Evento>> {
   onpagechange({required int pagenum}) {
     month.value = months[pagenum];
     _page$.value = pagenum;
-    getInfoMoth(pagenum: pagenum + 1);
+    getInfoMoth(pagenum: pagenum);
 
     log('("Current Page: +${page.toString()})');
   }
@@ -68,6 +67,6 @@ class DetailsController extends ValueNotifier<List<Evento>> {
   initialPage(int refmonth) {
     _page$.value = refmonth;
     month.value = months[refmonth];
-    getInfoMoth(pagenum: refmonth);
+    getInfoMoth(pagenum: refmonth); // ta ok
   }
 }

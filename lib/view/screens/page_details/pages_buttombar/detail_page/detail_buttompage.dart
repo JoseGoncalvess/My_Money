@@ -8,10 +8,8 @@ import 'details_controller.dart';
 import 'details_widget_components/eventos_info_widget.dart';
 
 class DetailButtompage extends StatefulWidget {
-  final PageController pagecontroller;
   const DetailButtompage({
     super.key,
-    required this.pagecontroller,
   });
 
   @override
@@ -21,6 +19,8 @@ class DetailButtompage extends StatefulWidget {
 class _DetailButtompageState extends State<DetailButtompage>
     with TickerProviderStateMixin {
   final DetailsController _detailsController = DetailsController();
+  final PageController _pageController =
+      PageController(viewportFraction: 0.4, initialPage: DateTime.now().month);
   bool loading = false;
 
   @override
@@ -141,10 +141,15 @@ class _DetailButtompageState extends State<DetailButtompage>
                     height: height * 0.07,
                     child: PageView(
                         onPageChanged: (value) {
-                          _detailsController.onpagechange(pagenum: value);
+                          if (value == 0) {
+                            _pageController.jumpToPage(1);
+                            _detailsController.onpagechange(pagenum: 1);
+                          } else {
+                            _detailsController.onpagechange(pagenum: value);
+                          }
                         },
                         scrollDirection: Axis.horizontal,
-                        controller: widget.pagecontroller,
+                        controller: _pageController,
                         children: InterfaceData()
                             .months
                             .map((e) => Row(

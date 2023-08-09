@@ -14,20 +14,12 @@ class DtailsPage extends StatefulWidget {
 
 class _DtailsPageState extends State<DtailsPage> {
   int _currenteindex = 0;
-  late PageController controler;
-  int initialPage = DateTime.now().month;
-
-  @override
-  void initState() {
-    controler = PageController(viewportFraction: 0.4, initialPage: initialPage);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     List<Widget> tab = [
       const WalletButtompage(),
-      DetailButtompage(pagecontroller: controler),
+      DetailButtompage(),
       const GraficButtompag(),
     ];
     final height = MediaQuery.of(context).size.height;

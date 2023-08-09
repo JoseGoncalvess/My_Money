@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/view/screens/home_page/widgets/menu_action_event.dart';
 import 'package:my_money/view/screens/home_page/widgets/tabbar_menu_widget.dart';
 import '../../../controller/version_details.dart';
+import '../editing_page/editing_page.dart';
 import '../eventopage/evento_page.dart';
 import '../user_page/avatar_select_components/avatar_select_controller.dart';
 import 'home_controller.dart';
@@ -108,7 +111,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               MenuActionEvent().showButtomSheet(
                                   context: context,
                                   nameEvent: value[index].nameEvent,
-                                  edidtingFunction: () {},
+                                  edidtingFunction: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => EditingPage(
+                                          dataEvent: value[index].dateEvent,
+                                          nameEvent: value[index].nameEvent,
+                                          parcelEvent:
+                                              value[index].parcelEvnet!,
+                                          paymentEvent:
+                                              value[index].paymentEvent,
+                                          valorEvent: value[index].velueEvent,
+                                        ),
+                                      )),
                                   deletFunction: () => _homecontroller
                                       .removeEvnet(key: keyList, index: index));
                             },

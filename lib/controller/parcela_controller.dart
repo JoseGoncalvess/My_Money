@@ -7,4 +7,14 @@ class ParcelaController extends ValueNotifier<int> {
     value = index;
     Navigator.pop(context);
   }
+
+  Future<bool> initvalue(
+      {required String payment, required String numParcel}) async {
+    if (payment == "Cartão") {
+      value = int.parse(numParcel);
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
