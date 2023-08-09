@@ -27,7 +27,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Padding(
-      padding: const EdgeInsets.all(7),
+      padding: const EdgeInsets.all(8),
       child: Container(
         width: width * 0.8,
         height: height * 0.12,
@@ -44,77 +44,74 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
             ]),
         child: Stack(
           children: [
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: width * 0.646,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                            width: width * 0.2,
-                            height: height * 0.1,
-                            decoration: BoxDecoration(
-                              color: const Color(0xff5F5DA6),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Icon(
-                              widget.iconCategory,
-                              size: width * 0.09,
-                              color: const Color(0xFFEBE9E9),
-                            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: width * 0.6212,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          width: width * 0.2,
+                          height: height * 0.1,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff5F5DA6),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Icon(
+                            widget.iconCategory,
+                            size: width * 0.09,
+                            color: const Color(0xFFEBE9E9),
                           ),
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.eventName,
-                              style: TextStyle(
-                                  fontSize: height * 0.023,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              EventType().getEvent(icon: widget.iconCategory),
-                              style: TextStyle(
-                                  fontSize: height * 0.02,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        DateEvent().getdate(date: widget.eventData),
-                        style: TextStyle(
-                            color: Colors.white.withOpacity(0.8),
-                            fontSize: height * 0.02,
-                            fontWeight: FontWeight.w400),
                       ),
-                      Text(
-                        'R\$ ${widget.eventValue}',
-                        style: TextStyle(
-                            fontSize: height * 0.02,
-                            fontWeight: FontWeight.w600),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.eventName,
+                            style: TextStyle(
+                                fontSize: height * 0.023,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            EventType().getEvent(icon: widget.iconCategory),
+                            style: TextStyle(
+                                fontSize: height * 0.02,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  IconButton(
-                      onPressed: () {}, icon: Icon(Icons.more_vert_rounded))
-                ],
-              ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      DateEvent().getdate(date: widget.eventData),
+                      style: TextStyle(
+                          color: Colors.white.withOpacity(0.8),
+                          fontSize: height * 0.02,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    Text(
+                      'R\$ ${widget.eventValue}',
+                      style: TextStyle(
+                          fontSize: height * 0.02, fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+                IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.more_vert_rounded))
+              ],
             ),
           ],
         ),
