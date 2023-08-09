@@ -42,70 +42,79 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                   blurStyle: BlurStyle.normal,
                   offset: Offset(1, 5))
             ]),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
           children: [
-            SizedBox(
-              width: width * 0.72,
+            Container(
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      width: width * 0.2,
-                      height: height * 0.1,
-                      decoration: BoxDecoration(
-                        color: const Color(0xff5F5DA6),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Icon(
-                        widget.iconCategory,
-                        size: width * 0.09,
-                        color: const Color(0xFFEBE9E9),
-                      ),
+                  SizedBox(
+                    width: width * 0.646,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Container(
+                            width: width * 0.2,
+                            height: height * 0.1,
+                            decoration: BoxDecoration(
+                              color: const Color(0xff5F5DA6),
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Icon(
+                              widget.iconCategory,
+                              size: width * 0.09,
+                              color: const Color(0xFFEBE9E9),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.eventName,
+                              style: TextStyle(
+                                  fontSize: height * 0.023,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              EventType().getEvent(icon: widget.iconCategory),
+                              style: TextStyle(
+                                  fontSize: height * 0.02,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.eventName,
+                        DateEvent().getdate(date: widget.eventData),
                         style: TextStyle(
-                            fontSize: height * 0.023,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        EventType().getEvent(icon: widget.iconCategory),
-                        style: TextStyle(
+                            color: Colors.white.withOpacity(0.8),
                             fontSize: height * 0.02,
                             fontWeight: FontWeight.w400),
                       ),
+                      Text(
+                        'R\$ ${widget.eventValue}',
+                        style: TextStyle(
+                            fontSize: height * 0.02,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ],
                   ),
+                  IconButton(
+                      onPressed: () {}, icon: Icon(Icons.more_vert_rounded))
                 ],
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  DateEvent().getdate(date: widget.eventData),
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.8),
-                      fontSize: height * 0.02,
-                      fontWeight: FontWeight.w400),
-                ),
-                Text(
-                  'R\$ ${widget.eventValue}',
-                  style: TextStyle(
-                      fontSize: height * 0.02, fontWeight: FontWeight.w600),
-                ),
-              ],
             ),
           ],
         ),

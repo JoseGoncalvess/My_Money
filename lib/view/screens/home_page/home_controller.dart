@@ -29,6 +29,13 @@ class HomeController extends ValueNotifier<List<Evento>> {
         .then((value) => getevetList(key: keyList));
   }
 
+  Future editingEvent(
+      {required String key,
+      required int indexEvent,
+      required Evento event}) async {
+    prefs.editingEvnetList(key: key, index: indexEvent, evento: event);
+  }
+
   Future getName({required String key}) async {
     return userName.value = await prefs.getNameUser(key: key);
   }

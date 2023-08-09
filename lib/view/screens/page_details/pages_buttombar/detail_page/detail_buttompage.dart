@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/interface_data.dart';
 import '../../../home_page/widgets/card_event_list_widget.dart';

@@ -20,13 +20,15 @@ class EditingPage extends StatefulWidget {
   final String dataEvent;
   final String paymentEvent;
   final String parcelEvent;
+  final int indexevent;
   const EditingPage(
       {super.key,
       required this.nameEvent,
       required this.valorEvent,
       required this.dataEvent,
       required this.paymentEvent,
-      required this.parcelEvent});
+      required this.parcelEvent,
+      required this.indexevent});
 
   @override
   State<EditingPage> createState() => _EditingPageState();
@@ -212,9 +214,10 @@ class _EditingPageState extends State<EditingPage>
 
                                 if (_keyevent.currentState!.validate()) {
                                   _homecontroller
-                                      .saveEvent(
+                                      .editingEvent(
+                                          indexEvent: widget.indexevent,
                                           key: keyList,
-                                          evento: Evento(
+                                          event: Evento(
                                               nameEvent:
                                                   _eventotexteditController
                                                       .text,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
@@ -111,19 +109,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               MenuActionEvent().showButtomSheet(
                                   context: context,
                                   nameEvent: value[index].nameEvent,
-                                  edidtingFunction: () => Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => EditingPage(
-                                          dataEvent: value[index].dateEvent,
-                                          nameEvent: value[index].nameEvent,
-                                          parcelEvent:
-                                              value[index].parcelEvnet!,
-                                          paymentEvent:
-                                              value[index].paymentEvent,
-                                          valorEvent: value[index].velueEvent,
-                                        ),
-                                      )),
+                                  edidtingFunction: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => EditingPage(
+                                            indexevent: index,
+                                            dataEvent: value[index].dateEvent,
+                                            nameEvent: value[index].nameEvent,
+                                            parcelEvent:
+                                                value[index].parcelEvnet!,
+                                            paymentEvent:
+                                                value[index].paymentEvent,
+                                            valorEvent: value[index].velueEvent,
+                                          ),
+                                        ));
+                                  },
                                   deletFunction: () => _homecontroller
                                       .removeEvnet(key: keyList, index: index));
                             },
