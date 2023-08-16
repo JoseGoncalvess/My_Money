@@ -36,9 +36,8 @@ class _FormEventWidgetState extends State<FormEventWidget> with ValidadorMixin {
             validator: (value) => combvalidator(validator: [
               () =>
                   isempyt(value: value, msg: 'Como Vamos chamer este Evento ?'),
-              () => islengthMin(value, 'VAmos lá, você é bom com nomes !', 3),
-              () => islengthMax(
-                  value, 'Que evento importante, que tal resumir ?', 20)
+              () => islengthMin(value, 'Vamos lá, você é bom com nomes !', 3),
+              () => islengthMax(value, 'Que tal resumir, [12 caracteres] ?', 20)
             ]),
             style: const TextStyle(
                 color: Colors.white,

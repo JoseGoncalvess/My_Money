@@ -11,7 +11,7 @@ class MenuActionEvent {
     final width = MediaQuery.sizeOf(context).width;
     return showModalBottomSheet(
       elevation: 0,
-      backgroundColor: Color(0x00000000).withOpacity(0.1),
+      backgroundColor: const Color(0x00000000).withOpacity(0.1),
       context: context,
       builder: (context) => Container(
         height: height * 0.3,

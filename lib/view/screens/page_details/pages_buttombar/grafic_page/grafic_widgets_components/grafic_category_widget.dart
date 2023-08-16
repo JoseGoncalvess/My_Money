@@ -45,7 +45,7 @@ class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
       child: Column(
         children: [
           Text(
-            'Dispesas por Categoria',
+            'Dispesa por Categoria',
             style: TextStyle(
                 color: const Color(0xff5F5DA6),
                 fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class _GraficCategoryWidgetState extends State<GraficCategoryWidget> {
                   builder: (context, value, child) => value.isEmpty
                       ? const CustomAlert(
                           icon: Icons.app_registration_rounded,
-                          mensseger: 'Sem Registro de Eventos',
+                          mensseger: 'Sem Registros de Eventos',
                         )
                       : SfCircularChart(
                           legend: Legend(

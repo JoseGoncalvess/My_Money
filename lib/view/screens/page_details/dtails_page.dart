@@ -19,7 +19,7 @@ class _DtailsPageState extends State<DtailsPage> {
   Widget build(BuildContext context) {
     List<Widget> tab = [
       const WalletButtompage(),
-      DetailButtompage(),
+      const DetailButtompage(),
       const GraficButtompag(),
     ];
     final height = MediaQuery.of(context).size.height;

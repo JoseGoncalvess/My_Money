@@ -70,7 +70,7 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
                               fontSize: height * 0.04,
                               fontWeight: FontWeight.bold),
                         ),
-                        Container(
+                        SizedBox(
                           width: width,
                           height: height * 0.3,
                           child: GridView.count(

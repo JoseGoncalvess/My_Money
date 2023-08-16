@@ -58,8 +58,8 @@ class _DetailButtompageState extends State<DetailButtompage>
             children: [
               Positioned(
                   bottom: 0,
-                  left: 7,
-                  right: 7,
+                  left: 5,
+                  right: 5,
                   child: Column(
                     children: [
                       Text(
@@ -102,6 +102,7 @@ class _DetailButtompageState extends State<DetailButtompage>
                                                   ),
                                                 )
                                               : CardEventListWidget(
+                                                  optionpress: () {},
                                                   eventData:
                                                       value[index].dateEvent,
                                                   eventName:

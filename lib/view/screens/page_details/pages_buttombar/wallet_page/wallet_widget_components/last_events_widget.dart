@@ -52,6 +52,7 @@ class _LastEventsWidgetState extends State<LastEventsWidget> {
                 itemBuilder: (context, index) {
                   List<Evento> list = value.reversed.toList();
                   return CardEventListWidget(
+                    optionpress: () {},
                     eventData: list[index].dateEvent,
                     eventName: list[index].nameEvent,
                     eventValue: list[index].velueEvent,

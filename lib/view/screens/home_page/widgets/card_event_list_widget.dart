@@ -8,6 +8,7 @@ class CardEventListWidget extends StatefulWidget {
   final String eventData;
   final String eventValue;
   final IconData iconCategory;
+  final Function optionpress;
 
   const CardEventListWidget({
     Key? key,
@@ -15,6 +16,7 @@ class CardEventListWidget extends StatefulWidget {
     required this.eventData,
     required this.eventValue,
     required this.iconCategory,
+    required this.optionpress,
   }) : super(key: key);
 
   @override
@@ -110,7 +112,10 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                   ],
                 ),
                 IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.more_vert_rounded))
+                    onPressed: () {
+                      widget.optionpress();
+                    },
+                    icon: const Icon(Icons.more_vert_rounded))
               ],
             ),
           ],

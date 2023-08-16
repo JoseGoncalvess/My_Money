@@ -247,7 +247,10 @@ class _EditingPageState extends State<EditingPage>
                           altura: 0.045,
                           largura: 0.4,
                           name: 'Cancelar',
-                          onpressed: () => Navigator.pop(context),
+                          onpressed: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage())),
                           backgroud: const Color(0xFF2E4159),
                           colortext: Colors.white)
                     ],

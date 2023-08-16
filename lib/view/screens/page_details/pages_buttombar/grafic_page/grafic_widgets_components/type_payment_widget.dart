@@ -52,7 +52,7 @@ class _TypePaymentWidgetState extends State<TypePaymentWidget> {
             builder: (context, value, child) => value.isEmpty
                 ? const CustomAlert(
                     icon: Icons.attach_money_rounded,
-                    mensseger: 'Sem Registro de Pagamentos...',
+                    mensseger: 'Sem Registros de Pagamentos...',
                   )
                 : SfCartesianChart(
                     legend: Legend(

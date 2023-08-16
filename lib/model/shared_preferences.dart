@@ -90,8 +90,8 @@ class SharedPrefs {
     List<String>? listStrng = [];
     loadList(key: key).then((v) {
       listStrng = v;
-      listString.insert(index, evento.toJson());
-      listStrng!.removeAt(index);
+      listStrng!.insert(index, evento.toJson());
+      listStrng!.removeAt(index + 1);
       saveList(key: key, list: listStrng);
     });
   }

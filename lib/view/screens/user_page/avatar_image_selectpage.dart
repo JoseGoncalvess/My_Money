@@ -14,7 +14,7 @@ class AvatarImageSelectpage extends StatefulWidget {
 
 class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
   final PageController _pageController = PageController(viewportFraction: 0.6);
-  final AvatarSelectController _Avatarcontroller = AvatarSelectController();
+  final AvatarSelectController _avatarcontroller = AvatarSelectController();
 
   int _currentepage = 0;
   late List<AvatarDataModel> slider;
@@ -29,7 +29,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
       });
     });
 
-    _Avatarcontroller.addListener(() {
+    _avatarcontroller.addListener(() {
       setState(() {});
     });
   }
@@ -46,7 +46,7 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
         actions: [
           IconButton(
               onPressed: () {
-                _Avatarcontroller.setAvtar(
+                _avatarcontroller.setAvtar(
                     key: tempavatar, avatar: slider[_currentepage].img);
                 Navigator.pop(context);
               },

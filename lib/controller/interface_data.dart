@@ -5,12 +5,13 @@ import '../model/payment_type.dart';
 
 class InterfaceData {
   List<CategoryEvent> category = [
-    CategoryEvent(name: 'Feria', icon: Icons.luggage_rounded),
+    CategoryEvent(name: 'Feira', icon: Icons.luggage_rounded),
     CategoryEvent(name: 'Lazer', icon: Icons.park_rounded),
     CategoryEvent(name: 'Investimento', icon: Icons.auto_graph_rounded),
     CategoryEvent(name: 'Viagem', icon: Icons.flight_rounded),
     CategoryEvent(name: 'Saúde', icon: Icons.medical_services_rounded),
     CategoryEvent(name: 'Trabalho', icon: Icons.work),
+    CategoryEvent(name: 'Lanche', icon: Icons.fastfood_rounded),
   ];
 
   List<PaymentType> paymentType = [
@@ -38,19 +39,17 @@ class InterfaceData {
     AvatarDataModel(
         id: 1, img: 'assets/img/caramelo.png', name: 'Cachorro Caramelo'),
     AvatarDataModel(id: 2, img: 'assets/img/ethereum.png', name: 'Hetereum'),
-    AvatarDataModel(
-        id: 3, img: 'assets/img/lobo.png', name: 'Lobo de Wall Street'),
   ];
 
   List<Map> faqTypes = [
     {
       'doubt': 'Quem criou o App?',
-      'res': 'Criado Para fins didatico, de um Desenvolvedor Legal ai!.'
+      'res': 'Criado para fins didatico de um Desenvolvedor Legal ai :) .'
     },
     {
       'doubt': 'O aplicativo é seguro ?',
       'res':
-          'Toda e qualquer informação  inserida no app, está armazenada no dispositivo sem qualquer acesso por parte de 3º. Garantnido a seguranção do usuario.'
+          'Toda e qualquer informação  inserida no app, está armazenada no dispositivo sem qualquer acesso por parte de 3º. Garantindo a segurança do usuario.'
     },
     {
       'doubt': 'Tive porblemas com o App!',
@@ -58,9 +57,9 @@ class InterfaceData {
           'Relate seus problemas através do nosso canal de comunicação na guia suporte!'
     },
     {
-      'doubt': 'Porque tem Anúncios?',
+      'doubt': 'Por que tem Anúncios?',
       'res':
-          'Para financiar a manutenção e futuras atualizaçõesdo do App, atualizações essas baseadas na sua necessidade.'
+          'Para financiar a manutenção e futuras atualizações do App, atualizações essas baseadas na sua necessidade.'
     },
     {
       'doubt': 'Como posso contribuir com o Projeto?',

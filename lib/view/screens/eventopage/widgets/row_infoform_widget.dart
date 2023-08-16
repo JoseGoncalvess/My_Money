@@ -72,7 +72,7 @@ class _RowInfoformWidgetState extends State<RowInfoformWidget>
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                'valor R\$:',
+                'Valor:',
                 style: TextStyle(
                     color: const Color(0xFF2E4159),
                     fontSize: width * 0.05,

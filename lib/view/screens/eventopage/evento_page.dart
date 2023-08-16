@@ -166,7 +166,7 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                     ? ParcelaWidget(
                                         parcelaController: parcelcontroller,
                                         pacelValue:
-                                            parcelcontroller.value.toString(),
+                                            '${parcelcontroller.value} x',
                                       )
                                     : Container(),
                               ],

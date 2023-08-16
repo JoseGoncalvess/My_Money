@@ -20,8 +20,7 @@ class _AppWidegtState extends State<AppWidegt> {
         colorScheme: const ColorScheme.dark(onPrimary: Color(0xff4F4D8C)),
         elevatedButtonTheme: const ElevatedButtonThemeData(
             style: ButtonStyle(
-                backgroundColor:
-                    MaterialStatePropertyAll(const Color(0xff5F5DA6)))),
+                backgroundColor: MaterialStatePropertyAll(Color(0xff5F5DA6)))),
         datePickerTheme: const DatePickerThemeData(
           backgroundColor: Color(0xff4F4D8C),
           headerBackgroundColor: Color(0xFF2E4159),
