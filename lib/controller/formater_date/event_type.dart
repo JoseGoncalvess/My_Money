@@ -15,6 +15,10 @@ class EventType {
         return 'Saúde';
       case Icons.work:
         return 'Trabalho';
+      case Icons.fastfood_rounded:
+        return 'Lanche';
+      case Icons.assistant_rounded:
+        return 'Outros';
     }
     return 'Evento';
   }

@@ -7,7 +7,6 @@ import 'package:my_money/model/evento_model.dart';
 import 'package:my_money/model/shared_preferences.dart';
 import 'package:my_money/view/screens/eventopage/widgets/parcela_widget.dart';
 import 'package:my_money/view/screens/eventopage/widgets/payment_category_widget.dart';
-import 'package:my_money/view/screens/home_page/home_page.dart';
 import 'package:my_money/view/widgets/buttom_custom_widget.dart';
 import '../../widgets/logo_inline_widget.dart';
 import '../eventopage/evento_controller.dart';
@@ -231,12 +230,7 @@ class _EditingPageState extends State<EditingPage>
                                               parcelEvnet: parcelcontroller
                                                   .value
                                                   .toString()))
-                                      .then((value) =>
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const HomePage())));
+                                      .then((value) => Navigator.pop(context));
                                 }
                               },
                               backgroud: const Color(0xff4F4D8C),
@@ -247,10 +241,7 @@ class _EditingPageState extends State<EditingPage>
                           altura: 0.045,
                           largura: 0.4,
                           name: 'Cancelar',
-                          onpressed: () => Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomePage())),
+                          onpressed: () => Navigator.pop(context),
                           backgroud: const Color(0xFF2E4159),
                           colortext: Colors.white)
                     ],

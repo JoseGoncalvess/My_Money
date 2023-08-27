@@ -104,38 +104,34 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       builder: (context, value, child) {
                         return ListView.builder(
                           itemCount: value.isEmpty ? 1 : value.length,
-                          itemBuilder: (context, index) => GestureDetector(
-                            child: CardEventListWidget(
-                              optionpress: () {
-                                MenuActionEvent().showButtomSheet(
-                                    context: context,
-                                    nameEvent: value[index].nameEvent,
-                                    edidtingFunction: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => EditingPage(
-                                              indexevent: index,
-                                              dataEvent: value[index].dateEvent,
-                                              nameEvent: value[index].nameEvent,
-                                              parcelEvent:
-                                                  value[index].parcelEvnet!,
-                                              paymentEvent:
-                                                  value[index].paymentEvent,
-                                              valorEvent:
-                                                  value[index].velueEvent,
-                                            ),
-                                          ));
-                                    },
-                                    deletFunction: () =>
-                                        _homecontroller.removeEvnet(
-                                            key: keyList, index: index));
-                              },
-                              eventData: value[index].dateEvent,
-                              eventName: value[index].nameEvent,
-                              eventValue: value[index].velueEvent,
-                              iconCategory: value[index].categoryEvent,
-                            ),
+                          itemBuilder: (context, index) => CardEventListWidget(
+                            optionpress: () {
+                              MenuActionEvent().showButtomSheet(
+                                  context: context,
+                                  nameEvent: value[index].nameEvent,
+                                  edidtingFunction: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => EditingPage(
+                                            indexevent: index,
+                                            dataEvent: value[index].dateEvent,
+                                            nameEvent: value[index].nameEvent,
+                                            parcelEvent:
+                                                value[index].parcelEvnet!,
+                                            paymentEvent:
+                                                value[index].paymentEvent,
+                                            valorEvent: value[index].velueEvent,
+                                          ),
+                                        ));
+                                  },
+                                  deletFunction: () => _homecontroller
+                                      .removeEvnet(key: keyList, index: index));
+                            },
+                            eventData: value[index].dateEvent,
+                            eventName: value[index].nameEvent,
+                            eventValue: value[index].velueEvent,
+                            iconCategory: value[index].categoryEvent,
                           ),
                         );
                       },

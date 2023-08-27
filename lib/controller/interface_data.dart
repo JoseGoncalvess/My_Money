@@ -12,6 +12,7 @@ class InterfaceData {
     CategoryEvent(name: 'Saúde', icon: Icons.medical_services_rounded),
     CategoryEvent(name: 'Trabalho', icon: Icons.work),
     CategoryEvent(name: 'Lanche', icon: Icons.fastfood_rounded),
+    CategoryEvent(name: 'Outros', icon: Icons.assistant_rounded),
   ];
 
   List<PaymentType> paymentType = [

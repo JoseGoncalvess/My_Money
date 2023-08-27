@@ -50,8 +50,8 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: width * 0.6212,
+                Container(
+                  width: width * 0.6170,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -79,13 +79,13 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                           Text(
                             widget.eventName,
                             style: TextStyle(
-                                fontSize: height * 0.023,
+                                fontSize: width * 0.05,
                                 fontWeight: FontWeight.w600),
                           ),
                           Text(
                             EventType().getEvent(icon: widget.iconCategory),
                             style: TextStyle(
-                                fontSize: height * 0.02,
+                                fontSize: width * 0.03,
                                 fontWeight: FontWeight.w400),
                           ),
                         ],
@@ -105,7 +105,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                           fontWeight: FontWeight.w400),
                     ),
                     Text(
-                      'R\$ ${widget.eventValue}',
+                      'R\$ ${widget.eventValue},00',
                       style: TextStyle(
                           fontSize: height * 0.02, fontWeight: FontWeight.w600),
                     ),
