@@ -7,7 +7,7 @@ class SuportController {
       {required BuildContext context,
       required String assunto,
       required String corpo}) async {
-    String email = Uri.encodeComponent('joseinacoi774@gmail.com');
+    String email = Uri.encodeComponent('suport.deveopper@gmail.com');
     String subject = Uri.encodeComponent(assunto);
     String body = Uri.encodeComponent(corpo);
     //TRSNFORMO EM TIPO "URI" JA PASSANDO O CORPO DO TIPO EMAIL SEGUINDO A ESTRUTURA DO URI
@@ -38,7 +38,9 @@ class SuportController {
                             MediaQuery.sizeOf(context).height * 0.05)),
                         backgroundColor: const MaterialStatePropertyAll<Color>(
                             Color(0xff5F5DA6))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: const Text(
                       'OK',
                       style: TextStyle(color: Colors.white),
