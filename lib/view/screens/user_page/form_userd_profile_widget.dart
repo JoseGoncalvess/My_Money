@@ -35,41 +35,47 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
           SizedBox(
               width: width * 0.7,
               height: height * 0.12,
-              child: TextFormField(
-                enableInteractiveSelection: false,
-                validator: (value) => combvalidator(
-                  validator: [
-                    () => isempyt(
-                        msg: 'Ops, Como você se cham mesmo ?', value: value),
-                    () => islengthMin(value, 'O que acha de um nome maior?', 2),
-                    () =>
-                        isContainNuber(value, 'Permitido apenas Letras [A-Z].')
-                  ],
-                ),
-                style: TextStyle(
-                    color: const Color(0xff4F4D8C).withOpacity(0.6),
-                    decorationThickness: 0.0,
-                    fontWeight: FontWeight.w600),
-                controller: _nameController,
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white, width: 2)),
-                    focusedBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide:
-                          const BorderSide(width: 2, color: Colors.white),
-                    ),
-                    hintText: 'Olá, Me chamo...',
-                    hintStyle: TextStyle(
+              child: Semantics(
+                readOnly: true,
+                label: "Digitar nome de usuario",
+                child: TextFormField(
+                  enableInteractiveSelection: false,
+                  validator: (value) => combvalidator(
+                    validator: [
+                      () => isempyt(
+                          msg: 'Ops, Como você se cham mesmo ?', value: value),
+                      () =>
+                          islengthMin(value, 'O que acha de um nome maior?', 2),
+                      () => isContainNuber(
+                          value, 'Permitido apenas Letras [A-Z].')
+                    ],
+                  ),
+                  style: TextStyle(
                       color: const Color(0xff4F4D8C).withOpacity(0.6),
-                      fontWeight: FontWeight.bold,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    errorStyle: TextStyle(
-                        color: Colors.amber, fontSize: width * 0.032)),
+                      decorationThickness: 0.0,
+                      fontWeight: FontWeight.w600),
+                  controller: _nameController,
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      border: const OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.white, width: 2)),
+                      focusedBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide:
+                            const BorderSide(width: 2, color: Colors.white),
+                      ),
+                      hintText: 'Olá, Me chamo...',
+                      hintStyle: TextStyle(
+                        color: const Color(0xff4F4D8C).withOpacity(0.6),
+                        fontWeight: FontWeight.bold,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      errorStyle: TextStyle(
+                          color: Colors.amber, fontSize: width * 0.032)),
+                ),
               )),
           SizedBox(
             height: height * 0.01,
@@ -77,67 +83,76 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
           SizedBox(
               width: width * 0.6,
               height: height * 0.1,
-              child: TextFormField(
-                enableInteractiveSelection: false,
-                validator: (value) => combvalidator(
-                  validator: [
-                    () => isempyt(
-                        msg: 'Ops, Como você se cham mesmo ?', value: value),
-                    () =>
-                        islengthMax(value, 'O que acha de um nome menor?', 10),
-                    () =>
-                        isContaintext(value, 'Permitido apenas Números [0-9].')
-                  ],
-                ),
-                style: TextStyle(
-                    color: const Color(0xff4F4D8C).withOpacity(0.6),
-                    decorationThickness: 0.0,
-                    fontWeight: FontWeight.w600),
-                controller: _moneyController,
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white, width: 2)),
-                    focusedBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide:
-                          const BorderSide(width: 2, color: Colors.white),
-                    ),
-                    hintText: 'Meu patrimonio atual é ...',
-                    hintStyle: TextStyle(
+              child: Semantics(
+                readOnly: true,
+                label: "Digitar patrimonio do usuario",
+                child: TextFormField(
+                  enableInteractiveSelection: false,
+                  validator: (value) => combvalidator(
+                    validator: [
+                      () => isempyt(
+                          msg: 'Ops, Como você se cham mesmo ?', value: value),
+                      () => islengthMax(
+                          value, 'O que acha de um nome menor?', 10),
+                      () => isContaintext(
+                          value, 'Permitido apenas Números [0-9].')
+                    ],
+                  ),
+                  style: TextStyle(
                       color: const Color(0xff4F4D8C).withOpacity(0.6),
-                      fontWeight: FontWeight.bold,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    errorStyle: TextStyle(
-                        color: Colors.amber, fontSize: width * 0.032)),
+                      decorationThickness: 0.0,
+                      fontWeight: FontWeight.w600),
+                  controller: _moneyController,
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      border: const OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.white, width: 2)),
+                      focusedBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide:
+                            const BorderSide(width: 2, color: Colors.white),
+                      ),
+                      hintText: 'Meu patrimonio atual é ...',
+                      hintStyle: TextStyle(
+                        color: const Color(0xff4F4D8C).withOpacity(0.6),
+                        fontWeight: FontWeight.bold,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      errorStyle: TextStyle(
+                          color: Colors.amber, fontSize: width * 0.032)),
+                ),
               )),
-          ButtomCustomWidget(
-              altura: 0.07,
-              largura: 0.4,
-              backgroud: const Color(0xff4F4D8C),
-              colortext: Colors.white,
-              name: 'Salvar',
-              onpressed: () {
-                if (_keyUser.currentState!.validate()) {
-                  _userController
-                      .setuser(
-                          avatar: widget.avatar,
-                          nameUser: _nameController.text,
-                          moneyUser: _moneyController.text)
-                      .then(
-                        (value) => Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+          Semantics(
+            label: "Salvar",
+            button: true,
+            child: ButtomCustomWidget(
+                altura: 0.07,
+                largura: 0.4,
+                backgroud: const Color(0xff4F4D8C),
+                colortext: Colors.white,
+                name: 'Salvar',
+                onpressed: () {
+                  if (_keyUser.currentState!.validate()) {
+                    _userController
+                        .setuser(
+                            avatar: widget.avatar,
+                            nameUser: _nameController.text,
+                            moneyUser: _moneyController.text)
+                        .then(
+                          (value) => Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
                           ),
-                        ),
-                      );
-                  log('${_nameController.text},${_moneyController.text}');
-                }
-              })
+                        );
+                    log('${_nameController.text},${_moneyController.text}');
+                  }
+                }),
+          )
         ],
       ),
     );

@@ -104,11 +104,16 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
                 },
               );
             },
-            child: ValueListenableBuilder(
-                valueListenable: _avatarcontroller,
-                builder: (context, value, child) =>
-                    AvatarProfileWidget(image: value))),
-        FormUserdProfileWidget(avatar: _avatarcontroller.value),
+            child: Semantics(
+              label: "Foto de Perfil do Usuario",
+              child: ValueListenableBuilder(
+                  valueListenable: _avatarcontroller,
+                  builder: (context, value, child) =>
+                      AvatarProfileWidget(image: value)),
+            )),
+        Semantics(
+            label: "Formulario de cadastro do usuario",
+            child: FormUserdProfileWidget(avatar: _avatarcontroller.value)),
       ],
     );
   }

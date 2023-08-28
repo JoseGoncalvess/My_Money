@@ -1,4 +1,4 @@
-package com.my_money
+package com.JGdev.my_money
 
 import io.flutter.embedding.android.FlutterActivity
 
