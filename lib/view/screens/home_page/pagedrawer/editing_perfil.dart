@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../controller/helprs/formaters/formater_value_payment.dart';
 import '../../../../controller/interface_data.dart';
 import '../../../../model/avatar_data_model.dart';
 import '../../../../model/shared_preferences.dart';
@@ -200,8 +201,10 @@ class _EditingPerfilState extends State<EditingPerfil> {
                                               : widget.name,
                                       moneyUser: _moneycontroller.text !=
                                               widget.totalmoney
-                                          ? _moneycontroller.text
-                                          : widget.totalmoney)
+                                          ? FormaterValuePayment().formatDouble(
+                                              value: _moneycontroller.text)
+                                          : FormaterValuePayment().formatDouble(
+                                              value: widget.totalmoney))
                                   .then((value) => {
                                         Navigator.pushReplacement(
                                             context,

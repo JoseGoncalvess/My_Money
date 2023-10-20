@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/controller/formater_date/date_event.dart';
-import 'package:my_money/controller/formater_date/event_type.dart';
+import 'package:my_money/controller/helprs/formaters/formater_date/date_event.dart';
+import 'package:my_money/controller/helprs/formaters/formater_date/event_type.dart';
 import 'package:my_money/model/evento_model.dart';
 
 import 'models/category_event.dart';

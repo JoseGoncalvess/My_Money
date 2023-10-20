@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../controller/formater_date/formater_date.dart';
+import '../../../controller/helprs/formaters/formater_date/formater_date.dart';
 
 class EventoController extends ValueNotifier<String> {
   FormaterDate data = FormaterDate();

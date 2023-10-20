@@ -5,8 +5,8 @@ import '../../../model/shared_preferences.dart';
 class HomeController extends ValueNotifier<List<Evento>> {
   HomeController() : super([]);
   var userName = ValueNotifier<String?>('Usuario');
-  var userMoney = ValueNotifier<String?>('0,0');
-  var saldo = ValueNotifier<String?>('0,00');
+  var userMoney = ValueNotifier<String?>('0.0');
+  var saldo = ValueNotifier<String?>('0,.00');
   var userAvatar = ValueNotifier<String?>('assets/img/sem_logo.jpg');
 
   final SharedPrefs prefs = SharedPrefs();

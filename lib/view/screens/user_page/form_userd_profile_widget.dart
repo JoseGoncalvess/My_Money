@@ -1,7 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import '../../../controller/mixins/validador_mixin.dart';
+import 'package:my_money/controller/helprs/formaters/formater_value_payment.dart';
+import '../../../controller/helprs/mixins/validador_mixin.dart';
 import '../../widgets/buttom_custom_widget.dart';
 import '../home_page/home_page.dart';
 import 'user_controller.dart';
@@ -140,7 +141,8 @@ class _FormUserdProfileWidgetState extends State<FormUserdProfileWidget>
                         .setuser(
                             avatar: widget.avatar,
                             nameUser: _nameController.text,
-                            moneyUser: _moneyController.text)
+                            moneyUser: FormaterValuePayment()
+                                .formatDouble(value: _moneyController.text))
                         .then(
                           (value) => Navigator.pushReplacement(
                             context,

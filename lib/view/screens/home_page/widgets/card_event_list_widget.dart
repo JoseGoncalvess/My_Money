@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/controller/formater_date/date_event.dart';
+import 'package:my_money/controller/helprs/formaters/formater_date/date_event.dart';
+import 'package:my_money/controller/helprs/formaters/formater_value_payment.dart';
 
-import '../../../../controller/formater_date/event_type.dart';
+import '../../../../controller/helprs/formaters/formater_date/event_type.dart';
 
 class CardEventListWidget extends StatefulWidget {
   final String eventName;
@@ -105,7 +106,8 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                           fontWeight: FontWeight.w400),
                     ),
                     Text(
-                      'R\$ ${widget.eventValue},00',
+                      FormaterValuePayment()
+                          .viewValue(value: double.parse(widget.eventValue)),
                       style: TextStyle(
                           fontSize: height * 0.02, fontWeight: FontWeight.w600),
                     ),

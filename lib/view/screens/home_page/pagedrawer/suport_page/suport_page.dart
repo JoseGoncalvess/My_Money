@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/controller/mixins/validador_mixin.dart';
+import 'package:my_money/controller/helprs/mixins/validador_mixin.dart';
 import 'package:my_money/view/widgets/buttom_custom_widget.dart';
 import 'package:my_money/view/widgets/custom_formfiel_widget.dart';
 

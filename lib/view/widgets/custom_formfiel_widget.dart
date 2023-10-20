@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../controller/mixins/validador_mixin.dart';
+import '../../controller/helprs/mixins/validador_mixin.dart';
 
 class CustomFormfielWidget extends StatefulWidget {
   final String internlabel;

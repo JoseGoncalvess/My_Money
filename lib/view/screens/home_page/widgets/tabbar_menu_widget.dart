@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-
+import 'package:my_money/controller/helprs/formaters/formater_value_payment.dart';
 import '../../page_details/dtails_page.dart';
 
 class TabbarMenuWidget extends StatefulWidget {
@@ -75,7 +75,8 @@ class _TabbarMenuWidgetState extends State<TabbarMenuWidget> {
                         fontWeight: FontWeight.w400, fontSize: height * 0.02),
                   ),
                   Text(
-                    'R\$ ${widget.money}',
+                    FormaterValuePayment()
+                        .viewValue(value: double.parse(widget.money)),
                     style: TextStyle(
                         fontWeight: FontWeight.w700, fontSize: height * 0.02),
                   )

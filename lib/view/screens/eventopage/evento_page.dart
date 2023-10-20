@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:my_money/controller/helprs/formaters/formater_date/formater_date.dart';
+import 'package:my_money/controller/helprs/formaters/formater_value_payment.dart';
 import 'package:my_money/controller/interface_data.dart';
 import 'package:my_money/controller/parcela_controller.dart';
 import 'package:my_money/model/evento_model.dart';
@@ -193,25 +195,26 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                                       .saveEvent(
                                           key: keyList,
                                           evento: Evento(
-                                              nameEvent:
-                                                  _eventotexteditController
-                                                      .text,
+                                              nameEvent: _eventotexteditController
+                                                  .text,
                                               dateEvent:
-                                                  _eventocontroller.value,
-                                              velueEvent: _valorController.text,
+                                                  _eventocontroller.value ==
+                                                          "Data do Evento..."
+                                                      ? FormaterDate().fdata(
+                                                          dataTme: DateTime.now()
+                                                              .toString())
+                                                      : _eventocontroller.value,
+                                              velueEvent: FormaterValuePayment().formatDouble(
+                                                  value: _valorController.text),
                                               categoryEvent: InterfaceData()
                                                   .category[cat]
                                                   .icon,
                                               paymentEvent: paymenttype,
-                                              parcelEvnet: parcelcontroller
-                                                  .value
+                                              parcelEvnet: parcelcontroller.value
                                                   .toString()))
-                                      .then((value) =>
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const HomePage())));
+                                      .then((value) => Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => const HomePage())));
                                 }
                               },
                               backgroud: const Color(0xff4F4D8C),
