@@ -56,31 +56,40 @@ class _AvatarImageSelectpageState extends State<AvatarImageSelectpage> {
               ))
         ],
       ),
-      body: Container(
-        color: const Color(0xff2E4159),
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: slider.length,
-                  itemBuilder: (_, i) {
-                    var onselect = _currentepage == i;
-                    return CardAvatarSelectWidget(
-                      image: slider[i].img,
-                      onselect: onselect,
-                    );
-                  }),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                slider[_currentepage].name,
-                style: TextStyle(
-                    fontSize: height * 0.05, fontWeight: FontWeight.bold),
+      body: Semantics(
+        container: true,
+        label: "Opções de avatares para selecionar",
+        child: Container(
+          color: const Color(0xff2E4159),
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: slider.length,
+                    itemBuilder: (_, i) {
+                      var onselect = _currentepage == i;
+                      return Semantics(
+                        container: true,
+                        image: true,
+                        label: "imagem do ${slider[i].name}",
+                        child: CardAvatarSelectWidget(
+                          image: slider[i].img,
+                          onselect: onselect,
+                        ),
+                      );
+                    }),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  slider[_currentepage].name,
+                  style: TextStyle(
+                      fontSize: height * 0.05, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
