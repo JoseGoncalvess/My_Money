@@ -75,16 +75,16 @@ class _MediaMonthWidgetState extends State<MediaMonthWidget> {
                           title: AxisTitle(),
                           labelStyle:
                               const TextStyle(color: Color(0xff5F5DA6))),
-                      series: <ChartSeries>[
-                        ColumnSeries<ColunData, String>(
-                            enableTooltip: true,
+                      series: <CartesianSeries<ColunData, String>>[
+                          ColumnSeries(
                             dataSource: value,
                             xValueMapper: (ColunData data, _) => data.xmonth,
                             yValueMapper: (ColunData data, _) => data.yvalue,
-                            color: const Color(0xff5F5DA6),
-                            dataLabelSettings: const DataLabelSettings(
-                                isVisible: true, color: Color(0xff5F5DA6))),
-                      ],
+                            dataLabelSettings: DataLabelSettings(
+                                isVisible: true, color: Color(0xff5F5DA6)),
+                          )
+                        ]
+                      
                     ),
             ),
           )

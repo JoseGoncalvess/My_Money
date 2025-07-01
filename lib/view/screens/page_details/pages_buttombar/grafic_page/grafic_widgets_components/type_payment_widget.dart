@@ -86,26 +86,26 @@ class _TypePaymentWidgetState extends State<TypePaymentWidget> {
                           color: Color(0xFF2E4159),
                           dashArray: [5, 5]),
                     ),
-                    series: <ChartSeries>[
-                      SplineSeries<PaymentModel, double>(
+                    series: <CartesianSeries>[
+                      LineSeries<PaymentModel, int>(
                           color: Colors.green,
                           dataSource: value,
                           xValueMapper: (PaymentModel data, _) =>
-                              data.xnubermtrasations,
+                              data.xnubermtrasations.toInt(),
                           yValueMapper: (PaymentModel data, _) =>
                               data.ytransationtipo1,
                           width: 2,
                           name: 'Cartão',
+                          enableTooltip: true,
                           markerSettings: const MarkerSettings(
                               isVisible: true, color: Colors.white),
                           dataLabelSettings: const DataLabelSettings(
                               color: Colors.green, isVisible: true)),
-                      SplineSeries<PaymentModel, double>(
-                          color: Colors.amber,
-                          animationDuration: 0,
+                      LineSeries<PaymentModel, int>(
+                          color: Colors.green,
                           dataSource: value,
                           xValueMapper: (PaymentModel data, _) =>
-                              data.xnubermtrasations,
+                              data.xnubermtrasations.toInt(),
                           yValueMapper: (PaymentModel data, _) =>
                               data.ytransationtipo2,
                           width: 2,
@@ -115,6 +115,9 @@ class _TypePaymentWidgetState extends State<TypePaymentWidget> {
                               isVisible: true, color: Colors.white),
                           dataLabelSettings: const DataLabelSettings(
                               color: Colors.amber, isVisible: true))
+
+                      // SplineSeries<PaymentModel, double>(
+                      
                     ],
                   ),
           ),
