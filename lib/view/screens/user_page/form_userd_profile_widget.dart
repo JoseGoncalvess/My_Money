@@ -10,9 +10,9 @@ import 'user_controller.dart';
 class FormUserdProfileWidget extends StatefulWidget {
   final String avatar;
   const FormUserdProfileWidget({
-    Key? key,
+    super.key,
     required this.avatar,
-  }) : super(key: key);
+  });
 
   @override
   State<FormUserdProfileWidget> createState() => _FormUserdProfileWidgetState();

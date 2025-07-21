@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_money/view/screens/splash_page/splash_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class AppWidegt extends StatefulWidget {
-  const AppWidegt({Key? key}) : super(key: key);
+  const AppWidegt({super.key});
 
   @override
   State<AppWidegt> createState() => _AppWidegtState();
@@ -20,12 +20,12 @@ class _AppWidegtState extends State<AppWidegt> {
         colorScheme: const ColorScheme.dark(onPrimary: Color(0xff4F4D8C)),
         elevatedButtonTheme: const ElevatedButtonThemeData(
             style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Color(0xff5F5DA6)))),
+                backgroundColor: WidgetStatePropertyAll(Color(0xff5F5DA6)))),
         datePickerTheme: const DatePickerThemeData(
           backgroundColor: Color(0xff4F4D8C),
           headerBackgroundColor: Color(0xFF2E4159),
         ),
-        // useMaterial3: true,
+        useMaterial3: true,
       ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

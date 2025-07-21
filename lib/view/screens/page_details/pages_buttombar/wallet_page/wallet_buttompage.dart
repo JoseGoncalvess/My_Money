@@ -8,7 +8,7 @@ import '../../../../../model/shared_preferences.dart';
 import '../../../home_page/home_controller.dart';
 
 class WalletButtompage extends StatefulWidget {
-  const WalletButtompage({Key? key}) : super(key: key);
+  const WalletButtompage({super.key});
 
   @override
   State<WalletButtompage> createState() => _WalletButtompageState();
@@ -80,10 +80,11 @@ class _WalletButtompageState extends State<WalletButtompage> {
                       ),
                     ),
                     SizedBox(
-                      width: width * 0.96,
-                      height: height * 0.15,
+                      width: width,
+                      height: height * 0.13,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 10,
                         children: [
                           CardPaymentWidget(
                             trasitioninfo:
@@ -104,20 +105,12 @@ class _WalletButtompageState extends State<WalletButtompage> {
                 ),
               ),
             ),
-            ResumeCardWidget(
-                dispesas: _walletcontroller.despesas.value,
-                saldoucont: _homecontroller.userMoney.value!),
-            Positioned(
-                top: 20,
-                left: width * 0.353,
-                // right: width * 0.3,
-                child: SizedBox(
-                  child: Text('Carteira',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: height * 0.04)),
-                ))
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ResumeCardWidget(
+                  dispesas: _walletcontroller.despesas.value,
+                  saldoucont: _homecontroller.userMoney.value!),
+            ),
           ],
         ),
       ),

@@ -9,12 +9,11 @@ class ListDrawerWidget extends StatefulWidget {
   final String versioApp;
   final String profileUser;
   const ListDrawerWidget(
-      {Key? key,
+      {super.key,
       required this.nameUser,
       required this.moneyUser,
       required this.versioApp,
-      required this.profileUser})
-      : super(key: key);
+      required this.profileUser});
 
   @override
   State<ListDrawerWidget> createState() => _ListDrawerWidgetState();
@@ -27,13 +26,12 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
     final width = MediaQuery.of(context).size.height;
     return SafeArea(
       child: SizedBox(
-        height: height * 0.78,
+        height: height,
         child: Column(
           children: [
             SizedBox(
               width: width,
               height: height * 0.1,
-              // color: Colors.white,
               child: Center(
                 child: Text(
                   'Ola, Sr(a). ${widget.nameUser}!',
@@ -100,7 +98,7 @@ class _ListDrawerWidgetState extends State<ListDrawerWidget> {
                       color: Colors.white)),
             ),
             SizedBox(
-              height: height * 0.61,
+              height: height * 0.5,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,

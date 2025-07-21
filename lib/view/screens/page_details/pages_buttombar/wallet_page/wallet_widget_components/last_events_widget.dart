@@ -5,7 +5,7 @@ import '../../../../home_page/home_controller.dart';
 import '../../../../home_page/widgets/card_event_list_widget.dart';
 
 class LastEventsWidget extends StatefulWidget {
-  const LastEventsWidget({Key? key}) : super(key: key);
+  const LastEventsWidget({super.key});
 
   @override
   State<LastEventsWidget> createState() => _LastEventsWidgetState();

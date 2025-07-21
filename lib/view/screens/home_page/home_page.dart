@@ -14,8 +14,8 @@ import 'widgets/card_event_list_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -71,83 +71,84 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
-    return Scaffold(
-      backgroundColor: Colors.white,
-      drawer: Drawer(
-        backgroundColor: const Color(0xff5F5DA6),
-        child: ListDrawerWidget(
-          versioApp: _versionController.value,
-          nameUser: _homecontroller.userName.value!,
-          moneyUser: _homecontroller.userMoney.value!,
-          profileUser: _avatarcontroller.value,
-        ),
-      ),
-      key: _key,
-      body: SizedBox(
-        height: height,
-        width: width,
-        child: Stack(children: [
-          Positioned(
-            bottom: 0,
-            child: Container(
-              height: height * 0.887,
-              width: width,
-              color: Colors.white,
-              child: _homecontroller.value.isEmpty
-                  ? const NewItemWidget(
-                      coloricon: Color(0xFF2E4159),
-                      colortext: Color(0xff5F5DA6),
-                      mensseger: 'Adicione Novos  Eventos',
-                    )
-                  : ValueListenableBuilder<List<Evento>>(
-                      valueListenable: _homecontroller,
-                      builder: (context, value, child) {
-                        return ListView.builder(
-                          itemCount: value.isEmpty ? 1 : value.length,
-                          itemBuilder: (context, index) => CardEventListWidget(
-                            optionpress: () {
-                              MenuActionEvent().showButtomSheet(
-                                  context: context,
-                                  nameEvent: value[index].nameEvent,
-                                  edidtingFunction: () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => EditingPage(
-                                            indexevent: index,
-                                            dataEvent: value[index].dateEvent,
-                                            nameEvent: value[index].nameEvent,
-                                            parcelEvent:
-                                                value[index].parcelEvnet!,
-                                            paymentEvent:
-                                                value[index].paymentEvent,
-                                            valorEvent: value[index].velueEvent,
-                                          ),
-                                        ));
-                                  },
-                                  deletFunction: () => _homecontroller
-                                      .removeEvnet(key: keyList, index: index));
-                            },
-                            eventData: value[index].dateEvent,
-                            eventName: value[index].nameEvent,
-                            eventValue: value[index].velueEvent,
-                            iconCategory: value[index].categoryEvent,
-                          ),
-                        );
-                      },
-                    ),
-            ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        drawer: Drawer(
+          backgroundColor: const Color(0xff5F5DA6),
+          child: ListDrawerWidget(
+            versioApp: _versionController.value,
+            nameUser: _homecontroller.userName.value!,
+            moneyUser: _homecontroller.userMoney.value!,
+            profileUser: _avatarcontroller.value,
           ),
-          TabbarMenuWidget(
-            perfil: _homecontroller.userAvatar.value!,
-            money: _homecontroller.saldo.value!,
-          )
-        ]),
-      ),
-      floatingActionButton: SizedBox(
-        width: width * 0.16,
-        height: height * 0.15,
-        child: FloatingActionButton(
+        ),
+        key: _key,
+        body: SizedBox(
+          height: height,
+          width: width,
+          child: Stack(children: [
+            Positioned(
+              bottom: 0,
+              child: Container(
+                height: height * 0.887,
+                width: width,
+                color: Colors.white,
+                child: _homecontroller.value.isEmpty
+                    ? const NewItemWidget(
+                        coloricon: Color(0xFF2E4159),
+                        colortext: Color(0xff5F5DA6),
+                        mensseger: 'Adicione Novos  Eventos',
+                      )
+                    : ValueListenableBuilder<List<Evento>>(
+                        valueListenable: _homecontroller,
+                        builder: (context, value, child) {
+                          return ListView.builder(
+                            itemCount: value.isEmpty ? 1 : value.length,
+                            itemBuilder: (context, index) =>
+                                CardEventListWidget(
+                              optionpress: () {
+                                MenuActionEvent().showButtomSheet(
+                                    context: context,
+                                    nameEvent: value[index].nameEvent,
+                                    edidtingFunction: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => EditingPage(
+                                              indexevent: index,
+                                              dataEvent: value[index].dateEvent,
+                                              nameEvent: value[index].nameEvent,
+                                              parcelEvent:
+                                                  value[index].parcelEvnet!,
+                                              paymentEvent:
+                                                  value[index].paymentEvent,
+                                              valorEvent:
+                                                  value[index].velueEvent,
+                                            ),
+                                          ));
+                                    },
+                                    deletFunction: () =>
+                                        _homecontroller.removeEvnet(
+                                            key: keyList, index: index));
+                              },
+                              eventData: value[index].dateEvent,
+                              eventName: value[index].nameEvent,
+                              eventValue: value[index].velueEvent,
+                              iconCategory: value[index].categoryEvent,
+                            ),
+                          );
+                        },
+                      ),
+              ),
+            ),
+            TabbarMenuWidget(
+              perfil: _homecontroller.userAvatar.value!,
+              money: _homecontroller.saldo.value!,
+            )
+          ]),
+        ),
+        floatingActionButton: FloatingActionButton(
             onPressed: () {
               Navigator.push(
                   context,

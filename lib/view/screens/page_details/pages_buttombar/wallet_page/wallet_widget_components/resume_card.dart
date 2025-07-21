@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import '../../../../eventopage/evento_page.dart';
 
 class ResumeCardWidget extends StatefulWidget {
+  const ResumeCardWidget(
+      {super.key, required this.saldoucont, required this.dispesas});
   final String saldoucont;
   final String dispesas;
-  const ResumeCardWidget(
-      {Key? key, required this.saldoucont, required this.dispesas})
-      : super(key: key);
 
   @override
   State<ResumeCardWidget> createState() => _ResumeCardWidgetState();

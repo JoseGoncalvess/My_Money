@@ -9,14 +9,13 @@ class ButtomCustomWidget extends StatefulWidget {
   final double altura;
 
   const ButtomCustomWidget(
-      {Key? key,
+      {super.key,
       required this.onpressed,
       required this.name,
       required this.colortext,
       required this.backgroud,
       required this.largura,
-      required this.altura})
-      : super(key: key);
+      required this.altura});
 
   @override
   State<ButtomCustomWidget> createState() => _ButtomCustomWidgetState();
@@ -24,7 +23,7 @@ class ButtomCustomWidget extends StatefulWidget {
 
 class _ButtomCustomWidgetState extends State<ButtomCustomWidget> {
   bool press = false;
-  animatio() {
+  void animatio() {
     setState(() {
       press = true;
       Future.delayed(const Duration(milliseconds: 190)).then((value) => {
@@ -38,37 +37,17 @@ class _ButtomCustomWidgetState extends State<ButtomCustomWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.bounceIn,
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(4)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                blurRadius: 4,
-                offset: !press ? const Offset(2, 4) : const Offset(2, 0),
-                blurStyle: BlurStyle.solid,
-              )
-            ]),
-        width: width * widget.largura,
-        height: height * widget.altura,
-        child: ElevatedButton(
-          style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(widget.backgroud)),
-          onPressed: () {
-            animatio();
-          },
-          child: Text(widget.name,
-              style: TextStyle(
-                  color: widget.colortext,
-                  fontSize: height * 0.038,
-                  fontWeight: FontWeight.w600)),
-        ),
+      child: ElevatedButton(
+        style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(widget.backgroud)),
+        onPressed: () => animatio(),
+        child: Text(widget.name,
+            style: TextStyle(
+                color: widget.colortext,
+                fontSize: MediaQuery.of(context).size.height * 0.038,
+                fontWeight: FontWeight.w600)),
       ),
     );
   }

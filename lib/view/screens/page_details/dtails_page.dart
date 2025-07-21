@@ -23,7 +23,6 @@ class _DtailsPageState extends State<DtailsPage> {
       const GraficButtompag(),
     ];
     final height = MediaQuery.of(context).size.height;
-    // final width = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xff4F4D8C),

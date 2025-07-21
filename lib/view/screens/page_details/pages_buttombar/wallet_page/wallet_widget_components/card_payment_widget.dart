@@ -8,18 +8,17 @@ class CardPaymentWidget extends StatelessWidget {
   final IconData icon;
   final TrasationInfo trasitioninfo;
   const CardPaymentWidget(
-      {Key? key,
+      {super.key,
       required this.namepayment,
       required this.icon,
-      required this.trasitioninfo})
-      : super(key: key);
+      required this.trasitioninfo});
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.height;
     return Container(
-      width: width * 0.23,
+      width: width * 0.2,
       height: height * 0.13,
       decoration: BoxDecoration(
           color: const Color(0xFF2E4159),

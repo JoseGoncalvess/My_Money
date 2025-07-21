@@ -11,7 +11,7 @@ import 'avatar_select_components/avatar_select_controller.dart';
 import 'form_userd_profile_widget.dart';
 
 class FormcadUserWidget extends StatefulWidget {
-  const FormcadUserWidget({Key? key}) : super(key: key);
+  const FormcadUserWidget({super.key});
 
   @override
   State<FormcadUserWidget> createState() => _FormcadUserWidgetState();
@@ -46,7 +46,7 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: Text(
             'PERFIL',
             style:
@@ -61,7 +61,7 @@ class _FormcadUserWidgetState extends State<FormcadUserWidget> {
                 builder: (contextt) {
                   return SizedBox(
                     width: width,
-                    height: height * 0.45,
+                    height: height * 0.46,
                     child: Column(
                       children: [
                         Text(

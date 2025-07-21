@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:my_money/controller/helprs/formaters/formater_value_payment.dart';
 import '../../page_details/dtails_page.dart';
@@ -8,10 +6,10 @@ class TabbarMenuWidget extends StatefulWidget {
   final String money;
   final String perfil;
   const TabbarMenuWidget({
-    Key? key,
+    super.key,
     required this.money,
     required this.perfil,
-  }) : super(key: key);
+  });
 
   @override
   State<TabbarMenuWidget> createState() => _TabbarMenuWidgetState();
@@ -41,10 +39,10 @@ class _TabbarMenuWidgetState extends State<TabbarMenuWidget> {
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
             onPressed: () {
-              log('pega kraiii');
               Scaffold.of(context).openDrawer();
             },
             icon: Icon(
@@ -53,11 +51,10 @@ class _TabbarMenuWidgetState extends State<TabbarMenuWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 24.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: SizedBox(
               height: height * 0.12,
-              width: width * 0.35,
-              // color: Colors.amberAccent,
+              width: width * 0.3,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
