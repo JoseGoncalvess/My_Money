@@ -31,10 +31,14 @@ class _PaymentCategoryWidgetState extends State<PaymentCategoryWidget> {
           Container(
             height: height * 0.08,
             width: width * 0.16,
-            decoration: BoxDecoration(boxShadow: const [
-              BoxShadow(
-                  color: Colors.grey, offset: Offset(2, 2), spreadRadius: 1)
-            ], color: widget.color, borderRadius: BorderRadius.circular(100)),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.grey, offset: Offset(2, 2), spreadRadius: 1)
+              ],
+              color: widget.color,
+            ),
             child: IconButton(
                 onPressed: widget.onpressed,
                 icon: Icon(

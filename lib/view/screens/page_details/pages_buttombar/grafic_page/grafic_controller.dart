@@ -30,17 +30,31 @@ class GraficController {
     listcategory.value = catList;
   }
 
-  getdataColun({required List<Evento> list}) {
+  void getdataColun({required List<Evento> list}) {
     List<ColunData> catList = [];
-    for (var e in list) {
-      catList.add(ColunData(
-          xmonth: DateEvent().getMonth(date: e.dateEvent),
-          yvalue: double.parse(e.velueEvent)));
+    Map<String, double> categoryEvent = {};
+
+    for (var event in list) {
+      String month = DateEvent().getMonth(date: event.dateEvent);
+      if (categoryEvent.containsKey(month)) {
+        categoryEvent[month] =
+            categoryEvent[month]! + double.parse(event.velueEvent);
+      } else {
+        categoryEvent[month] = double.parse(event.velueEvent);
+      }
     }
+
+    categoryEvent.forEach(
+      (key, value) {
+        catList.add(ColunData(
+            xmonth: key, yvalue: double.parse(value.toStringAsFixed(2))));
+      },
+    );
+
     listgastomonth.value = catList;
   }
 
-  getTypePayment({required List<Evento> list}) {
+  void getTypePayment({required List<Evento> list}) {
     List<PaymentModel> catList = [];
     double cont = 1;
     for (var e in list) {
@@ -55,7 +69,7 @@ class GraficController {
     listvaluepayment.value = catList;
   }
 
-  setstate({required int saldocont, required int dividas}) {
+  void setstate({required int saldocont, required int dividas}) {
     if (dividas > saldocont) {
       state.value = '3';
     } else if (dividas + (saldocont * (20 / 100)) == saldocont) {
@@ -63,7 +77,7 @@ class GraficController {
     }
   }
 
-  sumValue({required List<Evento> eventos, required String userSaldo}) {
+  void sumValue({required List<Evento> eventos, required String userSaldo}) {
     double soma = 0;
     for (var e in eventos) {
       soma = soma + double.parse(e.velueEvent);

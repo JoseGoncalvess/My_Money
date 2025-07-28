@@ -267,13 +267,13 @@
     },
     {
       "name": "syncfusion_flutter_charts",
-      "rootUri": "file:///C:/Users/goncalves/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_charts-30.1.37",
+      "rootUri": "file:///C:/Users/goncalves/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_charts-29.2.11",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "syncfusion_flutter_core",
-      "rootUri": "file:///C:/Users/goncalves/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-30.1.37",
+      "rootUri": "file:///C:/Users/goncalves/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-29.2.11",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },

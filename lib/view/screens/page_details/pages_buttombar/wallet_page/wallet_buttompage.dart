@@ -43,45 +43,38 @@ class _WalletButtompageState extends State<WalletButtompage> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: Container(
-        color: const Color(0xFF2E4159),
-        width: width,
-        height: height,
-        child: Stack(
-          children: [
-            Positioned(
-              bottom: 0,
-              child: Container(
+          color: const Color(0xFF2E4159),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            spacing: 10,
+            children: [
+              ResumeCardWidget(
+                  dispesas: _walletcontroller.despesas.value,
+                  saldoucont: _homecontroller.userMoney.value!),
+              Container(
                 decoration: const BoxDecoration(
-                    color: Color(0xff5F5DA6),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(22),
                         topRight: Radius.circular(22))),
-                width: width,
-                height: height * 0.8,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.555,
                 child: Column(
+                  spacing: 10,
                   children: [
-                    SizedBox(
-                      height: height * 0.27,
-                    ),
-                    const LastEventsWidget(),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Pagamentos',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: height * 0.022),
-                      ),
+                    LastEventsWidget(),
+                    Text(
+                      'Pagamentos',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: MediaQuery.of(context).size.height * 0.022),
                     ),
                     SizedBox(
-                      width: width,
-                      height: height * 0.13,
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.13,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         spacing: 10,
@@ -103,17 +96,9 @@ class _WalletButtompageState extends State<WalletButtompage> {
                     )
                   ],
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ResumeCardWidget(
-                  dispesas: _walletcontroller.despesas.value,
-                  saldoucont: _homecontroller.userMoney.value!),
-            ),
-          ],
-        ),
-      ),
+              )
+            ],
+          )),
     );
   }
 }

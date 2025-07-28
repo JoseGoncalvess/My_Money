@@ -70,7 +70,6 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
           color: const Color(0xFF2E4159),
           child: Stack(children: [
             SizedBox(
-              // color: Colors.red,
               height: height * 0.18,
               width: width,
               child: const LogoInlineWidget(fontsiz: 0.05, imagescale: 4),
@@ -115,8 +114,6 @@ class _EventoPageState extends State<EventoPage> with TickerProviderStateMixin {
                       SizedBox(
                         width: width,
                         height: height * 0.19,
-
-                        // color: Colors.blueGrey,
                         child: Column(
                           children: [
                             Text('Pagamento',

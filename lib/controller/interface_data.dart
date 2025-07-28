@@ -5,7 +5,8 @@ import '../model/payment_type.dart';
 
 class InterfaceData {
   List<CategoryEvent> category = [
-    CategoryEvent(name: 'Feira', icon: Icons.luggage_rounded),
+    CategoryEvent(name: 'Feira', icon: Icons.shopping_cart),
+    CategoryEvent(name: 'Aluguel', icon: Icons.home_work),
     CategoryEvent(name: 'Lazer', icon: Icons.park_rounded),
     CategoryEvent(name: 'Investimento', icon: Icons.auto_graph_rounded),
     CategoryEvent(name: 'Viagem', icon: Icons.flight_rounded),
@@ -58,7 +59,7 @@ class InterfaceData {
           'Relate seus problemas através do nosso canal de comunicação na guia suporte!'
     },
     {
-      'doubt': 'Por que tem Anúncios?',
+      'doubt': 'Porque tem Anúncios?',
       'res':
           'Para financiar a manutenção e futuras atualizações do App, atualizações essas baseadas na sua necessidade.'
     },

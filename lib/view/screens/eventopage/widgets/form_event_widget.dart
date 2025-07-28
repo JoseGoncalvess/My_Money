@@ -11,13 +11,12 @@ class FormEventWidget extends StatefulWidget {
   final Function()? timetable;
   final String datevalue;
   const FormEventWidget(
-      {Key? key,
+      {super.key,
       required this.eventocontroller,
       required this.valuecontroller,
       required this.pagecontrollerCat,
       required this.timetable,
-      required this.datevalue})
-      : super(key: key);
+      required this.datevalue});
 
   @override
   State<FormEventWidget> createState() => _FormEventWidgetState();
@@ -26,7 +25,6 @@ class FormEventWidget extends StatefulWidget {
 class _FormEventWidgetState extends State<FormEventWidget> with ValidadorMixin {
   @override
   Widget build(BuildContext context) {
-    // final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Column(
       children: [

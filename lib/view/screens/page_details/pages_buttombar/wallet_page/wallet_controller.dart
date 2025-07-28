@@ -11,7 +11,7 @@ class WalletController {
   final trasationmoney = ValueNotifier<TrasationInfo>(
       TrasationInfo(ntransition: '0', strasition: 'R\$ 0,00'));
 
-  sumValue({required List<Evento> eventos}) {
+  void sumValue({required List<Evento> eventos}) {
     double soma = 0;
     for (var e in eventos) {
       soma = soma + double.parse(e.velueEvent);
@@ -20,7 +20,7 @@ class WalletController {
   }
 
   //
-  sumtrasation({required List<Evento> eventos}) {
+  void sumtrasation({required List<Evento> eventos}) {
     int tcard = 0;
     int tmoney = 0;
     double vcard = 0;
@@ -40,4 +40,3 @@ class WalletController {
         ntransition: tmoney.toString(), strasition: vmoney.toStringAsFixed(2));
   }
 }
-// "Cartão"

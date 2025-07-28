@@ -7,7 +7,6 @@ import 'grafic_controller.dart';
 import 'grafic_widgets_components/card_info_widget.dart';
 import 'grafic_widgets_components/grafic_category_widget.dart';
 import 'grafic_widgets_components/media_month_widget.dart';
-import 'grafic_widgets_components/type_payment_widget.dart';
 
 class GraficButtompag extends StatefulWidget {
   const GraficButtompag({Key? key}) : super(key: key);
@@ -65,6 +64,7 @@ class _GraficButtompagState extends State<GraficButtompag> {
               color: Colors.white,
               child: SingleChildScrollView(
                   child: Column(
+                spacing: height * 0.01,
                 children: [
                   Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -84,18 +84,8 @@ class _GraficButtompagState extends State<GraficButtompag> {
                           )
                         ],
                       )),
-                  SizedBox(
-                    height: height * 0.01,
-                  ),
                   const GraficCategoryWidget(),
-                  SizedBox(
-                    height: height * 0.01,
-                  ),
                   const MediaMonthWidget(),
-                  SizedBox(
-                    height: height * 0.01,
-                  ),
-                  const TypePaymentWidget()
                 ],
               )),
             ),

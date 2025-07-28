@@ -84,69 +84,76 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
         ),
         key: _key,
-        body: SizedBox(
-          height: height,
-          width: width,
-          child: Stack(children: [
-            Positioned(
-              bottom: 0,
-              child: Container(
-                height: height * 0.887,
-                width: width,
-                color: Colors.white,
-                child: _homecontroller.value.isEmpty
-                    ? const NewItemWidget(
-                        coloricon: Color(0xFF2E4159),
-                        colortext: Color(0xff5F5DA6),
-                        mensseger: 'Adicione Novos  Eventos',
-                      )
-                    : ValueListenableBuilder<List<Evento>>(
-                        valueListenable: _homecontroller,
-                        builder: (context, value, child) {
-                          return ListView.builder(
-                            itemCount: value.isEmpty ? 1 : value.length,
-                            itemBuilder: (context, index) =>
-                                CardEventListWidget(
-                              optionpress: () {
-                                MenuActionEvent().showButtomSheet(
-                                    context: context,
-                                    nameEvent: value[index].nameEvent,
-                                    edidtingFunction: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => EditingPage(
-                                              indexevent: index,
-                                              dataEvent: value[index].dateEvent,
-                                              nameEvent: value[index].nameEvent,
-                                              parcelEvent:
-                                                  value[index].parcelEvnet!,
-                                              paymentEvent:
-                                                  value[index].paymentEvent,
-                                              valorEvent:
-                                                  value[index].velueEvent,
-                                            ),
-                                          ));
-                                    },
-                                    deletFunction: () =>
-                                        _homecontroller.removeEvnet(
-                                            key: keyList, index: index));
-                              },
-                              eventData: value[index].dateEvent,
-                              eventName: value[index].nameEvent,
-                              eventValue: value[index].velueEvent,
-                              iconCategory: value[index].categoryEvent,
-                            ),
-                          );
-                        },
-                      ),
+        body: SingleChildScrollView(
+          child: SizedBox(
+            height: height,
+            width: width,
+            child: Stack(children: [
+              Positioned(
+                top: _homecontroller.value.length <= 5 ? height * 0.15 : 0,
+                child: Container(
+                  height: _homecontroller.value.length <= 5
+                      ? height * 0.887
+                      : height * 0.93,
+                  width: width,
+                  color: Colors.white,
+                  child: _homecontroller.value.isEmpty
+                      ? const NewItemWidget(
+                          coloricon: Color(0xFF2E4159),
+                          colortext: Color(0xff5F5DA6),
+                          mensseger: 'Adicione Novos  Eventos',
+                        )
+                      : ValueListenableBuilder<List<Evento>>(
+                          valueListenable: _homecontroller,
+                          builder: (context, value, child) {
+                            return ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              itemCount: value.isEmpty ? 1 : value.length,
+                              itemBuilder: (context, index) =>
+                                  CardEventListWidget(
+                                optionpress: () {
+                                  MenuActionEvent().showButtomSheet(
+                                      context: context,
+                                      nameEvent: value[index].nameEvent,
+                                      edidtingFunction: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => EditingPage(
+                                                indexevent: index,
+                                                dataEvent:
+                                                    value[index].dateEvent,
+                                                nameEvent:
+                                                    value[index].nameEvent,
+                                                parcelEvent:
+                                                    value[index].parcelEvnet!,
+                                                paymentEvent:
+                                                    value[index].paymentEvent,
+                                                valorEvent:
+                                                    value[index].velueEvent,
+                                              ),
+                                            ));
+                                      },
+                                      deletFunction: () =>
+                                          _homecontroller.removeEvnet(
+                                              key: keyList, index: index));
+                                },
+                                eventData: value[index].dateEvent,
+                                eventName: value[index].nameEvent,
+                                eventValue: value[index].velueEvent,
+                                iconCategory: value[index].categoryEvent,
+                              ),
+                            );
+                          },
+                        ),
+                ),
               ),
-            ),
-            TabbarMenuWidget(
-              perfil: _homecontroller.userAvatar.value!,
-              money: _homecontroller.saldo.value!,
-            )
-          ]),
+              TabbarMenuWidget(
+                perfil: _homecontroller.userAvatar.value!,
+                money: _homecontroller.saldo.value!,
+              )
+            ]),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
             onPressed: () {

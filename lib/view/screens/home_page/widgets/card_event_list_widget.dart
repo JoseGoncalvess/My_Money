@@ -12,13 +12,13 @@ class CardEventListWidget extends StatefulWidget {
   final Function optionpress;
 
   const CardEventListWidget({
-    Key? key,
+    super.key,
     required this.eventName,
     required this.eventData,
     required this.eventValue,
     required this.iconCategory,
     required this.optionpress,
-  }) : super(key: key);
+  });
 
   @override
   State<CardEventListWidget> createState() => _CardEventListWidgetState();
@@ -51,7 +51,7 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: width * 0.6170,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,8 +63,8 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                           width: width * 0.2,
                           height: height * 0.1,
                           decoration: BoxDecoration(
+                            shape: BoxShape.circle,
                             color: const Color(0xff5F5DA6),
-                            borderRadius: BorderRadius.circular(50),
                           ),
                           child: Icon(
                             widget.iconCategory,
@@ -101,15 +101,15 @@ class _CardEventListWidgetState extends State<CardEventListWidget> {
                     Text(
                       DateEvent().getdate(date: widget.eventData),
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
-                          fontSize: height * 0.02,
+                          color: const Color(0xB5FFFFFF),
+                          fontSize: width * 0.03,
                           fontWeight: FontWeight.w400),
                     ),
                     Text(
                       FormaterValuePayment()
                           .viewValue(value: double.parse(widget.eventValue)),
                       style: TextStyle(
-                          fontSize: height * 0.02, fontWeight: FontWeight.w600),
+                          fontSize: width * 0.04, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),

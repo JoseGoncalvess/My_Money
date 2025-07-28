@@ -21,8 +21,7 @@ class CardPaymentWidget extends StatelessWidget {
       width: width * 0.2,
       height: height * 0.13,
       decoration: BoxDecoration(
-          color: const Color(0xFF2E4159),
-          borderRadius: BorderRadius.circular(12)),
+          color: Color(0xff5F5DA6), borderRadius: BorderRadius.circular(12)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

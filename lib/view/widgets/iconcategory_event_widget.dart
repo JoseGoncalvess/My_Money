@@ -8,12 +8,12 @@ class IconcategoryEventWidget extends StatefulWidget {
   final bool onselectd;
 
   const IconcategoryEventWidget({
-    Key? key,
+    super.key,
     required this.icon,
     required this.namecategory,
     required this.onpressed,
     required this.onselectd,
-  }) : super(key: key);
+  });
 
   @override
   State<IconcategoryEventWidget> createState() =>
@@ -35,11 +35,10 @@ class _IconcategoryEventWidgetState extends State<IconcategoryEventWidget> {
             width: width * 0.23,
             height: height * 0.115,
             decoration: BoxDecoration(
-              color: widget.onselectd
-                  ? const Color(0xFF2E4159)
-                  : const Color(0xff4F4D8C),
-              borderRadius: BorderRadius.circular(100),
-            ),
+                color: widget.onselectd
+                    ? const Color(0xFF2E4159)
+                    : const Color(0xff4F4D8C),
+                shape: BoxShape.circle),
             child: IconButton(
                 onPressed: widget.onpressed,
                 icon: Icon(

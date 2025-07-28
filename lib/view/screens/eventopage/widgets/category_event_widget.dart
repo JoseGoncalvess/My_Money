@@ -9,8 +9,7 @@ import '../../../../model/category_event.dart';
 class CategoryEventWidget extends StatefulWidget {
   final PageController pagecontrollerCat;
 
-  const CategoryEventWidget({Key? key, required this.pagecontrollerCat})
-      : super(key: key);
+  const CategoryEventWidget({super.key, required this.pagecontrollerCat});
 
   @override
   State<CategoryEventWidget> createState() => _CategoryEventWidgetState();

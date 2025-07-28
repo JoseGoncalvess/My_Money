@@ -25,45 +25,43 @@ class _LastEventsWidgetState extends State<LastEventsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.height;
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * 0.35,
+      child: Column(
+        children: [
+          Text(
             'Ultimas Movimentações',
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
-                fontSize: height * 0.025),
+                fontSize: MediaQuery.of(context).size.height * 0.025),
           ),
-        ),
-        Container(
-          width: width * 0.9,
-          height: height * 0.281,
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(12)),
-          child: ValueListenableBuilder<List<Evento>>(
-            valueListenable: _homecontroller,
-            builder: (_, value, child) {
-              return ListView.builder(
-                itemCount: value.length < 2 ? value.length : 2,
-                itemBuilder: (context, index) {
-                  List<Evento> list = value.reversed.toList();
-                  return CardEventListWidget(
-                    optionpress: () {},
-                    eventData: list[index].dateEvent,
-                    eventName: list[index].nameEvent,
-                    eventValue: list[index].velueEvent,
-                    iconCategory: list[index].categoryEvent,
-                  );
-                },
-              );
-            },
-          ),
-        )
-      ],
+          Container(
+            height: MediaQuery.of(context).size.height * 0.281,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(12)),
+            child: ValueListenableBuilder<List<Evento>>(
+              valueListenable: _homecontroller,
+              builder: (_, value, child) {
+                return ListView.builder(
+                  itemCount: value.length < 2 ? value.length : 2,
+                  itemBuilder: (context, index) {
+                    List<Evento> list = value.reversed.toList();
+                    return CardEventListWidget(
+                      optionpress: () {},
+                      eventData: list[index].dateEvent,
+                      eventName: list[index].nameEvent,
+                      eventValue: list[index].velueEvent,
+                      iconCategory: list[index].categoryEvent,
+                    );
+                  },
+                );
+              },
+            ),
+          )
+        ],
+      ),
     );
   }
 }

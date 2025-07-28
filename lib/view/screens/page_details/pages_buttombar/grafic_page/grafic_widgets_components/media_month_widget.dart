@@ -8,7 +8,7 @@ import '../../../../home_page/home_controller.dart';
 import '../grafic_controller.dart';
 
 class MediaMonthWidget extends StatefulWidget {
-  const MediaMonthWidget({Key? key}) : super(key: key);
+  const MediaMonthWidget({super.key});
 
   @override
   State<MediaMonthWidget> createState() => _MediaMonthWidgetState();
@@ -68,11 +68,24 @@ class _MediaMonthWidgetState extends State<MediaMonthWidget> {
                   : SfCartesianChart(
                       margin: const EdgeInsets.all(2),
                       primaryXAxis: CategoryAxis(
+                          title: AxisTitle(
+                            text: "Meses",
+                            textStyle: const TextStyle(
+                                color: Color(0xff5F5DA6),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
+                          ),
                           labelStyle: const TextStyle(
-                        color: Color(0xff5F5DA6),
-                      )),
+                            color: Color(0xff5F5DA6),
+                          )),
                       primaryYAxis: NumericAxis(
-                          title: AxisTitle(),
+                          title: AxisTitle(
+                            text: "Valor em R\$",
+                            textStyle: const TextStyle(
+                                color: Color(0xff5F5DA6),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
+                          ),
                           labelStyle:
                               const TextStyle(color: Color(0xff5F5DA6))),
                       series: <CartesianSeries<ColunData, String>>[
@@ -82,10 +95,8 @@ class _MediaMonthWidgetState extends State<MediaMonthWidget> {
                             yValueMapper: (ColunData data, _) => data.yvalue,
                             dataLabelSettings: DataLabelSettings(
                                 isVisible: true, color: Color(0xff5F5DA6)),
-                          )
-                        ]
-                      
-                    ),
+                          ),
+                        ]),
             ),
           )
         ],

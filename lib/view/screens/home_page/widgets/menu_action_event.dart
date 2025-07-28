@@ -7,14 +7,14 @@ class MenuActionEvent {
     required Function edidtingFunction,
     required Function deletFunction,
   }) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return showModalBottomSheet(
       elevation: 0,
-      backgroundColor: const Color(0x00000000).withOpacity(0.1),
+      backgroundColor: const Color(0x00000000),
       context: context,
       builder: (context) => Container(
-        height: height * 0.3,
+        height: height * 0.4,
         width: width,
         decoration: const BoxDecoration(
             color: Colors.white,
@@ -37,13 +37,34 @@ class MenuActionEvent {
               size: height * 0.08,
               color: const Color(0xff5F5DA6),
             ),
-            Text(
+            RichText(
               textAlign: TextAlign.center,
-              'O evento Evento $nameEvent foi Selecionado',
-              style: TextStyle(
-                  color: const Color(0xFF354B66),
-                  fontWeight: FontWeight.w500,
-                  fontSize: height * 0.03),
+              text: TextSpan(
+                style: TextStyle(
+                    color: const Color(0xFF354B66),
+                    fontWeight: FontWeight.w500,
+                    fontSize: height * 0.03),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'O Evento ',
+                  ),
+                  TextSpan(
+                    text: nameEvent,
+                    style: const TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  TextSpan(
+                    text: ' foi Selecionado',
+                    style: TextStyle(
+                        color: const Color(0xFF354B66),
+                        fontWeight: FontWeight.w500,
+                        fontSize: height * 0.03),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -58,7 +79,6 @@ class MenuActionEvent {
                         style: const ButtonStyle(),
                         onPressed: () {
                           edidtingFunction();
-                          //Navigator.pop(context);
                         },
                         child: const Text(
                           'Editar',
